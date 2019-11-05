@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            1. 对象属性的枚举性
+            for...in循环：只遍历对象自身的和继承的可枚举的属性。
+            Object.keys(obj)：返回对象自身的所有可枚举的属性的键名。
+            JSON.stringify(obj)：只串行化对象自身的可枚举的属性。
+            Object.assign(obj)： 忽略enumerable为false的属性，只拷贝对象自身的可枚举的属性。
+
+            Object.getOwnPropertyNames(obj) : Object.getOwnPropertyNames返回一个数组，包含对象自身的所有属性（不含 Symbol 属性，但是包括不可枚举属性）的键名。
+            Object.getOwnPropertySymbols(obj) : Object.getOwnPropertySymbols返回一个数组，包含对象自身的所有 Symbol 属性的键名。
+            Reflect.ownKeys(obj) : Reflect.ownKeys返回一个数组，包含对象自身的所有键名，不管键名是 Symbol 或字符串，也不管是否可枚举
+        */
+
+        /*
+            2. 完整克隆一个对象
+        */
+        // 写法一
+        const clone1 = {
+            __proto__: Object.getPrototypeOf(obj),
+            ...obj
+        };
+
+        // 写法二
+        const clone2 = Object.assign(
+            Object.create(Object.getPrototypeOf(obj)),
+            obj
+        );
+
+        // 写法三
+        const clone3 = Object.create(
+            Object.getPrototypeOf(obj),
+            Object.getOwnPropertyDescriptors(obj)
+        )
+
+        /*
+            3. 对象的合并
+        */
+        let ab = { ...a, ...b };
+        // 等同于
+        let ab = Object.assign({}, a, b);
+
+        /*
+            4. Object.is() : 严格比较值是否相等
+            不同之处只有两个：一是+0不等于-0，二是NaN等于自身。
+        */
+        +0 === -0 //true
+        NaN === NaN // false
+
+        Object.is(+0, -0) // false
+        Object.is(NaN, NaN) // true
+
+        /*
+            5. Object.asign(target, source1, source2)
+            (1) 用于对象的合并，变相克隆 , 将源对象（source）的所有可枚举属性，复制到目标对象（target）。
+        */
+        const target = { a: 1 };
+        const source1 = { b: 2 };
+        const source2 = { c: 3 };
+        Object.assign(target, source1, source2);
+        target // {a:1, b:2, c:3}
+
+        /*
+            (2) Object.assign方法实行的是浅拷贝，而不是深拷贝
+        */
+        const obj1 = { a: { b: 1 } };
+        const obj2 = Object.assign({}, obj1);
+        obj1.a.b = 2;
+        obj2.a.b // 2
+
+        /*
+            (3) 同名属性替换
+        */
+        const target = { a: { b: 'c', d: 'e' } }
+        const source = { a: { b: 'hello' } }
+        Object.assign(target, source)
+        // { a: { b: 'hello' } }
+
+        /*
+            (4) 为对象添加属性
+        */
+        class Point {
+            constructor(x, y) {
+                Object.assign(this, { x, y });
+            }
+        }
+
+        /*
+            (5) 为对象添加方法
+        */
+        Object.assign(SomeClass.prototype, {
+            someMethod(arg1, arg2) {
+                // ···
+            },
+            anotherMethod() {
+                // ···
+            }
+        });
+
+        // 等同于下面的写法
+        SomeClass.prototype.someMethod = function (arg1, arg2) {
+            // ···
+        };
+        SomeClass.prototype.anotherMethod = function () {
+            // ···
+        };
+
+        /*
+            6. Object.fromEntries() : Object.entries()的逆操作，用于将一个键值对数组转为对象。
+        */
+        Object.fromEntries([
+            ['foo', 'bar'],
+            ['baz', 42]
+        ])
+        // { foo: "bar", baz: 42 }
+
+        // 十分适合Map数据结构
+        // 例一
+        const entries = new Map([
+            ['foo', 'bar'],
+            ['baz', 42]
+        ]);
+
+        Object.fromEntries(entries)
+        // { foo: "bar", baz: 42 }
+
+        // 例二
+        const map = new Map().set('foo', true).set('bar', false);
+        Object.fromEntries(map)
+        // { foo: true, bar: false }
+    </script>
+</body>
+
+</html>

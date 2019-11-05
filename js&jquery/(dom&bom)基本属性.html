@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1.Node是最基本的节点,其他节点都继承于Node节点,要注意两个节点的使用,Node以及Element元素节点的 -->
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>
+            <div></div>
+        </li>
+    </ul>
+    <script>
+        /*
+            hasChildNodes
+            parentNode
+            firstChild
+            lastChild
+            childNodes 
+            previousSibling
+            nextSibling
+
+            getAttribute
+            setAttribute
+
+            appendChild():有剪切的作用
+            insertBefore():插入效果,双参
+            replaceChild()
+            removeChild():删除一个
+            cloneNode():cloneNode(),复制标签,cloneNode(true),复制内容
+        */
+        document.getElementsByTagName("ul")[0].appendChild(document.getElementsByTagName("li")[0]);
+        document.querySelector("ul").insertBefore(document.createElement("li"), document.querySelector("ul").children[0]);
+    </script>
+
+    <!-- 2.最常操作的节点,元素节点Element,document. -->
+    <script>
+        /*
+            querySelector()
+            querySelectorAll()
+            matchesSelector():检测
+
+            children:子元素节点集合
+            childElementCount：返回子元素(不包括文本节点和注释)的个数
+            firstElementChild：指向第一个子元素,firstChild的元素版
+            lastElementChild：指向后一个子元素,lastChild的元素版
+            previousElementSibling：指向前一个同辈元素,previousSibling的元素版
+            nextElementSibling：指向后一个同辈元素,nextSibling的元素版
+
+            getElementById()
+            getElementsByName()
+            getElementsByTagName()
+            getElementsByClassName()
+
+            className:获得一个classList,classList的操作方法对类名操作
+            add(value)：将给定的字符串值添加到列表中.如果值已经存在,就不添加了
+            contains(value)：表示列表中是否存在给定的值,如果存在则返回true,否则返回false
+            remove(value)：从列表中删除给定的字符串
+            toggle(value)：如果列表中已经存在给定的值,删除它,如果列表中没有给定的值,添加它
+
+            focus():辅助焦点,用户体验???
+            hasFocus():判断辅助焦点
+            readyState:loading,complete,页面加载状况
+
+            innerHTML:可以配合数组高效大量的写入元素创建元素........
+            innerText
+            insertAdjacentHTML():早期插入,位置加元素
+            scrollIntoView():滚动焦点
+
+            contains():判断元素位置1:无关2:居前4:居后8:包含16:被包含
+        */
+    </script>
+    <!-- 3.过滤器加迭代器 -->
+    <div id="div1">
+        <p><b>Hello</b> world!</p>
+        <ul>
+            <li>List item 1</li>
+            <li>List item 2</li>
+            <li>List item 3</li>
+        </ul>
+    </div>
+    <script>
+        /*
+            NodeIterator实现
+        */
+        var div = document.getElementById("div1");
+        var filter = function (node) {
+            return node.tagName.toLowerCase() == "li" ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+        };
+        var iterator = document.createNodeIterator(div, NodeFilter.SHOW_ELEMENT, filter, false);
+        var node = iterator.nextNode();
+        while (node !== null) {
+            console.log(node.tagName);
+            node = iterator.nextNode();
+        }
+        /*
+            TreeWalker实现,不需要过滤器
+        */
+        var div = document.getElementById("div1");
+        var walker = document.createTreeWalker(div, NodeFilter.SHOW_ELEMENT, null, false);
+        walker.firstChild();
+        walker.nextSibling();
+        var node = walker.firstChild();
+        while (node !== null) {
+            console.log(node.tagName);
+            node = walker.nextSibling();
+        } 
+    </script>
+
+    <!-- 4.dom事件处理对象及事件 -->
+    <button id="myBtn">按钮</button>
+    <script>
+        /*
+            event:调用事件时默认的处理参数,事件源对象,可重命名
+            event.target:注意event.target与this的区别,一个指代触发事件的对象,一个指代被绑定的对象
+            e.keyCode:键码
+
+            clientX: 鼠标相对于浏览器（这里说的是浏览器的有效区域）左上角x轴的坐标，不随滚动条滚动而改变。
+            clientY: 鼠标相对于浏览器（这里说的是浏览器的有效区域）左上角y轴的坐标，不随滚动条滚动而改变。
+            pageX: 鼠标相对于浏览器（这里说的是浏览器的有效区域）左上角x轴的坐标，随滚动条滚动而改变。
+            pageY: 鼠标相对于浏览器（这里说的是浏览器的有效区域）左上角y轴的坐标，随滚动条滚动而改变。
+            screenX: 鼠标相对于显示器屏幕左上角x轴的坐标。
+            screenY: 鼠标相对于显示器屏幕左上角y轴的坐标。
+            offsetX: 鼠标相对于事件源(e.target)左上角X轴的坐标。
+            offsetY: 鼠标相对于事件源(e.target)左上角y轴的坐标。
+
+            mousedown
+            mouseup
+
+            e.stopPropagation():阻止后续冒泡
+            e.preventDefault():阻止默认事件
+
+        */
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function (event) {
+            console.dir(event);
+            console.log(event.type);
+            console.log(event.target);
+            console.log(event.eventPhase);
+        };
+
+        /*
+            js执行机制:同步任务(执行栈)与异步任务(任务队列)
+            dom0事件:直接调用的事件,及时处理 -> onclick
+
+            dom2事件:可以处理和删除事件
+            addEventListener():事件源.addEventListener(要处理的事件,作为事件处理程序的函数,true:捕获 阶段 触发/false:冒泡 阶段 触发) -> click
+            removeEventListener():
+
+            attachEvent():ie添加事件的处理方式 -> onclick
+            detachEvent():ie去除事件的处理方式
+
+            自定义跨浏览器处理事件:对IE和其他浏览器的一种兼容,ie这个...
+            EventUtil.addHandler()
+            EventUtil.removeHandler()
+        */
+        btn.onclick = function () { console.log(this.id); };
+
+        var handler = function () { console.log(this.id); };
+        btn.addEventListener("click", handler, false);
+        btn.removeEventListener("click", handler, false);
+
+        var EventUtil = {
+            addHandler: function (element, type, handler) {
+                if (element.addEventListener) {
+                    element.addEventListener(type, handler, false);
+                } else if (element.attachEvent) { element.attachEvent("on" + type, handler); } else {
+                    element["on" + type] = handler;
+                }
+            },
+            removeHandler: function (element, type, handler) {
+                if (element.removeEventListener) {
+                    element.removeEventListener(type, handler, false);
+                } else if (element.detachEvent) {
+                    element.detachEvent("on" + type, handler);
+                } else {
+                    element["on" + type] = null;
+                }
+            }
+        };
+        /*
+            focus 在获得焦点的元素上触发
+            blur 在失去焦点的元素上触发
+            change
+
+            transitionend
+
+            keydown 按下触发
+            keypress 按下触发 不识别功能键ctrl shift 左右箭头
+            keyup 释放按键 执行顺序 keydown -> keypress -> keyup
+
+            mouseover
+            mouseenter:无冒泡事件,以后常用
+
+            mouseout
+            mousemove
+            mousedown
+            mouseup
+
+            contextmenu
+            selectstart
+        */
+    </script>
+
+    <!-- 5.bom对象,window -->
+    <script>
+        /*
+            resize 窗口变化
+            scroll 滚动
+            load 全部加载完毕
+            DOMContentLoaded 标签加载完,不包括图片,样式
+
+            window.setTimeout()
+            window.clearTimeout()
+            window.setInterval()
+            window.clearInterval()
+
+            location.href
+            location.search
+            location.host
+            location.port
+
+            location.assign(url)
+            location.replace(url):不能回退
+            location.reload(true)
+
+            navigator.userAgent:用于判断终端
+
+            history.foward()
+            history.back()
+            history.go(url)
+
+            偏移量
+            element.offsetParent:返回带有定位的父级元素,无则返回body
+
+            element.offsetTop:相对带有定位的父级元素的偏移量
+            element.offsetLef:
+            element.offsetWidth:带边框有padding无单位
+            element.offsetHeight:
+
+            element.clientTop:上边框大小
+            element.clientLeft:
+            element.clientWidth:无边框有padding无单位
+            element.clientHeight:
+
+            element.scrollTop:元素被卷去的上侧距离
+            element.scrollLeft:
+
+            // 页面被卷去的头部
+            window.pageYOffset
+            window.pageXOffset
+
+            element.scrollWidth:无边框有padding无单位+内容的实际宽度!!!
+            element.scrollHeight:
+
+            兼容:
+            document.documentElement.scrollTop
+            document.body.scrollTop
+
+            touchstart
+            touchmove
+            touchend
+
+            e.touches 正在触摸屏幕的所有手指的列表
+            e.targetTouches 正在触摸当前DOM元素的手指列表,如果侦听的是一个DOM元素，他们两个是一样的
+            e.changedTouches 手指状态发生了改变的列表 从无到有 或者 从有到无
+        */
+    </script>
+
+    <!-- 6.页面存储对象 -->
+    <script>
+        /*
+            键值对方式存取:可存取多个数据
+            localStorage:永久保存,同一浏览器多窗口共享
+            sessionStorage:会话窗保存,关闭后自动清除
+
+            localStorage/sessionStorage.length
+            localStorage/sessionStorage.setItem()
+            localStorage/sessionStorage.getItem()
+            localStorage/sessionStorage.removeItem()
+            localStorage/sessionStorage.clear()
+        */
+    </script>
+</body>
+
+</html>

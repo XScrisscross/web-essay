@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Object.assign(target,obj1,obj2):只能拷贝一层的属性,不能算是正真意义上的拷贝
+        let o = {
+            name: '王',
+            money: 10000,
+            cars: ['玛萨拉迪', '特斯拉'],
+            houses: { v1: '别墅', v2: '大别墅' },
+        };
+
+        let obj = {};
+        function deepCopy(o, obj) {
+            for (const key in o) {
+                if (o[key] instanceof Array) {
+                    obj[key] = [];
+                    deepCopy(o[key], obj[key]);
+                } else if (o[key] instanceof Object) {
+                    obj[key] = {};
+                    deepCopy(o[key], obj[key]);
+                } else {
+                    obj[key] = o[key];
+                }
+            }
+            return obj;
+        }
+
+        obj = deepCopy(o, obj);
+        obj.cars[0] = "渔鸥垃圾";
+        console.log(obj);
+        console.log(o);
+    </script>
+</body>
+
+</html>

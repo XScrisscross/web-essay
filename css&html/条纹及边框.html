@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* linear-gradient:颜色渐变 */
+        .box1 {
+            margin-top: 20px;
+            width: 800px;
+            height: 200px;
+            background: linear-gradient(#fb3 20%, #58a 80%);
+        }
+
+        .box2 {
+            margin-top: 20px;
+            width: 800px;
+            height: 200px;
+            background: linear-gradient(#fb3 40%, #58a 60%);
+            /* 默认平铺 */
+            background-size: 100% 30px;
+        }
+
+        /* 垂直条纹 */
+        .box3 {
+            margin-top: 20px;
+            width: 800px;
+            height: 200px;
+            /* 或 90deg */
+            background: linear-gradient(to right,
+                    #fb3 50%, #58a 0);
+            background-size: 30px 100%;
+        }
+
+        /* 斜条纹 */
+        .box4 {
+            margin-top: 20px;
+            width: 800px;
+            height: 200px;
+            /* 问题:单纯倾斜渐变会将每一个贴图(30x30)的图片倾斜,需要计算 */
+            /* background: linear-gradient(45deg, #fb3 50%, #58a 0, #58a 50%); */
+            /* 解决:1.四重反复渐变---替换成重复渐变 */
+            /* background: linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0); */
+            background: repeating-linear-gradient(45deg, #fb3 0, #fb3 25%, #58a 0, #58a 50%);
+            /* 2.指定计算背景图片 */
+            background-size: 42px 42px;
+        }
+
+        /* 波点 */
+        .box5 {
+            margin-top: 20px;
+            width: 800px;
+            height: 200px;
+            background: #655;
+            background-image: radial-gradient(tan 30%, transparent 0), radial-gradient(tan 30%, transparent 0);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
+        /* 随机垂直背景 */
+        /* 质数加纵向角度,横向渐变来实现 */
+        .box6 {
+            margin-top: 20px;
+            width: 100%;
+            height: 100px;
+            background: hsl(20, 40%, 90%);
+            background-image: linear-gradient(90deg, #fb3 11px, transparent 0),
+                linear-gradient(90deg, #ab4 23px, transparent 0),
+                linear-gradient(90deg, #655 41px, transparent 0);
+            background-size: 41px 100%, 61px 100%, 83px 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+</body>
+
+</html>

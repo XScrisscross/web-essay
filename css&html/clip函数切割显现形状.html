@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 1.椭圆实现 */
+        /* border-radiu可以单独指定水平与垂直的半径 */
+        .box1 {
+            width: 800px;
+            height: 400px;
+            background-color: #00f;
+            border-radius: 75px/100px;
+            /* border-radius: 75px; */
+            /* border-radius: 50%; */
+            /* 50%:四分之一边框的百分比开始渐变 x水平方向/y垂直方向,注意四个角各占一部分位置*/
+            border-radius: 50%/100%;
+        }
+
+        /* 倾斜边框的产生:强行skewX会导致内部元素倾斜 */
+        /* 方案一:伪元素加倾斜背景,定位设置层叠性 */
+        /* 方案二:使用多边形来解决:polygon(),是真的牛逼 */
+
+        /* 2.菱形图片产生 */
+        /* lowb:旋转加缩放 */
+        img {
+            /* width: 200px;
+            height: 200px; */
+            clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+            transition: all 1s;
+        }
+
+        img:hover {
+            clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+        }
+
+        /* 3.切角效果 */
+        /* 方案一:渐变+透明色实现切角 */
+        /* 角度对于渐变会有方向上的影响 */
+        .box3 {
+            width: 200px;
+            height: 100px;
+            /* 思路:左右同时渐变,上下左右各占一半空间,否则会相互覆盖 */
+            /* background:
+            linear-gradient(135deg, transparent 15px, #58a 0) top left,
+            linear-gradient(-135deg, transparent 15px, #58a 0) top right,
+            linear-gradient(-45deg, transparent 15px, #58a 0) bottom right,
+            linear-gradient(45deg, transparent 15px, #58a 0) bottom left; */
+            /* 弧线角,内凹圆角效果 */
+            background:
+                radial-gradient(circle at 0 0, transparent 15px, #58a 0) top left,
+                radial-gradient(circle at 100% 0, transparent 15px, #58a 0) top right,
+                radial-gradient(circle at bottom right, transparent 15px, #58a 0) bottom right,
+                radial-gradient(circle at bottom left, transparent 15px, #58a 0) bottom left;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+        }
+
+        /* 方案一:裁剪实现 */
+        /* 4.梯形标签页 */
+        /* 方案一:3D旋转视角差来实现,但是文本也会倾斜,可以为元素双重盒子来实现,底部为基点效果更好,可以基于底部左右倾斜 */
+        .box4 {
+            width: 200px;
+            height: 40px;
+            margin: 0 auto;
+            position: relative;
+            display: inline-block;
+            padding: .3em 1em 0;
+        }
+
+        .box4::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            background: #ccc;
+            background-image: linear-gradient(hsla(0, 0%, 100%, .6), hsla(0, 0%, 100%, 0));
+            border: 1px solid rgba(0, 0, 0, .4);
+            border-bottom: none;
+            border-radius: .5em .5em 0 0;
+            box-shadow: 0 .15em white inset;
+            transform: perspective(.5em) rotateX(5deg);
+            transform-origin: bottom;
+        }
+
+        /* 5.元饼图 */
+        /* 思路:多重盒子(伪元素)按一定角度遮掩 */
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <img src="images/3.jpg" alt="">
+    <div class="box3"></div>
+    <div class="box4">123</div>
+</body>
+
+</html>

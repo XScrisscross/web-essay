@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- jquery基础 -->
+    <script>
+        /*
+            jquery:jquery将dom以伪数组的形式进行封装->由此可得转化方式
+            jquery:链式编程,调用方法时返回的对象是下一个操作对象,层层递进进行操作
+            jquery:动画连续触发解决方法,每个动画前调用stop()
+
+            on():利用事件冒泡实现事件委托,也可以动态给元素添加事件
+            one():触发一次
+
+            prop():固有属性
+            attr():自定义属性
+            data():缓存属性
+
+            parent():
+            parents():
+
+            var()
+            text()
+            html()
+
+            each():用于遍历元素(jquery对象或对象)
+            $.each():遍历元素,数组,对象
+
+            .fn()
+            trigger("fn"):自动触发
+            triggerHander("fn"):自动触发,无默认行为
+
+            position():距离父级定位元素位置
+            offset():距离文档位置
+
+            width():
+            height():获取元素的width,height属性 -> style中的
+            innerWidth():
+            innerHeight():获取元素的width和height + padding的大小
+            outerWidth():
+            outerHeight():获取元素的width和height + padding + border的大小
+            outerWidth():
+            outerHeight():获取元素的width和height + padding + border的大小
+            outerWidth(true):
+            outerHeight(true):获取元素的width和height + padding + margin + border的大小
+
+            append():
+            prepend():
+            after():
+            before():
+            remove():
+            empty():
+            html(""):匹配删除
+
+            $.extend([deep],target,obj1,objn):浅拷地址(修改会有影响),深拷完全克隆
+
+            css():
+            addClass():不影响原来的类名
+            removeClass():
+
+            show([s],[e],[fn])
+            hide([s],[e],[fn])
+            toggle([s],[e],[fn])
+
+            slideDown([s],[e],[fn])
+            slideUp([s],[e],[fn])
+            slideToggle([s],[e],[fn])
+            hover()
+
+            fadeIn([s],[e],[fn])
+            fadeOut([s],[e],[fn])
+            fadeToggle([s],[e],[fn])
+            fadeTo([s],[e],[fn])
+
+            hover([overfn],[outfn])
+            toggle([spe],[eas],[fn])1.9*
+
+            animate(params,[speed],[easing],[fn]):params:变化后位置等参数
+            stop():停止动画序列
+        */
+    </script>
+
+    <!-- jquery多库共存 -->
+    <script>
+        $(function () {
+            function $(ele) {
+                return document.querySelector(ele);
+            }
+            console.log($("div"));
+            // 1. 如果$ 符号冲突 我们就使用 jQuery
+            jQuery.each();
+            // 2. 让jquery 释放对$ 控制权 让用自己决定
+            var suibian = jQuery.noConflict();
+            console.log(suibian("span"));
+            suibian.each();
+        })
+    </script>
+    <div></div>
+    <span></span>
+</body>
+
+</html>

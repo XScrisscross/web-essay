@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #f0f;
+        }
+
+        .btnright {
+            position: absolute;
+            top: 250px;
+        }
+
+        .btnleft {
+            position: absolute;
+            top: 250px;
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box"></div>
+    <button class="btnright">点击往右</button>
+    <button class="btnleft">点击往左</button>
+
+    <script>
+        var box = document.querySelector(".box");
+        var btnright = document.querySelector(".btnright");
+        var btnleft = document.querySelector(".btnleft");
+
+        var timer = function (obj, trans, callback) {
+            // 前清理定时器
+            clearInterval(obj.timer);
+            obj.timer = setInterval(() => {
+                // 处理小数
+                var step = (trans - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.offsetLeft == trans) {
+                    // 后清理定时器
+                    clearInterval(obj.timer);
+                    callback && callback();
+                } else {
+                    obj.style.left = obj.offsetLeft + step + 'px';
+                } 
+            }, 100);
+        }
+
+        btnright.addEventListener("click", function () {
+            timer(box, 825, function () {
+                console.log("ok");
+            });
+        });
+
+        btnleft.addEventListener("click", function () {
+            timer(box, 324, function () {
+                console.log("ok");
+            });
+        });
+    </script>
+</body>
+
+</html>

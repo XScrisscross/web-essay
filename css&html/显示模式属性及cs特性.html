@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box {
+			overflow: hidden;
+			height: 1200px;
+			width: 1200px;
+		}
+
+		/*1.行内块-行内元素与块元素混合很好理解,块占一行,行元素占高度由元素决定*/
+		/*2.行元素是height与with设置无效,--上边框有时设置无效??--,而不是margin,padding设置无效*/
+		/*3.非常重要:行元素与块元素混合时,行元素的padding与margin是有的,产生的属性是生效的,并且在最上面,但是布局还是以a的高度为基准*/
+		.box-x {
+			/*display: inline-block;*/
+			/*display: inline;	*/
+			display: block;
+			width: 130px;
+			height: 130px;
+			margin-left: 10px;
+			padding: 100px;
+			border: 10px solid #ff0;
+			background-color: #00f;
+		}
+
+		.box-y {
+			display: inline;
+			/*display: inline-block;*/
+			/*display: block;*/
+			/* width: 130px;
+		height: 130px; */
+			border: 10px solid #000;
+			padding: 100px;
+			margin-left: 10px;
+			background-color: #0f0;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 1.常见的的块元素有h1~h6、p、div、ul、ol、li等，其中div标签是最典型的块元素 -->
+	<!-- 注意：块元素可以放行和块或元素，文本类标签(h p dt)不要放块，直接放问本 -->
+	<!-- 2.常见的的行内块有img input td -->
+	<div class="box-1">123</div>
+	<div class="box">
+		<div class="box-x">123</div>
+		<div class="box-y">123</div>
+		<div class="box-x">123</div>
+	</div>
+	<!-- 3.常见的的行元素有a strong b em i del s ins u span-->
+	<!-- css三特性 -->
+	<!-- 1.继承:text-，font-，line-(line-height),list-style这些元素开头的可以继承,以及color属性,但是a不继承color属性 -->
+	<!-- 2.层叠:相同元素就“覆盖”，不同就“叠加”，谓之层叠 -->
+	<!-- 3.优先级:①优先级权重公式，各标签权重值及权重叠加方式.②计算时最重要的一点，看选择器有没有选中要的标签，即使是!important，继承过来的权重都为0 -->
+</body>
+
+</html>

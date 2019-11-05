@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body {
+            background-color: #ccc;
+        }
+
+        .container {
+            position: relative;
+            overflow: hidden;
+            margin: 50px auto;
+            width: 800px;
+            height: 500px;
+        }
+
+        .container ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 600%;
+        }
+
+        .container ul li {
+            width: 800px;
+            height: 500px;
+            float: left;
+        }
+
+        .container ul li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .container ol {
+            position: absolute;
+            left: 50px;
+            bottom: 10px;
+        }
+
+        .container ol li {
+            float: left;
+            width: 8px;
+            height: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            margin: 0 3px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .arrow_l,
+        .arrow_r {
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(215, 249, 252);
+            opacity: .9;
+            cursor: pointer;
+        }
+
+        .arrow_r {
+            right: 0;
+            transform: translate(50%, -50%);
+        }
+
+        .current {
+            background-color: rgb(215, 249, 252);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul></ul>
+        <ol></ol>
+        <div class="arrow_l"></div>
+        <div class="arrow_r"></div>
+    </div>
+
+    <script>
+        const data = {
+            img: ["../media/08.jpg", "../media/09.jpg",
+                "../media/10.jpg", "../media/11.jpg", "../media/12.jpg"]
+        }
+
+        let container = document.querySelector(".container");
+        let arrow_l = document.querySelector(".arrow_l");
+        let arrow_r = document.querySelector(".arrow_r");
+        let ul = container.querySelector("ul");
+        let ol = container.querySelector("ol");
+
+        let current = 0;
+        let index = null;
+        let timer = null;
+        let flag = true;
+
+        // 缓动动画
+        let animateMove = function (obj, target, time, callback) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(() => {
+                let step = (target - obj.offsetLeft) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                if (obj.offsetLeft == target) {
+                    clearInterval(obj.timer);
+                    callback && callback();
+                }
+                obj.style.left = obj.offsetLeft + step + "px";
+            }, time);
+        }
+
+        // 获取图片
+        for (let i = 0; i < data.img.length; i++) {
+            const element = data.img[i];
+            let li = document.createElement("li");
+            let img = document.createElement("img");
+            ul.appendChild(li);
+            li.appendChild(img);
+            img.setAttribute("src", element);
+        }
+
+        // 箭头显示隐藏
+        container.addEventListener("mouseenter", function () {
+            arrow_l.style.display = "block";
+            arrow_r.style.display = "block";
+            clearInterval(timer);
+        });
+
+        container.addEventListener("mouseleave", function () {
+            arrow_l.style.display = "none";
+            arrow_r.style.display = "none";
+            timer = setInterval(() => {
+                arrow_r.click();
+            }, 4000);
+        });
+
+        // 创建圆点,添加事件
+        for (let i = 0; i < ul.children.length; i++) {
+            let li = document.createElement("li");
+            li.setAttribute("index", i);
+            ol.appendChild(li);
+
+            li.addEventListener("click", function () {
+                // 圆点变化
+                for (let i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = "";
+                }
+                this.className = "current";
+
+                // 图片变化
+                index = this.getAttribute("index");
+                current = index;
+                let target = index * ul.children[0].offsetWidth;
+                animateMove(ul, -target, 10);
+            });
+        }
+
+        // 箭头事件
+        ol.children[current].className = "current";
+        let li = ul.children[0].cloneNode(true);
+        ul.appendChild(li);
+        arrow_r.addEventListener("click", function () {
+            if (flag) {
+                flag = false;
+                // 动画事件
+                current++;
+                let target = ul.children[0].offsetWidth * current;
+                if (current === ul.children.length - 1) {
+                    animateMove(ul, -target, 10, function () {
+                        ul.style.left = 0;
+                        flag = true;
+                    });
+                    current = 0;
+                } else {
+                    animateMove(ul, -target, 10, function () {
+                        flag = true;
+                    });
+                }
+
+                // 圆圈事件
+                for (let i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = "";
+                }
+                ol.children[current].className = "current";
+            }
+        });
+
+        arrow_l.addEventListener("click", function () {
+            if (flag) {
+                flag = false;
+                // 动画事件
+                if (current === 0) {
+                    current = ul.children.length - 1;
+                    ul.style.left = -current * ul.children[0].offsetWidth + "px";
+                }
+                current--;
+                let target = ul.children[0].offsetWidth * current;
+                animateMove(ul, -target, 10, function () {
+                    flag = true;
+                });
+
+                // 圆圈事件
+                for (let i = 0; i < ol.children.length; i++) {
+                    ol.children[i].className = "";
+                }
+                ol.children[current].className = "current";
+            }
+        });
+    </script>
+</body>
+
+</html>

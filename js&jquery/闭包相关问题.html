@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        闭包延长生命周期
+     -->
+    <button class="btn">赞(0)</button>
+    <button class="btn">赞(0)</button>
+    <button class="btn">赞(0)</button>
+    <button class="btn">赞(0)</button>
+    <script>
+        function outter() {
+            let i = 10;
+            return function () {
+                i++;
+                console.log(i);
+            }
+        }
+        //  outter()();
+        let fun = outter();
+        fun();
+        fun();
+
+        for (var i = 0; i < 10; i++) {
+            (function (index) {
+                setTimeout(function () {
+                    console.log(index);
+                }, 3000)
+            })(i);
+        }
+
+        // 闭包缓存数据
+        let btn = document.querySelectorAll(".btn");
+        for (var i = 0; i < btn.length; i++) {
+            (function (i) {
+                // btn[i].addEventListener("click", function () {
+                //     let num = this.innerHTML.match(/[0-9]/ig);
+                //     let count = num.reduce(function (prev, cur) { return prev + cur; }); 
+                //     count++;
+                //     this.innerHTML = `赞(${count})`;
+                // })
+                // btn[i].addEventListener("mousedowm", function () {
+                //     setTimeout(function () {
+
+                //     }, 3000);
+                //     // let start = Date.now(); 
+                //     // let count = this.innerHTML.slice(2,3);
+                //     // console.log(count);
+                //     // count--;
+                //     // this.innerHTML = `赞(${count})`;
+
+                // })
+                let mark = btn[i].addEventListener("click", function () {
+                    console.log("ok");
+                    console.log(mark);
+                })
+                console.log(mark);
+            })(i);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 第一种方式 */
+        /* div {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        } */
+
+        /* 第二种方式 */
+        div {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+
+            position: relative;
+        }
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="../media/01.jpg" alt="">
+    </div>
+</body>
+
+</html>

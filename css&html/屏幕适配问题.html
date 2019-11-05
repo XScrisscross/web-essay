@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 62.5%">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 1.2rem;
+            height: 1.2rem;
+            background-color: #000;
+            margin: auto
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <!-- 
+        1.先来了解一下单位
+        px:固定长度,像素单位
+        em:是一种相对单位,很有意思,但是实质意义不大,衍生出后面的rem,因为它无法作为一个确切的基准,是相对于当前元素font-size的大小来决定的
+           而font-szie这个属性是可以继承的,就会误认为相对于父元素的font-size作为基准,而实际是子元素继承父元素,然后相对于子元素
+        rem:相对于根节点元素的font-size大小的单位,这就为自适应不同尺寸的屏幕提供了可能
+        vw,vx:视窗宽度/高度，1vw/vh等于视窗宽度的1%。最骚的是屏幕缩放是大小不会改变  ->  可以实现..待定
+        vmin,vmax:作用,参考(做移动页面开发时，如果使用 vw、wh 设置字体大小（比如 5vw），在竖屏和横屏状态下显示的字体大小是不一样的。
+                  由于 vmin 和 vmax 是当前较小的 vw 和 vh 和当前较大的 vw 和 vh。这里就可以用到 vmin 和 vmax。使得文字大小在横竖屏下保持一致)
+        2.屏幕自适应
+            1>.rem为单位,根节点设置font-size:62.5%,拿到750的稿子,默认浏览器font-szie:16px,这样1rem=16px*62.5=10px + 媒体查询设置font-size大小适应不同屏幕尺寸,有弊端
+            2>.直接动态获取屏幕宽度,根据宽度和设计稿比率动态设置font-size,即可适应不同屏幕,即淘宝flexble原理
+        3.媒体查询响应式
+            一般是为不同设备而做不同的样式处理
+            跟rem自适应不同尺寸统一样式是不同的概念
+        4.flexble的使用
+     -->
+    <script>
+        (function flexible(window, document) {
+            var docEl = document.documentElement
+            var dpr = window.devicePixelRatio || 1
+
+            // adjust body font size
+            function setBodyFontSize() {
+                if (document.body) {
+                    document.body.style.fontSize = (12 * dpr) + 'px'
+                }
+                else {
+                    document.addEventListener('DOMContentLoaded', setBodyFontSize)
+                }
+            }
+            setBodyFontSize();
+
+            // set 1rem = viewWidth / 10
+            // 750 -> 750/75 -> 1rem = 10px
+            function setRemUnit() {
+                var rem = docEl.clientWidth / 75
+                docEl.style.fontSize = rem + 'px'
+            }
+
+            setRemUnit()
+
+            // reset rem unit on page resize
+            window.addEventListener('resize', setRemUnit)
+            window.addEventListener('pageshow', function (e) {
+                if (e.persisted) {
+                    setRemUnit()
+                }
+            })
+
+            // detect 0.5px supports
+            if (dpr >= 2) {
+                var fakeBody = document.createElement('body')
+                var testElement = document.createElement('div')
+                testElement.style.border = '.5px solid transparent'
+                fakeBody.appendChild(testElement)
+                docEl.appendChild(fakeBody)
+                if (testElement.offsetHeight === 1) {
+                    docEl.classList.add('hairlines')
+                }
+                docEl.removeChild(fakeBody)
+            }
+        }(window, document))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./form.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="./register.php" method="post">
+        <span id="msg">aaa</span>
+        用户名：<input type="text" name="username" id="username">
+        昵称：<input type="text" name="nickname">
+        密码： <input type="password" name="password">
+        <input type="submit" value="注册">
+    </form>
+    <div class="showmsg"></div>
+    <script src="../../Web-Study/ajax.js"></script>
+    <!-- <script src="../../Web-Study/jquery/jquery.min.js"></script> -->
+    <script>
+        // get:
+        // let ipt = document.querySelector("#username");
+        // ipt.addEventListener("blur",function(){
+        //     let nameVal = this.value;
+        //     // console.log(nameVal);
+        //     let xhr = new XMLHttpRequest();
+
+        //     xhr.open("get","validate.php?username="+nameVal);
+
+        //     xhr.send(null);
+
+        //     xhr.onreadystatechange = function(){
+        //         if (xhr.status ==200 && xhr.readyState == 4) {
+        //             console.log(11111111);
+        //             console.log(xhr.responseText);
+        //         }
+        //     };
+        // });
+
+        // post:
+        // let ipt = document.querySelector("#username");
+        // ipt.addEventListener("blur",function(){
+        //     let nameVal = this.value;
+        //     // console.log(nameVal);
+        //     let xhr = new XMLHttpRequest();
+
+        //     xhr.open("post","register.php");
+
+        //     xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+        //     xhr.send('username='+nameVal);
+
+        //     xhr.onreadystatechange = function(){
+        //         if (xhr.status ==200 && xhr.readyState == 4) {
+        //             console.log(11111111);
+        //             console.log(xhr.responseText);
+        //         }
+        //     };
+        // });
+
+        // v3.0 封装函数
+        let ipt = document.querySelector("#username");
+        ipt.addEventListener("blur", function () {
+            $.ajax({
+                type: "post",
+                // url: "../../Web-Study/php/php.php",
+                url: "register.php",
+                data: { username: this.value },
+                dataType: "string",
+                success: function (res) {
+                    console.log(res);
+                }
+            });
+        });
+
+        // v4.0 jquery实现
+        // $("#username").on("blur", function () {
+        //     var name = $("#username").val();
+        //     $.ajax({
+        //         type: "get",
+        //         url: "validate.php",
+        //         data: { username: name },
+        //         dataType: "text",  // text, html、json、jsonp、script
+        //         success: function (res) {
+        //             console.log(res);
+        //         },
+        //     });
+        // });
+    </script>
+</body>
+
+</html>

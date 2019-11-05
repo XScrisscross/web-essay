@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .box {
+            position: relative;
+            height: 800px;
+        }
+
+        .left {
+            float: left;
+            /* width: 20%; */
+            height: 100%;
+            background-color: #00f;
+        }
+
+        .right {
+            float: left;
+            /* width: 80%; */
+            height: 100%;
+            background-color: #0f0;
+        }
+
+        .contro {
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            top: 50%;
+            transform: translatey(-50%);
+            background-color: #f00;
+        }
+
+        .cr {
+            left: 20%;
+        }
+
+        .cl {
+            left: 0%;
+        }
+
+        .w0 {
+            width: 0;
+        }
+
+        .w100 {
+            width: 100%;
+        }
+
+        .w20 {
+            width: 20%;
+        }
+
+        .w80 {
+            width: 80%;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div class="container" v-cloak>
+        <p>{{msg}}</p>
+        <p v-text="msg"></p>
+        <p v-html="msg"></p>
+        <p v-pre>{{msg}}</p>
+        <input type="text" name="" v-model="msg">
+
+        <div>{{num}}</div><button @click="add(count,$event)">按钮</button>
+    </div>
+
+    <div class="wraper" v-cloak>
+        <div>{{num}}</div>
+        <div @click="handle1">
+            <!-- 此处组织冒泡 -->
+            <button @click.stop="handle2">点击</button>
+        </div>
+        <div>
+            <a href="http://www.baidu.com" @click.prevent="handle3">阻止a默认跳转</a>
+        </div>
+
+        <div>
+            <img :src="src" alt="">
+        </div>
+
+        <!-- v-modle实现的实质=单向绑定+属性绑定 -->
+        <div>
+            <div>{{msg}}</div>
+            <input type="text" :value="msg" @input="handle4">
+            <!-- <input type="text" :value="msg" @input="msg=$event.target.value"> -->
+        </div>
+    </div>
+
+    <div class="cacu" v-cloak>
+        <div>
+            <input type="text" v-model="num1">
+        </div>
+        <div>
+            <select name="" id="" v-model="key">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+        </div>
+        <div>
+            <input type="text" v-model="num2">
+        </div>
+        <div>
+            <button @click="handle">计算</button>
+        </div>
+        <div>计算结果:{{result}}</div>
+    </div>
+
+    <div class="box clearfix" v-cloak>
+        <div class="left" :class="[wl]">hello</div>
+        <div class="contro" :class="c" @click="handle">{{text}}</div>
+        <div class="right" :class="[wr]">vue</div>
+    </div>
+
+    <div class="watch" v-cloak>
+        <input type="text" v-model.number="n1">+<input type="text" v-model.number="n2"><br>
+        = {{res1()}} -- {{res1()}} -- {{res1()}} <br>
+        = {{res2}} -- {{res2}} -- {{res2}} <br>
+        = {{res}} -- {{res}} -- {{res}} <br>
+    </div>
+
+    <div class="filter" v-cloak>
+        <input type="text" v-model="msg">
+        <div>{{msg | upper}}</div>
+        <div>{{msg | upper | lo}}</div>
+        <div :abc="msg | upper">测试</div>
+    </div>
+
+    <div class="date" v-cloak>
+        <div>{{date | fm("yyyy-mm-dd")}}</div>
+    </div>
+
+    <div class="test">
+        <input type="radio" id="male" value="1" v-model='gender'>
+        <label for="male">男</label>
+
+        <input type="radio" id="female" value="2" v-model='gender'>
+        <label for="female">女</label><br>
+
+        <div>
+            <span>爱好：</span>
+            <input type="checkbox" id="ball" value="1" v-model='hobby'>
+            <label for="ball">篮球</label>
+            <input type="checkbox" id="sing" value="2" v-model='hobby'>
+            <label for="sing">唱歌</label>
+            <input type="checkbox" id="code" value="3" v-model='hobby'>
+            <label for="code">写代码</label>
+        </div>
+
+        <div>
+            <select v-model='occupation' multiple>
+                <option value="0">请选择职业...</option>
+                <option value="1">教师</option>
+                <option value="2">软件工程师</option>
+                <option value="3">律师</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        Vue.filter("lo", function (val) {
+            return val.charAt(0).toLowerCase() + val.slice(1);
+        })
+
+        Vue.filter("fm", function (value, arg) {
+            var ret = "";
+            console.log(11111);
+
+            if (arg == "yyyy-mm-dd") {
+                ret += value.getFullYear() + "-" + (value.getMonth() + 1).toString().padStart(2, "0") + "-" + value.getDate().toString().padStart(2, "0");
+            }
+            return ret;
+
+        })
+
+        var vm1 = new Vue({
+            el: '.container',
+            data: {
+                msg: '<h1>Hello Vue<h1>',
+                num: 0,
+                count: 0
+            },
+            methods: {
+                add(count, event) {
+                    console.log(this === vm1);  //true
+
+                    // 无意义
+                    count++;
+                    this.count = count;
+                    console.log("count" + this.count);
+
+                    this.num++;
+                    console.log(event.target.innerHTML);
+                }
+            }
+        });
+
+
+
+        var vm2 = new Vue({
+            el: '.wraper',
+            data: {
+                num: 0,
+                src: "https://www.baidu.com/img/bd_logo1.png?where=super",
+                msg: "hello"
+            },
+            methods: {
+                handle1() {
+                    this.num++;
+                    console.log("handle1");
+                },
+                handle2() {
+                    this.num++;
+                    console.log("handle2");
+                },
+                handle3() {
+                    console.log("handle3");
+                },
+                handle4(event) {
+                    this.msg = event.target.value
+                }
+            }
+        });
+
+        var vm3 = new Vue({
+            el: '.cacu',
+            data: {
+                num1: 0,
+                num2: 0,
+                result: "",
+                key: "+"
+            },
+            methods: {
+                handle() {
+                    switch (this.key) {
+                        case "+":
+                            this.result = parseInt(this.num1) + parseInt(this.num2)
+                            break;
+                        case "-":
+                            this.result = parseInt(this.num1) - parseInt(this.num2)
+                            break;
+                        case "*":
+                            this.result = parseInt(this.num1) * parseInt(this.num2)
+                            break;
+                        case "/":
+                            this.result = parseInt(this.num1) / parseInt(this.num2)
+                            break;
+                    }
+
+                }
+            }
+        });
+
+        var vm3 = new Vue({
+            el: '.box',
+            data: {
+                wl: "w20",
+                wr: "w80",
+                c: "cr",
+                text: "收起"
+            },
+            methods: {
+                handle() {
+                    if (this.c === "cr") {
+                        this.text = "展开";
+                        this.wl = "w0";
+                        this.wr = "w100"
+                        this.c = "cl"
+                    } else {
+                        this.text = "收起";
+                        this.wl = "w20";
+                        this.wr = "w80";
+                        this.c = "cr"
+                    }
+                }
+            }
+        });
+
+        var vm4 = new Vue({
+            el: ".watch",
+            data: {
+                n1: "",
+                n2: "",
+                res: "",
+            },
+            methods: {
+                res1() {
+                    console.log("method");
+                    return this.n1 + this.n2;
+                }
+            },
+            computed: {
+                res2() {
+                    console.log("computed");
+                    return this.n1 + this.n2;
+                }
+            },
+            watch: {
+                n1(value) {
+                    console.log("watch n1");
+                    this.res = value + this.n2;
+                },
+                n2(value) {
+                    console.log("watch n2");
+                    this.res = this.n1 + value;
+                },
+            },
+        })
+
+        var vm5 = new Vue({
+            el: ".filter",
+            data: {
+                date: new Date(),
+                msg: "",
+            },
+            filters: {
+                upper(val) {
+                    return val.charAt(0).toUpperCase() + val.slice(1);
+                }
+            },
+        })
+
+        var vm6 = new Vue({
+            el: ".date",
+            data: {
+                date: new Date(),
+            },
+        })
+
+        // 单选 复选框
+        var vm7 = new Vue({
+            el: ".test",
+            data: {
+                gender: 2,
+                hobby: ['2', '3'],
+                occupation: ['2', '3'],
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

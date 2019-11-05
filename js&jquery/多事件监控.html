@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 利用变量来保存已经触发的状态
+        let div = document.querySelector("div");
+
+        let flag1 = false;
+        let flag2 = false;
+        let fn1 = function () {
+            flag1 = true;
+        };
+
+        let fn2 = function (e) {
+            console.log(e.keyCode);
+            if (e.keyCode == 32) {
+                flag2 = true;
+            }
+        };
+
+        let fn3 = function () {
+            if (flag1 && flag2) {
+                console.log(11111);
+            }
+        }
+
+        div.addEventListener("mousedown", fn1);
+        document.addEventListener("keydown", fn2);
+        div.addEventListener("mouseup", fn3);
+        // div.addEventListener("mouseup", fn);
+        // document.addEventListener("keyup", fn);
+        // btn.addEventListener("mouseenter", fn);
+        // btn.addEventListener("mouseleave", fn);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 1.在父级无padding无边框的情况下产生的 */
+        .box {
+            /* overflow: hidden; */
+            width: 400px;
+            height: 400px;
+            /* padding: 50px; */
+            /* border: 1px solid #000; */
+            margin: 50px;
+            background-color: #e00;
+        }
+
+        .one {
+            width: 100px;
+            height: 100px;
+            /* padding: 10px; */
+            margin: 10px;
+            /*border: 1px solid #000; */
+            background-color: #0e0;
+        }
+
+        .two {
+            width: 100px;
+            height: 100px;
+            /* padding: 10px; */
+            margin: 10px;
+            background-color: #00e;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        外边距塌陷是如何产生的? (父盒子里面有一个子盒子,对子盒子设置margin不会生效)
+        1.只需对父盒子设置overflow:hidden
+        2.父盒子设置设置padding值
+        3.父盒子设置边框
+     -->
+    <div class="box">
+        <div class="one"></div>
+        <div class="two"></div>
+    </div>
+</body>
+
+</html>

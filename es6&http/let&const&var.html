@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        var : 变量提升,无块级作用域,可重复声明
+        let : 无变量提升,有块级作用域,不可重复声明,暂时性死区
+        const : 无变量提升,有块级作用域,不可重复声明,暂时性死区,声明时必须定义
+    -->
+    <script>
+        // 1.变量提升带来的问题
+        console.log(foo); // 输出undefined
+        var foo = 2;
+        console.log(bar); // 报错ReferenceError
+        let bar = 2;
+
+        // 2.暂时性死区问题 : 在代码块内,使用 let/const 命令声明变量之前,该变量都是不可用的
+        if (true) {
+            tmp = 'abc'; // ReferenceError
+            console.log(tmp); // ReferenceError
+
+            let tmp;
+            console.log(tmp); // undefined
+
+            tmp = 123;
+            console.log(tmp); // 123
+        }
+
+        // 3.块级作用域带来的问题
+        // 3.1变量泄漏的问题
+        for (var i = 0; i < 10; i++) {
+            // ...
+        }
+        console.log(i);  // 10
+        // 3.2内层变量覆盖外层变量 : if 中声明的 var tmp 提升覆盖外层 log(tmp) 中的的 tmp 变量
+        var tmp = new Date();
+        function f() {
+            console.log(tmp);
+            if (false) {
+                var tmp = 'hello world';
+            }
+        }
+        f(); // undefined
+        // 3.3块级作用域允许多层嵌套,并且符合引用规则
+        {
+            {
+                {
+                    {
+                        let insane = 'Hello World';
+                        { let insane = 'Hello World' }
+                    }
+                }
+            }
+        };
+
+        // 4.const赋值问题 : 不允许直接对 const 声明变量赋值,但允许对 const 声明变量(复杂数据类型)的值内部进行操作
+        const a = [];
+        a.push('Hello'); // 可执行
+        a.length = 0;    // 可执行
+        a = ['Dave'];    // 报错
+
+
+        // 5.顶层对象与全局变量的问题 : var声明的变量与顶层对象挂钩,let/const声明的变量不与顶层对象挂钩
+        var a = 1;
+        window.a // 1
+
+        let b = 1;
+        window.b // undefined
+    </script>
+</body>
+
+</html>

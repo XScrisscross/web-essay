@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.clearfix::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		/*浮动对元素的影响*/
+		.box {
+			width: 200px;
+			height: 200px;
+			background-color: #00f;
+		}
+
+		.span-left {
+			/*display: inline-block;*/
+			/*display: inline;*/
+			/*display: block;*/
+			float: left;
+			margin: 10px;
+			padding: 10px;
+			width: 20px;
+			height: 20px;
+			border: 1px solid #000;
+			background-color: #0f0;
+		}
+
+		.span-right {
+			/*display: inline-block;*/
+			/*display: inline;*/
+			/*display: block;*/
+			float: right;
+			margin: 10px;
+			padding: 10px;
+			width: 20px;
+			height: 20px;
+			border: 1px solid #000;
+			background-color: #f00;
+		}
+
+		/*定位对元素的影响*/
+		.box-x {
+			position: relative;
+			width: 200px;
+			height: 200px;
+			background-color: #00f;
+		}
+
+		.span-x {
+			/* position: relative; */
+			/* position: absolute; */
+			position: fixed;
+			top: 40px;
+			left: 40px;
+			margin: 10px;
+			padding: 10px;
+			width: 20px;
+			height: 20px;
+			border: 1px solid #000;
+			background-color: #0f0;
+		}
+
+		.span-y {
+			margin: 10px;
+			padding: 10px;
+			width: 20px;
+			height: 20px;
+			border: 1px solid #000;
+			background-color: #f00;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 1.非常重要,浮动后的元素都可以设置with-height属性 -->
+	<div class="box clearfix">
+		<a href="" class="span-left"></a>
+		<a href="" class="span-right"></a>
+	</div>
+	<hr>
+	<!-- 2.定位对元素的影响 -->
+	<!-- 相对定位:定位后的元素不影响原元素属性,不能设置with-height还是不能 -->
+	<!-- 绝对定位:定位后的元素影响原元素属性,可以设置with-height -->
+	<!-- 固定定位:定位后的元素影响原元素属性,可以设置with-height -->
+	<div class="box-x">
+		<a href="" class="span-x"></a>
+		<a href="" class="span-y"></a>
+	</div>
+	<!-- 脱标:绝对定位,固定定位 -->
+	<!-- 不脱标:相对对定位,静态定位(标准流) -->
+	<!-- 重要总结:意思是-脱标-后的行内元素都可以设置with-height,margin与padding,就像行内块元素一样 -->
+</body>
+
+</html>

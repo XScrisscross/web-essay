@@ -1,0 +1,400 @@
+/*css背景*/
+div.background {
+  /*HEX:#000000 RGB:rgb(0,0,0) HSL:hsl(120,65%,75%) 
+	RGBA:rgba(255,0,0,.5); HSLA:hsla(120,65%,75%,0.3);*/
+  /*rgba:a为透明度(0-1)*/
+  background-color: #333;
+  /*相对路径 绝对路径*/
+  background-image: url();
+  /*repeat-x repeat-y no-repeat*/
+  background-repeat: no-repeat;
+  /*top bottom left right center */
+  /*50px 100px:右偏移50px，下偏移100px*/
+  /*66% 33%:水平方向 2/3、垂直方向 1/3 处*/
+  /*背景位置*/
+  /*如果只指定了一个方位名词，另一个值默认居中对齐*/
+  /*方位与值属性可混用*/
+  /*background-position: 50px; 四边*/
+  /*background-position: 50% 50%; 上下 左右*/
+  /*background-position: 50% 50% 50%; 上 左右 下*/
+  /*background-position: 50% 50% 50% 50%; 上 右 下 左*/
+  background-position: 50% 50%;
+  /*scroll:背景图像滚动 fixed:背景图像不滚动 inherit*/
+  background-attachment: fixed;
+}
+
+/*css文本*/
+div.text {
+  /*-:左移5字位 +:右移5字位*/
+  /*20% em ex cm in mm*/
+  text-indent: 5em;
+  /*left right center justify:两端对齐 inherit*/
+  text-align: center;
+  /*单词间隔*/
+  word-spacing: 10px;
+  /*字母间隔*/
+  letter-spacing: 1em;
+  /*none uppercase lowercase capitalize:单词首字母大写*/
+  text-transform: uppercase;
+  /*none underline overline line-through blink:文本闪烁*/
+  text-decoration: underline overline;
+  /*normal pre:保留 nowrap:<br>换行 pre-wrap:保留空白 pre-line:保留换行 inherit*/
+  white-space: normal;
+}
+
+/*css字体*/
+div.font {
+  /*Serif Sans-serif Monospace Cursive Fantasy */
+  /*可以使用多个，默认第一个*/
+  font-family: Serif;
+  /*normal italic:斜体 oblique:文本倾斜*/
+  font-style: normal;
+  /*normal small-caps:小型大写字母*/
+  font-variant: small-caps;
+  /*normal bold bolder:更粗 lighter:更细 100~900:400=nomal,700=bold*/
+  font-weight: 400;
+  /*em px %*/
+  /*%:基于父元素的一个百分比值*/
+  font-size: 100%;
+}
+
+/*css列表*/
+ul.list {
+  /*none disc:实心圆 circle square decimal:数字
+	decimal-leading-zero:0开头的数字标记(01, 02, 03)
+	lower-roman:小写罗马数字(i, ii, iii, iv, v, 等。)
+	upper-roman:大写罗马数字(I, II, III, IV, V, 等。)
+	lower-alpha:小写英文字母The marker is lower-alpha (a, b, c, d, e, 等。)
+	upper-alpha:大写英文字母The marker is upper-alpha (A, B, C, D, E, 等。)*/
+  list-style-type: decimal-leading-zero;
+  /*列表项图片引入*/
+  list-style-image: url(example.png);
+  /*inside outside:文本外*/
+  list-style-position: inside;
+  /*简写声明所有列表属性*/
+  list-style: url(example.png) square inside;
+}
+
+/*css表格*/
+table,
+th,
+td {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #000;
+  text-align: middle;
+  vertical-align: center;
+  padding: 10px;
+  background: url(example.png);
+}
+
+/*css轮廓*/
+div.outline {
+  /* outline-color */
+  /* dotted dashed:虚线轮廓 solid:实线轮廓 double groove	ridge inset outset */
+  /* outline-style */
+  outline-width: 1px;
+  /* 简写声明所有列表属性 */
+  outline: #00ff00 inset thick;
+}
+
+/*css框模型*/
+div.box {
+  width: 30px;
+  height: 30px;
+  padding: 30px;
+  border-width: 30px;
+  /*上右下左*/
+  margin: 10px 0px 15px 5px;
+}
+
+/*css定位*/
+div.position {
+  /*absolute relative:相对 fixed static:默认*/
+  /*top left right bottom*/
+  position: absolute;
+  left: 100px;
+  top: 350px;
+  /*none:不显示内容 block:行块变区块 inline:区块变行块*/
+  display: inline;
+  /*visible scroll:滚动 hidden auto*/
+  /*overflow:文本内容溢出处理*/
+  overflow: visible;
+  /*rect(top, right, bottom, left) auto*/
+  /*clip：裁减属性(区块，图片等处理)*/
+  clip: rect(0px, 60px, 200px, 0px);
+  /*baseline:默认 % top:element对齐 text-top:文本对齐 middle bottom text-bottom sub super*/
+  /*vertical-align:垂直对齐方式*/
+  vertical-align: text-top;
+  /*-9~9(低到高) auto*/
+  /*z-index:重叠元素堆叠优先级*/
+  z-index: -1;
+  /* left	right*/
+  /*float:元素快浮动，围绕同级并列*/
+  /* float: right; */
+  /*left right both*/
+  /*clear:禁止元素左右浮动*/
+  clear: left;
+}
+
+/*css3新特性-边框*/
+.css_border {
+  position: relative;
+  top: 100px;
+  left: 50px;
+  border: 10px solid black;
+  /*length %*/
+  /*border-radius: x y; x,y坐标圆角，可制作椭圆？？*/
+  border-radius: 25px;
+  /*box-shadow: h-shadow v-shadow blur spread color inset;*/
+  /*h-shadow	必需。水平阴影的位置。允许负值
+	v-shadow	必需。垂直阴影的位置。允许负值
+	blur	可选。模糊距离	
+	spread	可选。阴影的尺寸	
+	color	可选。阴影的颜色	
+	inset	可选,默认。将外部阴影 (outset) 改为内部阴影*/
+  box-shadow: 10px 10px 5px 1px #888888;
+  /*border-image-source	用在边框的图片的路径。	
+	border-image-slice	图片边框向内偏移。	
+	border-image-width	图片边框的宽度。	
+	border-image-outset	边框图像区域超出边框的量。	
+	border-image-repeat	图像边框是否应平铺(repeated)、铺满(rounded)或拉伸(stretched)。*/
+  border-image: url(border.png);
+}
+
+/*css3新特性-背景*/
+.css_background {
+  /*background-clip:按框架剪裁背景图片*/
+  /*border-box:边框处 padding-box:内边距出 content-box:文本处*/
+  background-clip: border-box;
+  /*background-origin:按框架定位背景图片*/
+  /*border-box:边框处 padding-box:内边距出 content-box:文本处*/
+  background-origin: padding-box;
+  /*length:background-size: x y; percentage:background-size: x% y%; cover contain:等比拉伸至最大*/
+  /*contain:图片最大化 cover:充满*/
+  background-size: contain;
+}
+
+/*css3新特性-文本效果*/
+.css_text {
+  /*text-shadow: h-shadow v-shadow blur color;*/
+  text-shadow: 2px 2px #ff0000;
+  /*normal:不换 break-word:换行*/
+  word-wrap: break-word;
+}
+
+/*css3新特性-字体效果*/
+@font-face {
+  /*@font-face可以引用字体*/
+  /* font-stretch */
+  /* font-style */
+  /* font-weight */
+  /* unicode-range */
+  font-family: 'myFirstFont';
+  src: url('/example/css3/Sansation_Light.ttf'), url('/example/css3/Sansation_Light.eot');
+}
+
+.css_cssfont {
+  font-family: 'myFirstFont';
+}
+
+/*css3新特性-2D,3D转换*/
+.css_transform {
+  width: 100px;
+  height: 100px;
+  background-color: #00f;
+  /* translate不作用于行内元素,不影响其他盒子 */
+  /* skew(x-angle,y-angle) 倾斜 */
+  /* matrix(n,n,n,n,n,n) 矩阵定位 */
+  /* transform: translate(x,y) 坐标平移 */
+  /* transform: rotate(30deg) 中心旋转*/
+  /* 设置元素旋转基点 */
+  /* transform-origin:(x,y) 方位名词 */
+  /* transform: scale(x,y)缩放 scale(n)等比缩放 */
+  /* 综合写顺序会对效果产生影响 */
+  transition: all 1s;
+}
+
+.css_transform3d_wraper {
+  perspective: 500px;
+}
+
+.css_transform3d {
+  perspective: 500px;
+  width: 100px;
+  height: 100px;
+  background-color: #00f;
+  /* transform: translate3d():x,y,z不能省略 */
+  /* 透视perspective(视距):设置在观察元素的父级元素,单位像素 */
+  transform: translate3d(0, 0, 100px);
+  /* rotateX,rotateY,rotateZ,rotate3d():旋转逆箭头方向看 */
+}
+
+.css_transform3d img {
+  margin-left: 400px;
+  animation: move 10s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes move {
+  100% {
+    transform: rotateY(360deg) translate(1800px);
+  }
+}
+
+/* @keyframes move1 {
+	100% {
+		transform: translate(1800px);
+	}
+} */
+.css_transform:hover {
+  transform: translate(100px, 100px) rotate(300deg) scale(0.5);
+}
+
+/*css3新特性-过渡*/
+.css_transition {
+  /*过渡：从一种样式变为另一种样式,加在本属性*/
+  width: 100px;
+  height: 200px;
+  background-color: black;
+  transition: all 2s ease-in-out 2s;
+  /*transition: width 2s ease 3s, height 1s ease 5s, background-color 1s ease 3s;*/
+  /*过渡属性*/
+  /*transition-property: width;*/
+  /*过渡时间*/
+  /*transition-duration: 5s;*/
+  /*过渡延时*/
+  /*transition-delay: 2s;*/
+  /*linear ease ease-in ease-out ease-in-out cubic-bezier(n,n,n,n):速度曲线表示方式*/
+  /*transition-timing-function:运动曲线*/
+  /*transition-timing-function: ease;*/
+}
+
+.css_transition:hover {
+  width: 400px;
+  height: 100px;
+  background-color: red;
+}
+
+/*css3新特性-动画*/
+@keyframes myfirst {
+  /* from {
+		background:red;
+		width:100px;
+		height:100px;
+	}
+	to {
+		background:yellow;
+		width:50px;
+		height:50px;
+	} */
+  0% {
+    background: red;
+    left: 0px;
+    top: 0px;
+    transform: rotate(0deg);
+  }
+
+  25% {
+    background: yellow;
+    left: 200px;
+    top: 0px;
+    transform: rotate(90deg);
+  }
+
+  50% {
+    background: blue;
+    left: 200px;
+    top: 200px;
+    transform: rotate(180deg);
+  }
+
+  75% {
+    background: green;
+    left: 0px;
+    top: 200px;
+    transform: rotate(360deg);
+  }
+
+  100% {
+    background: red;
+    left: 0px;
+    top: 0px;
+    transform: rotate(0deg);
+  }
+}
+
+.css_anima {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: relative;
+  /*常规参数设定*/
+  /*name duration timing-function delay iteration-count direction;*/
+  animation: myfirst 1.5s linear 2s normal 15 backwards;
+  /*具体属性配置*/
+  /*动画名称*/
+  /* animation-name */
+  /*延迟时间*/
+  /* animation-delay */
+  /*持续时间*/
+  /* animation-duration */
+  /*播放次数*/
+  /*n:指定次数 infinite:无限*/
+  /* animation-iteration-count: infinite; */
+  /*是否逆向播放*/
+  /*normal alternate:反向*/
+  /* animation-direction: normal; */
+  /*播放函数效果*/
+  /*linear ease ease-in ease-out ease-in-out cubic-bezier(n,n,n,n):速度曲线表示方式*/
+  /* step(n) 分n步完成 */
+  /* animation-timing-function: ease-in-out; */
+  /*播放状态*/
+  /*paused running*/
+  /* animation-play-state: running; */
+  /*播完之后状态*/
+  /*forwards:重回 backwards:停留*/
+  /* animation-fill-mode: backwards; */
+}
+
+/*css3新特性-多列*/
+.css_duolie {
+  /*列数：number auto*/
+  column-count: 3;
+  /*列宽：100px*/
+  column-width: 100px;
+  columns: 100px 3;
+  /*列间间隔：length normal*/
+  column-gap: 40px;
+  /*列间规则：column-rule: column-rule-width column-rule-style column-rule-color*/
+  column-rule: 3px outset #ff00ff;
+  /*thin:细 medium thick:粗 length*/
+  column-rule-width: thin;
+  /*none hidden dotted dashed solid double groove ridge inset outset;*/
+  column-rule-style: solid;
+  /*列线颜色*/
+  column-rule-color: red;
+  /*区块内行元素:column-span:1 all*/
+  column-span: all;
+}
+
+/*css3新特性-用户界面*/
+.css_jiemian {
+  /*文本显示效果*/
+  /*appearance: normal button (不可用：icon window menu field)*/
+  -webkit-appearance: normal;
+  /* 属性规定是否可由用户调整元素的尺寸*/
+  /*resize: none both horizontal vertical*/
+  /* -webkit-resize: both; */
+}
+
+/*css3新特性-滤镜*/
+img {
+  /* blur(px):给图像设置高斯模糊 */
+  /* brightness(%):亮暗 */
+  /* drop-shadow:阴影 */
+  /* grayscale(%):灰度 */
+  /* saturate(%):饱和度 */
+  /* url():svg滤镜 */
+  filter: sepia(1) saturate(4) hue-rotate(295deg);
+}

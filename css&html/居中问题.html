@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.box {
+			height: 80px;
+			width: 100%;
+			background-color: #f00;
+		}
+
+		.son {
+			display: inline;
+			vertical-align: middle;
+			text-align: center;
+			background-color: #00f;
+		}
+
+		/*1.让一个盒子居中:内margin,外padding,绝对定位*/
+		/*2.让盒子里面的元素居中:text-align水平,height+line-height垂直居中*/
+		/*3.vertical-align居中:只有元素属于inline或是inline-block ，vertical-align属性才会起作用*/
+		/*非常重要:vertical-align:让一行元素块里面的元素以某个基线对齐...少用*/
+
+		/* 4.translate实现绝对居中 */
+		/* 5.flex居中 */
+		.box_tran {
+			position: absolute;
+			width: 201px;
+			height: 201px;
+			top: 50%;
+			left: 50%;
+			background-color: #00f;
+			transform: translate(-50%, -50%);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+		123
+		<img class="son" src="images/3.jpg" alt="">
+		123
+	</div>
+	<div class="box_tran"></div>
+</body>
+
+</html>

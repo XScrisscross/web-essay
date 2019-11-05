@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <script>
+        let bts = document.querySelectorAll("button");
+
+        // v1.0使用bind来进行绑定
+        // for (let i = 0; i < bts.length; i++) {
+        //     bts[i].onclick = function(){
+        //         this.disabled = true;
+        //         setInterval(function(){
+        //             this.disabled = false;
+        //         }.bind(this),3000);
+        //     }
+        // }
+
+        // v2.0使用箭头函数来绑定
+        // for (let i = 0; i < bts.length; i++) {
+        //     bts[i].onclick = function () {
+        //         this.disabled = true;
+        //         setInterval(() => {
+        //             this.disabled = false;
+        //         }, 3000);
+        //     }
+        // }
+
+        // v3.0使用闭包来绑定  闭包有时会浪费过多的空间
+        for (var i = 0; i < bts.length; i++) {
+            (function (i) {
+                bts[i].onclick = function () {
+                    this.disabled = true;
+                    setInterval(() => {
+                        this.disabled = false;
+                    }, 3000);
+                }
+            })(i);
+        }
+    </script>
+</body>
+
+</html>

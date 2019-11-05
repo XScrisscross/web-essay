@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="project/Bilibili-fake-master/src/lib/jquery-3.2.1.min.js"></script>
+    <style>
+        div {
+            height: 400px;
+            width: 400px;
+            margin: 0 auto;
+            background-color: #0ff;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="top"></div>
+        <br>
+        <div class="bottom"></div>
+    </section>
+    <script>
+        function hoverColorChange($node) {
+            this.$node = $node;
+            this.init();
+            this.bind();
+        }
+
+        // 初始化获取顶层对象
+        hoverColorChange.prototype.init = function () {
+            // var $top = this.$top = this.$node.find(".dd");
+            // var $bottom = this.$bottom = this.$node.find(".bottom");
+        };
+
+        // 一系列操作
+        hoverColorChange.prototype.bind = function () {
+            var $bottom = this.$bottom = this.$node.find(".bottom");
+            var $top = this.$top = this.$node.find(".top");
+            this.$top.click(function () {
+                $bottom.css("backgroundColor", "red");
+                $top.css("backgroundColor", "blue");
+            });
+            this.$bottom.click(function () {
+                $top.css("backgroundColor", "red");
+                $bottom.css("backgroundColor", "blue");
+            });
+        };
+
+        // 交互封装
+        HoverColorChange = (function () {
+            return {
+                launch: function ($item) {
+                    $item.each(function (index, node) {
+                        new hoverColorChange($(node));
+                    })
+                }
+            }
+        })();
+
+        // 启动
+        HoverColorChange.launch($("section"));
+
+    </script>
+</body>
+
+</html>

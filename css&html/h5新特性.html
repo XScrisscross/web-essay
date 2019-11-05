@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        video {
+            width: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1.语义化标签 -->
+    <!-- ie9要转化爲块标签,9以下不支持 -->
+    <header></header>
+    <nav></nav>
+    <article></article>
+    <section></section>
+    <aside></aside>
+    <!-- 2.多媒体标签 -->
+    <!-- 解除谷歌禁用:在浏览器输入chrome://flags/#autoplay-policy 第一个选项 Autoplay policy设置为 no user gesture is required -->
+    <audio controls="controls" autoplay="autoplay" loop="loop" muted="muted">
+        <source src="medie/example.mp3" type="audio/mepg">
+        <source src="medie/example.ogg" type="audio/ogg">
+        你的浏览器不支持
+    </audio>
+    <video controls="controls" autoplay="autoplay" loop="loop" muted="muted" poster="../media/03.jpg">
+        <source src="medie/example.mp4" type="video/mp4">
+        <source src="medie/example.ogg" type="video/ogg">
+        你的浏览器不支持
+    </video>
+    <!-- 3.新增的input-type及input属性 -->
+    <form action="">
+        <ul>
+            <!-- autofocus:自动聚焦输入框 -->
+            <!-- autocomplete:，浏览器基于之前键入过的值，应该显示出在字段中填写的选项 -->
+            <li>邮箱: <input type="email" name="email" required="required" placeholder="请输入邮箱" autofocus="autofocus" />
+            </li>
+            <li>网址: <input type="url" autocomplete="off" /></li>
+            <li>日期: <input type="date" /></li>
+            <li>日期: <input type="time" /></li>
+            <li>数量: <input type="number" /></li>
+            <li>手机: <input type="tel" /></li>
+            <li>搜索: <input type="search" /></li>
+            <li>颜色: <input type="color" /></li>
+            <!-- multiple:多文件提交 -->
+            <li><input type="file" multiple="multiple"></li>
+        </ul>
+    </form>
+</body>
+
+</html>

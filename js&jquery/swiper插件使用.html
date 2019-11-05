@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="swiper.min.css">
+    <script src="swiper.min.js"></script>
+    <style>
+        .swiper-container {
+            width: 800px;
+            height: 500px;
+        }
+
+        img {
+            width: 800px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>中文官网</button>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="../media/02.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../media/03.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../media/04.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../media/05.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="../media/06.jpg" alt="">
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- 如果需要滚动条 -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+
+
+
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            loop: true,
+            spaceBetween: 0,
+            centeredSlides: true,
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        })
+
+        document.querySelector("button").addEventListener("click", function () {
+            window.open("https://www.swiper.com.cn/");
+        });
+    </script>
+
+
+</body>
+
+</html>

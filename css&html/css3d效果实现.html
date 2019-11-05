@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 3d呈现关键:transform-style: preserve-3d + perspective */
+        /* 旋转特效实现关键:盒子摆放位置来控制位置,中心轴以大盒子为基准 */
+        /* box_wraper:视觉偏移产生的原因,盒子基于整个背景而产生偏移,必须要套一层大小固定的盒子 */
+        /* 注意问题:transform-style: preserve-3d只能保持一层子元素的3d效果 */
+        .box_wraper {
+            width: 200px;
+            height: 50px;
+            perspective: 500px;
+        }
+
+        .box {
+            float: left;
+            position: relative;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            transform-style: preserve-3d;
+            animation: move 2s linear infinite;
+        }
+
+        .box1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            line-height: 50px;
+            background-color: #00f;
+            transform: translateZ(25px);
+        }
+
+        .box2 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            line-height: 50px;
+            background-color: #0ff;
+            transform: translateY(25px) rotateX(-90deg);
+        }
+
+        .box3 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            line-height: 50px;
+            background-color: #F00;
+            transform: translateY(-25px) rotateX(90deg);
+        }
+
+        .box4 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            line-height: 50px;
+            background-color: #ff0;
+            transform: translateZ(-25px) rotateX(180deg);
+        }
+
+        @keyframes move {
+            100% {
+                transform: rotateX(360deg);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            perspective: 500px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        section {
+            position: relative;
+            margin: 120px auto;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: xz 8s linear infinite;
+            transform-style: preserve-3d;
+            background-color: #000;
+        }
+
+        section .box_x {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            transform: translateZ(220px);
+            transform-style: preserve-3d;
+        }
+
+        section .box_x ul {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            transform-style: preserve-3d;
+            animation: x .3s linear infinite;
+        }
+
+        @keyframes xz {
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+
+        @keyframes x {
+            0% {
+                transform: rotate3d(1, 1, 1, 0);
+            }
+
+            100% {
+                transform: rotate3d(1, 1, 1, 360deg);
+            }
+        }
+
+        section .box_x ul>li {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+        }
+
+        section .box_x ul>li:nth-of-type(1) {
+            background-color: #ccc;
+            transform: translateZ(20px);
+        }
+
+        section .box_x ul>li:nth-of-type(2) {
+            background-color: skyblue;
+            transform: translateZ(-20px) rotateY(180deg);
+        }
+
+        section .box_x ul>li:nth-of-type(3) {
+            background-color: greenyellow;
+            transform: translateX(-20px) rotateY(-90deg);
+        }
+
+        section .box_x ul>li:nth-of-type(4) {
+            background-color: deeppink;
+            transform: translateX(20px) rotateY(90deg);
+        }
+
+        section .box_x ul>li:nth-of-type(5) {
+            background-color: rebeccapurple;
+            transform: translateY(-20px) rotateX(90deg);
+        }
+
+        section .box_x ul>li:nth-of-type(6) {
+            background-color: saddlebrown;
+            transform: translateY(20px) rotateX(-90deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box_wraper">
+        <div class="box">
+            <div class="box1">1</div>
+            <div class="box2">2</div>
+            <div class="box3">3</div>
+            <div class="box4">4</div>
+        </div>
+    </div>
+
+    <section>
+        <div class="box_x">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </section>
+
+</body>
+
+</html>

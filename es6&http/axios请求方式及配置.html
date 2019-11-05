@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="axios.js"></script>
+
+    <script>
+        // 1.0
+        axios.get('http://localhost:3000/adata').then((ret) => {
+            console.log(ret.data);
+        })
+
+        // 2.0 传参
+        // 传统方式
+        axios.get('http://localhost:3000/axios?id=123').then((ret) => {
+            console.log(ret.data);
+        })
+        // restful方式
+        axios.get('http://localhost:3000/axios/123').then((ret) => {
+            console.log(ret.data);
+        })
+        // json对象方式  参数为 params
+        axios.get('http://localhost:3000/axios', {
+            params: {
+                id: 111
+            }
+        }).then((ret) => {
+            console.log(ret.data);
+        })
+
+        // delete 请求传参  与get相同
+        axios.delete('http://localhost:3000/axios', {
+            params: {
+                id: 111
+            }
+        }).then((ret) => {
+            console.log(ret.data);
+        })
+
+        // post 请求传参
+        axios.delete('http://localhost:3000/axios', {
+            params: {
+                id: 111
+            }
+        }).then((ret) => {
+            console.log(ret.data);
+        })
+
+        // 3.0 全局配置
+        // #  配置公共的请求头
+        axios.defaults.baseURL = 'https://api.example.com';
+        // #  配置 超时时间
+        axios.defaults.timeout = 2500;
+        // #  配置公共的请求头
+        axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+        // # 配置公共的 post 的 Content - Type
+        axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+        // 4.0拦截器
+        axios.interceptors.request.use(function (config) {
+            console.log(config.url)
+            config.headers.mytoken = 'nihao';
+            return config;
+        }, function (err) {
+            console.log(err)
+        })
+        axios.interceptors.response.use(function (res) {
+            var data = res.data;
+            return data;
+        }, function (err) {
+            console.log(err)
+        })
+
+        // async 和 await
+        async function queryData() {
+            let res = new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    resolve('nihao')
+                }, 1000);
+            })
+            return ret
+        }
+
+        // 可以这样  但是不好
+        queryData().then(function (data) {
+            console.log(data);
+        })
+
+        // 主要处理异步的请求
+        // 1. 内部定义
+        async function queryData() {
+            var info = await axios.get("async1");
+
+            // var { data: mydata } = await axios.get("async2?info=" + info);
+            var { data } = await axios.get("async2?info=" + info);
+
+            // data在定义的函数内部,无法直接使用
+            // 所以需要外部调用 用 then 抓取
+            return data
+        }
+
+        // 2. 外部应用
+        queryData().then(function(){
+            console.log(data);
+        })
+    </script>
+
+</body>
+
+</html>

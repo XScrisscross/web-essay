@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../vue/vue.js"></script>
+    <script src="../jquery/jquery.min.js"></script>
+
+    <script>
+        // v1.0 promise解决方案
+        function query(url) {
+            return new Promise(function (resolve, reject) {
+                $.ajax({
+                    url,
+                    success: (res) => {
+                        resolve(res)
+                    },
+                    error() {
+                        reject(res)
+                    }
+                })
+            })
+        }
+
+        query("http://127.0.0.1:3000/a1").then(function (data) {
+            console.log(data);
+            return query("http://127.0.0.1:3000/a2")
+        }, function (err) {
+            console.log(err);
+            return query("http://127.0.0.1:3000/a2")
+        })
+            .then(function (data) {
+                console.log(data);
+                return query("http://127.0.0.1:3000/a3")
+            })
+            .then(function (data) {
+                console.log(data);
+                return new Promise(function (resolve, reject) {
+                    resolve("hello");
+                })
+            })
+            .then(function (data) {
+                console.log(data);
+                return "world"
+            })
+            .then(function (data) {
+                console.log(data);
+                return new Promise(function (resolve, reject) {
+                    // 必须异步
+                    setTimeout(() => {
+                        reject("-----------");
+                    }, 1000);
+                })
+            })
+            .catch(function (data) {
+                console.log(data);
+            })
+            .finally(function (data) {
+                console.log(data);
+                console.log("finished");
+            })
+
+        // v1.1 race 和 all 处理并发任务
+        function queryData(url) {
+            return new Promise(function (resolve, reject) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState != 4) return;
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        // 处理正常的情况
+                        resolve(xhr.responseText);
+                    } else {
+                        // 处理异常情况
+                        reject('服务器错误');
+                    }
+                };
+                xhr.open('get', url);
+                xhr.send(null);
+            });
+        }
+
+        var p1 = queryData('http://127.0.0.1:3000/a1');
+        var p2 = queryData('http://127.0.0.1:3000/a2');
+        var p3 = queryData('http://127.0.0.1:3000/a3');
+
+        // 三个所有
+        Promise.all([p1, p2, p3]).then(function (res) {
+            console.log(res);
+        })
+
+        // 第一个返回值
+        Promise.race([p1, p2, p3]).then(function (res) {
+            console.log(res);
+        })
+
+        // v2.0 fetch 传参
+        fetch('http://localhost:3000/books?id=123', {
+            method: "get"
+        }).then(function (data) {
+            return data.text()
+        }).then(function (data) {
+            console.log(data);
+        })
+
+        fetch('http://localhost:3000/books/456', {
+            method: "get"
+        }).then(function (data) {
+            return data.text()
+        }).then(function (data) {
+            console.log(data);
+        })
+
+        fetch('http://localhost:3000/books/789', {
+            method: "delete"
+        }).then(function (data) {
+            return data.text()
+        }).then(function (data) {
+            console.log(data);
+        })
+
+        fetch('http://localhost:3000/books', {
+            method: "post",
+            body: 'uname=lisi&pwd=123',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(function (data) {
+            return data.text()
+        }).then(function (data) {
+            console.log(data);
+        })
+
+        fetch('http://localhost:3000/books', {
+            method: 'post',
+            body: JSON.stringify({
+                uname: '张三',
+                pwd: '456'
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(function (data) {
+                return data.text();
+            }).then(function (data) {
+                console.log(data)
+            });
+
+        fetch('http://localhost:3000/books/123', {
+            method: 'put',
+            body: JSON.stringify({
+                uname: '张三',
+                pwd: '789'
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(function (data) {
+                return data.text();
+            }).then(function (data) {
+                console.log(data)
+            });
+
+        // v2.2 Fetch响应结果的数据格式
+        fetch('http://localhost:3000/json').then(function (data) {
+            // return data.json();
+            return data.text();
+        }).then(function (data) {
+            // console.log(data.uname)
+            // console.log(typeof data)
+            var obj = JSON.parse(data);
+            console.log(obj.uname, obj.age, obj.gender)
+        })
+
+    </script>
+</body>
+
+</html>

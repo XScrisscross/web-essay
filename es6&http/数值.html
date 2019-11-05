@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            1.全局 isFinite()/isNaN() 与 Number.isNaN()/Number.isFinite() 有什么区别?
+            传统方法先调用 Number() 将非数值的值转为数值,再进行判断,而这两个新方法只对数值有效,
+            Number.isFinite()对于非数值一律返回false,Number.isNaN()只有对于NaN才返回true,非NaN一律返回false
+        */
+        // Number.isFinite() : 判断数值是否有限
+        // Number.isNaN() : 判断数值不是一个数
+        isFinite(25) // true
+        isFinite("25") // true
+        Number.isFinite(25) // true
+        Number.isFinite("25") // false
+
+        isNaN(NaN) // true
+        isNaN("NaN") // true
+        Number.isNaN(NaN) // true
+        Number.isNaN("NaN") // false
+        Number.isNaN(1) // false
+
+        // Number.isInteger() : 用来判断一个数值是否为整数
+        Number.isInteger('15') // false
+
+        // Number.parseInt() : 解析整数
+        // Number.parseFloat() : 解析小数
+        // ES5的写法
+        parseInt('12.34') // 12
+        parseFloat('123.45#') // 123.45
+
+        // ES6的写法 
+        Number.parseInt('12.34') // 12
+        Number.parseFloat('123.45#') // 123.45
+
+        /*
+            2.Math对象新增方法
+        */
+        // Math.trunc() : 去除一个数的小数部分,返回整数部分
+        Math.trunc(4.1) // 4
+        Math.trunc(4.9) // 4
+        Math.trunc(-4.1) // -4
+        Math.trunc(-4.9) // -4
+        Math.trunc(-0.1234) // -0
+
+        // Math.sign() : 判断一个数到底是正数、负数、还是零,对于非数值,会先将其转换为数值
+        Math.sign(-5) // -1
+        Math.sign(5) // +1
+        Math.sign(0) // +0
+        Math.sign(-0) // -0
+        Math.sign(NaN) // NaN
+
+        // Math.hypot() : 方法返回所有参数的平方和的平方根
+        Math.hypot(3, 4);        // 5
+        Math.hypot(3, 4, 5);     // 7.0710678118654755
+
+        // Math.cbrt() : 方法用于计算一个数的立方根
+        Math.cbrt(1)  // 1
+        Math.cbrt(2)  // 1.2599210498948734
+
+        /*
+            3.指数运算符
+        */
+        // ** : 指数运算符
+        2 ** 2 // 4
+        2 ** 3 // 8
+    </script>
+</body>
+
+</html>

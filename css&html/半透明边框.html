@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #333;
+        }
+        .box1 {
+            width: 200px;
+            height: 200px;
+            border: 10px solid hsla(0, 0%, 100%, .5);
+            background: #fff;
+            background-clip: padding-box;
+        }
+        .box2 {
+            width: 200px;
+            height: 200px;
+            border: 10px solid hsla(0, 0%, 100%, .5);
+            background: #fff;
+            /* background-clip: border-box; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1.半透明边框无法显现出现原因:背景侵入边框所在的范围 -->
+    <!-- 解决方案:背景以padding为基准开始进行裁剪 -->
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <style>
+        .current {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <button-counter @son-method="parents">
+            <template v-slot:header>
+                <div>头部</div>
+            </template>
+            <template v-slot:main>
+                <div>主体</div>
+            </template>
+        </button-counter>
+        <hr>
+        <button-counter :msg="msg">
+            <template #footer>
+                <div>底部</div>
+            </template>
+            <template #default>
+                <div>默认</div>
+            </template>
+        </button-counter>
+    </div>
+
+    <template id="tpl">
+        <div>
+            <button @click="trans();handle()">这里是son,点击了{{count}}下,得到了{{msg}}</button>
+            <div>
+                <slot name="header"></slot>
+                <slot name="main"></slot>
+                <slot name="footer"></slot>
+                <slot name="default"></slot>
+            </div>
+        </div>
+    </template>
+
+    <!-- <script src='vue.js'></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // 创建传值
+        Vue.component("ButtonCounter", {
+            props: ["msg"],
+            data() {
+                return {
+                    count: 0,
+                    meta: "荣耀干翻华为"
+                }
+            },
+            template: "#tpl",
+            methods: {
+                handle() {
+                    this.count += 2;
+                },
+                trans() {
+                    this.$emit("son-method", this.meta);
+                }
+            },
+            created() {
+                console.log(this);
+            }
+        })
+
+        new Vue({
+            el: '#app',
+            data: {
+                msg: "父亲的遗产"
+            },
+            methods: {
+                parents(val) {
+                    console.log(val);
+                }
+            }
+        })
+    </script>
+
+    <!-- 作用域插槽 -->
+    <div id="app1">
+        <book-list :books="books">
+            <template v-slot="slotProps">
+                <div v-if="slotProps.info.id === 1" class="current">{{slotProps.info.name}} -- {{slotProps.info.date}}</div>
+                <div v-else>{{slotProps.info.name}} -- {{slotProps.info.date}}</div>
+            </template>
+        </book-list>
+    </div>
+
+    <template id="tpl1">
+        <div>
+            <li :key="item.id" v-for="item in books">
+                <slot :info="item">{{item.name}} -- {{item.date}}</slot>
+            </li>
+        </div>
+    </template>
+
+    <script>
+        Vue.component("bookList", {
+            props: ["books"],
+            template: "#tpl1",
+        })
+
+        var vm1 = new Vue({
+            el: "#app1",
+            data: {
+                books: [{
+                    id: 1,
+                    name: '三国演义',
+                    date: new Date()
+                }, {
+                    id: 2,
+                    name: '水浒传',
+                    date: new Date()
+                }, {
+                    id: 3,
+                    name: '红楼梦',
+                    date: new Date()
+                }, {
+                    id: 4,
+                    name: '西游记',
+                    date: new Date()
+                }]
+            }
+        })
+
+    </script>
+</body>
+
+</html>

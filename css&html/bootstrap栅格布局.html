@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- [if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif] -->
+    <title>Document</title>
+    <style>
+        .container,
+        .container-fluid {
+            background-color: #00f;
+        }
+
+        .row div {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 一.布局 -->
+    <!-- 1.布局容器:响应式+流式 -->
+    <!-- 有默认的左右padding值,作为容器 -->
+    <div class="container">123</div>
+    <div class="container-fluid">123</div>
+    <!-- 2.栅格系统 -->
+    <!-- 12等分 -->
+    <!-- .col-xs- .col-sm- .col-md- .col-lg- -->
+    <!-- hidden- visible- -->
+    <!-- 栅格用于容器布局,不用于内容 -->
+    <div class="container">
+        <!-- 列嵌套 -->
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-md-4">1.1</div>
+                    <div class="col-md-8">1.2</div>
+                </div>
+            </div>
+            <div class="col-lg-3">2</div>
+            <div class="col-lg-3">3</div>
+            <div class="col-lg-3">4</div>
+        </div>
+
+        <!-- 列偏移 -->
+        <div class="row">
+            <div class="col-lg-1 col-lg-offset-2">1</div>
+            <div class="col-lg-3">2</div>
+            <div class="col-lg-3">3</div>
+            <div class="col-lg-3">4</div>
+        </div>
+
+        <!-- 列排序 -->
+        <!-- 左推右拉:基于左 -->
+        <div class="row">
+            <div class="col-lg-3 col-lg-push-9">左</div>
+            <div class="col-lg-9 col-lg-pull-3">右</div>
+        </div>
+    </div>
+</body>
+
+</html>

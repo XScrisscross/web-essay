@@ -1,0 +1,13 @@
+.less {
+  margin: 5rem auto;
+  width: 100%;
+  max-width: 49rem;
+  min-width: 16rem;
+}
+.less .box {
+  width: 1.17142857rem;
+  color: #222222;
+}
+.less .box:hover {
+  background-color: red;
+}

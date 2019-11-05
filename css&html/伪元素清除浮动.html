@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.box {
+			border: 10px solid #000;
+			margin: 0 auto;
+			width: 800px;
+		}
+
+		.box .right {
+			float: left;
+			background-color: red;
+			width: 400px;
+			height: 200px;
+		}
+
+		.box .left {
+			background-color: blue;
+			float: left;
+			width: 400px;
+			height: 200px;
+		}
+
+		.footer {
+			width: 800px;
+			height: 200px;
+			margin: 0 auto;
+			background-color: #444;
+		}
+
+		.clearfix::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 清除浮动的方法: -->
+	<!-- 设高->隔墙(不撑开父元素高度)->额外标签->overflow:hidden->伪元素清除 -->
+	<!-- 清除浮动的位置:最好紧挨着浮动的上一级,还要注意上上级有没有浮动 -->
+	<!-- 浮动产生的影响只会作用于后面的元素,横向排列一浮全浮 -->
+	<!-- 在设计的时候最好控制好最外层的盒子的高度刚刚好 -->
+	<div class="box-father">
+		<div class="box clearfix">
+			<div class="right"></div>
+			<div class="left"></div>
+		</div>
+	</div>
+	<div class="footer"></div>
+</body>
+
+</html>

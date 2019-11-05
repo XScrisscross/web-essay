@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.函数可以指定默认参数
+        function log(x, y = 'World') {
+            console.log(x, y);
+        }
+        log('Hello') // Hello World
+        log('Hello', 'China') // Hello China
+        log('Hello', '') // Hello
+
+        // 2.函数的length属性 : 返回没有指定默认值的参数个数
+        // (function (a) { }).length // 1
+        // (function (a = 5) { }).length // 0
+        // (function (a, b, c = 5) { }).length // 2
+
+        // 3.函数的剩余参数可遍历
+        function add(...values) {
+            let sum = 0;
+            for (var val of values) {
+                sum += val;
+            }
+            return sum;
+        }
+        add(2, 5, 3) // 10
+
+        // 4.函数的name属性,返回该函数的函数名,es6后生效
+        function foo() { }
+        foo.name // "foo"
+
+        /*
+           5.箭头函数有几个使用注意点:
+               (1)函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象
+               (2)不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误
+               (3)不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替
+               (4)不可以使用yield命令，因此箭头函数不能用作 Generator 函数
+               (5)箭头函数最好用于内部的回调函数
+        */
+        // this指向foo
+        function foo() {
+            setTimeout(() => {
+                console.log('id:', this.id);
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>

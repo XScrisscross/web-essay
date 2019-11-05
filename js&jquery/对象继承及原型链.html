@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        1.原型链:
+        原型对象,prototype属性指向的是一个被共享的对象,因此为原型对象,节省内存空间,原型对象当成静态属性??
+        对象的__proto__指向构造函数的prototype属性指向的原型,__proto__可指向,不可赋值
+        指向问题:对象,原型对象,原型对象Object,构造函数,原型链,链??在调用时往上找,类似..继承性
+        对原生原型对象扩展????????静态属性方法只可静态调用,相当于不必创建对象就可调用,参考Math,私有化就用原型+oop
+        this指向:this的指向 -> 构造函数(对象调用,实例本省)与函数(调用者)中this的指向
+    -->
+    <script>
+        function Person() {
+            Person.prototype.info = function () { }
+        }
+
+        // Person.prototype = {
+        //     constructor: Person,
+        //     info: function () { }
+        // }
+
+        console.dir(Person);
+        console.dir(new Person(
+
+        ));
+        console.log(new Person().__proto__.__proto__);
+        console.log(new Person().info() === new Person().info());
+        console.log(new Person().__proto__ === Person.prototype);
+        console.log(new Person().__proto__.__proto__ === Object.prototype);
+    </script>
+
+    <!-- 
+        2.继承:        
+    -->
+    <script>
+        // 构造继承继承属性
+
+        // 原型继承继承方法
+
+        // 组合继承,构造添加属性,原型添加方法
+        function Father(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        Father.prototype.showInfo = function () {
+            console.log("succeed");
+        }
+
+        // extends
+        function Son(name, age, gender) {
+            Father.call(this, name, age);
+            this.gender = gender;
+        }
+        Son.prototype = new Father();
+        Son.prototype.constructor = Son;
+
+        Father.prototype.showItem = function () {
+            console.log("false");
+        }
+
+        console.dir(Father);
+        console.dir(Son);
+
+        // call继承
+        function Top(name, age, gender) {
+            Father.call(this, name, age);
+            this.gender = gender;
+        }
+    </script>
+
+    <!-- 
+        3.class super关键字
+    -->
+    <script>
+        class Personx {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            showInfo() {
+                console.log("succeed" + this.name + this.age);
+            }
+        }
+
+        class Persony extends Personx {
+            constructor(name, age, gender) {
+                super(name, age);
+                this.gender = gender;
+            }
+            showItem() {
+                console.log("false" + this.name + this.age + this.gender);
+            }
+        }
+        let perx = new Personx("大明", 18, "男");
+        let pery = new Persony("小明", 18, "男");
+        perx.showInfo();
+        pery.showInfo();
+        pery.showItem();
+    </script>
+
+    <!--
+        4.封装为函数啥事封装为对象
+        封装函数的缺点:参数数量固定,参数顺序固定,不方便扩展
+    -->
+
+    <script>
+        function fn(option) {
+            var data1 = option.data1;
+            var data2 = option.data2;
+            //....
+        }
+
+        fn({
+            data1: item,
+            data2: {
+                key: "value"
+            }
+        });
+    </script>
+
+</body>
+
+</html>

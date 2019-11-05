@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- colspan:跨列横向扩展 -->
+	<!-- rowspan:跨行纵向扩展 -->
+	<!-- cellpadding:单元格与内容的间隙 -->
+	<!-- cellspacing:单元格与单元格的间隙 -->
+	<!-- rules:规定内侧边框的哪个部分是可见的 -->
+	<!-- rules:all 合并的边框线变细 -->
+	<table border="1" cellpadding="10" cellspacing="10" align="center" width="400" height="400" rules="all">
+		<caption>标题</caption>
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="2"></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td></td>
+				<td colspan="2"></td>		
+			</tr>
+		</tfoot>
+	</table>
+
+	<form action="" method="post" name="user">
+			<!-- 1.input -->
+			名字: <input type="text" value="请输入用户名" name="username"> 
+			<!-- placeholder:背景信息 -->
+			密码：  <input type="password" placeholder="placeholder" name="pwd"> 
+			<!-- radio:单选按钮,name要相同 -->
+			男 <input type="radio" name="sex">  
+			女  <input type="radio" name="sex" checked="checked"> 
+			未知  <input type="radio" name="sex"> 
+			<!-- checkbox:多选按钮,name最好相同 -->
+			<!-- checked:默认选中 -->
+			睡觉 <input type="checkbox" name="hobby" checked="checked">
+			爬山 <input type="checkbox" name="hobby">
+			篮球 <input type="checkbox" name="hobby">
+			足球 <input type="checkbox" name="hobby"> 
+			<input type="button" value="按钮">
+			<input type="submit" value="提交">
+			<input type="reset" value="重置">
+			上传头像:<input type="image" src="">
+			上传文件:<input type="file">
+			<!-- 2.select -->
+			<select>
+				<option>--请选择省份--</option>
+				<!-- selected="selected" 表示默认选中 -->
+				<option selected="selected">武汉</option>
+				<option>广州</option>
+				<option>上海</option>
+				<option>北京</option>
+			</select>
+			<!-- 3.textarea -->
+			用户留言:<textarea></textarea>
+		</form>
+</body>
+</html>

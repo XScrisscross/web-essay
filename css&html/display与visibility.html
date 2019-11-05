@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.fl {
+		float: left;
+	}
+	.box1 {
+		/*display: none;*/
+		/*display:none 不占据位置,不影响后面布局 */
+		width: 100px;
+		height: 100px;
+		background-color: #00f;
+	}
+	.box2 {	
+		/*visibility:hidden 占据位置,留下空白,影响后面布局*/
+		visibility: hidden;
+		width: 100px;
+		height: 100px;
+		background-color: #0f0;
+	}
+	.box3 {
+		/*visibility:collapse 占据位置,留下空白,影响后面布局*/
+		/*collapse:①表格元素中使用时，此值可删除一行或一列，但是它不会影响表格的布局.②其他元素中中呈现hidden,位置留有其他元素使用*/
+		visibility: collapse;
+		width: 100px;
+		height: 100px;
+		background-color: #f00;
+	}
+	.box4 {
+		width: 100px;
+		height: 100px;
+		background-color: #000;
+	}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2 fl"></div>
+	<div class="box3 fl"></div>
+	<div class="box4"></div>
+</body>
+</html>

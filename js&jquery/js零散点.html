@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.常见数据处理方法
+        // 1.1'0'填充
+        function fillZero(num) {
+            return num < 10 ? "0" + num : num;
+        }
+
+        // 1.2倒计时
+        function countDown(time) {
+            var start = Date.now();
+            var stop = new Date(time).getTime();
+            return (stop - start) / 1000;
+        }
+        function format(num) {
+            var day = fillZero(parseInt(num / 60 / 60 / 24));
+            var hour = fillZero(parseInt(num / 60 / 60 % 24));
+            var mini = fillZero(parseInt(num / 60 % 60));
+            var sec = fillZero(parseInt(num % 60));
+            return "剩余时间:" + day + "天" + hour + ":" + mini + ":" + sec;
+        }
+        document.write(format(countDown("2020-6-24 00:00:00")));
+        document.write("<br>");
+
+        // 1.3反转一个字符串
+        var str = "helloworld";
+        console.log(str.split("").reverse().join(""));
+
+        // 1.4反转数组-1
+        var arr = [1, 1, 2, 3, 3, 2, 4, 5, 5, 4, 3, 2, 1];
+        var resultArr = [];
+        var flag;
+        for (var i = 0; i < arr.length; i++) {
+            flag = true;
+            for (var j = 0; j < resultArr.length; j++) {
+                if (resultArr[j] === arr[i]) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                resultArr[resultArr.length] = arr[i];
+            }
+        }
+        console.log(resultArr);
+
+        // 反转数组-2
+        var resultArr = arr.reverse();
+        console.log(resultArr);
+
+        // 1.5查找字符出现的次数
+        var num = 0;
+        var index = str.indexOf("l");
+        while (index != -1) {
+            num++;
+            index = str.indexOf("l", index + 1);
+        }
+        console.log(num);
+
+        // 1.6查找字符出现的次数最多的字符
+        var str = "helloworld";
+        var obj = {};
+        var max = 0;
+        var value = "";
+        for (var i = 0; i < str.length; i++) {
+            if (obj.hasOwnProperty(str[i])) {
+                obj[str[i]]++;
+            } else {
+                obj[str[i]] = 1;
+            }
+        }
+        console.log(obj);
+        for (var key in obj) {
+            if (obj[key] > max) {
+                max = obj[key];
+                value = key;
+            }
+        }
+        console.log(value + "" + max);
+
+        // 1.7扩展名获取-1
+        var str = "http://www.baidu.com.html";
+        var index = str.lastIndexOf(".");
+        var ext = str.substr(index + 1);
+        console.log(ext);
+        // 扩展名获取-2
+        var ext = str.split(".").slice(-1)[0];
+        console.log(ext);
+
+        // 1.8数组去重-1
+        var arr = [50, 40, 32, 2, 2, 4, 8, 2, 10];
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (newArr.indexOf(arr[i]) == -1) {
+                newArr[newArr.length] = arr[i];
+            }
+        }
+        console.log(newArr);
+
+        // 数组去重-2
+        var arr = [50, 40, 32, 2, 2, 4, 8, 2, 10];
+        var obj = {};
+        for (var i = 0; i < arr.length; i++) {
+            if (obj.hasOwnProperty(arr[i])) {
+                arr.splice(i, 1);
+                i--;
+            } else {
+                obj[arr[i]] = arr[i];
+            }
+        }
+        console.log(arr);
+
+        // 数组去重-3
+        var arr = [50, 40, 32, 2, 2, 4, 8, 2, 10];
+        var newArr = Array.from(new Set(arr));
+        console.log(newArr);
+
+        // 1.9去除中间空格
+        let strTrim = "a b c d e";
+        let res = strTrim.replace(/\s/gi, "");
+        console.log(res);
+
+        // 2.常见算法题目
+        // 2.1猴子吃桃
+        day = 0;
+        function eat(count) {
+            day++;
+            if (day === 10) { //第十天 吃了九天 1~9 count:剩余桃子
+                return count;
+            }
+            count = (count + 1) * 2;
+            return eat(count);
+        }
+        console.log(eat(1));
+
+        function eatPeach(day, count) {
+            day--;
+            if (day > 0) { //第十天 吃了九天 1~9 count:剩余桃子
+                return eatPeach(day, (count + 1) * 2);
+            }
+            return count;
+        }
+        console.log(eatPeach(10, 1));
+
+        // 2.2百钱百鸡
+        var i;
+        var j;
+        var k;
+        var f = 100;
+        for (i = 1; i < 100; i++) {
+            for (j = 1; j < 100; j++) {
+                k = 100 - j - i;
+                if ((5 * i + 3 * j + k / 3) == f) {
+                    console.log(i, j, k);
+                }
+            }
+        }
+
+        // 2.3简单递归
+        function factorial(num) {
+            if (num === 1) {
+                return 1;
+            } else {
+                return num * arguments.callee(num - 1);
+            }
+        }
+        console.log("10阶乘结果是:" + factorial(10));
+
+        function digui(length) {
+            let arr = [];
+            for (let i = 0; i < length; i++) {
+                if (i === 0 || i === 1) {
+                    arr[i] = 1;
+                } else {
+                    arr[i] = arr[i - 1] + arr[i - 2];
+                }
+            }
+            return arr;
+        }
+        console.log(digui(5));
+
+        // 2.4斐不拉几
+        function fff(n) {
+            if (n === 1 || n === 2) {
+                return 1;
+            }
+            return fff(n - 1) + fff(n - 2);
+        }
+        console.log(fff(5));
+
+        // 2.5数字交换
+        var num1 = 1;
+        var num2 = 2;
+        num1 = num1 + num2;
+        num2 = num1 - num2;
+        num1 = num1 - num2;
+
+        // 2.6倒九九
+        for (m = 9; m >= 1; m--) {
+            for (n = 1; n <= m; n++) {
+                document.write(n + "x" + m + "=" + m * n + " ");
+            }
+            document.write("<br>");
+        }
+
+        // 2.7镂空金字塔
+        document.write("<pre>");
+        for (i = 1; i <= 5; i++) {
+            for (m = 5; m >= i; m--) {
+                document.write(" ");
+            }
+            for (k = 1; k <= (2 * i - 1); k++) {
+                if (k == 1 || k == (2 * i - 1) || i == 5) {
+                    document.write("*");
+                } else {
+                    document.write(" ");
+                }
+            }
+            document.write("<br>");
+        }
+
+        // 3.常见的数组排序
+        // 3.1选排
+        var arr = [];
+        for (i = 0; i < 10000; i++) {
+            arr[i] = Math.floor(Math.random() * 1000 + 1);
+        }
+        var start = Date.now();
+        for (i = 0, len = arr.length; i < len; i++) {
+            for (j = 0, len = arr.length; j < len; j++) {
+                if (arr[i] < arr[j]) {
+                    var temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        var stop = Date.now();
+        var time = stop - start;
+        console.log(arr.toString());
+        console.log("排列个数:" + arr.length);
+        console.log("选排所耗时间:" + time + "ms");
+
+        // 3.2冒排
+        var start = Date.now();
+        // 定义一个比较次数标记
+        var flag = arr.length;
+        for (k = 0; k < flag; flag--) {
+            for (i = 0; i < flag; i++) {
+                if (arr[i] > arr[i + 1]) {
+                    var temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                }
+            }
+        }
+        var stop = Date.now();
+        var time = stop - start;
+        console.log(arr.toString());
+        console.log("排列个数:" + arr.length);
+        console.log("冒排所耗时间:" + time + "ms");
+
+        // 3.3桶排
+        var start = Date.now();
+        var bucket = [];
+        var newSort = [];
+        // 定义初始化一个桶
+        for (i = 0, len = Math.max.apply(Math, arr); i <= len; i++) {
+            bucket[i] = 0;
+        }
+        // 做标记
+        for (i = 0, len = arr.length; i <= len; i++) {
+            bucket[arr[i]] += 1;
+        }
+        // 重新装载
+        for (i = 0, len = bucket.length; i <= len; i++) {
+            for (j = 0; j < bucket[i]; j++) {
+                newSort.push(i);
+            }
+        }
+        var stop = Date.now();
+        var time = stop - start;
+        console.log(newSort.toString());
+        console.log("排列个数:" + arr.length);
+        console.log("桶排排所耗时间:" + time + "ms");
+    </script>
+</body>
+
+</html>

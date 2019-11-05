@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* background-position扩展语法之一:方位 */
+        .box1 {
+            padding: 50px;
+            height: 400px;
+            width: 400px;
+            background: url(../media/01.jpg) no-repeat;
+            background-position: right bottom;
+            background-color: #00f;
+            border: 20px solid #ccc;
+        }
+
+        /* background-position扩展语法之二:方位 距离 */
+        .box2 {
+            padding: 50px;
+            height: 400px;
+            width: 400px;
+            background: url(../media/01.jpg) no-repeat;
+            background-position: right 20px bottom 20px;
+            background-color: #00f;
+            border: 20px solid #ccc;
+        }
+
+        /* background-position扩展语法之三:函数calc()定位 */
+        .box3 {
+            padding: 50px;
+            height: 400px;
+            width: 400px;
+            background: url(../media/01.jpg) no-repeat;
+            background-position: calc(0% + 20px) calc(100% - 10px);
+            border: 20px solid #ccc;
+            background-color: #00f;
+        }
+
+        .box4 {
+            padding: 50px;
+            height: 400px;
+            width: 400px;
+            background: url(../media/01.jpg) no-repeat;
+            background-position: left top;
+            border: 20px solid #ccc;
+            background-color: #00f;
+            /* 默认:padding-box */
+            background-origin: content-box;
+            /* background-origin: padding-box; */
+            /* background-origin: border-box; */
+        }
+
+        .box5 {
+            padding: 50px;
+            height: 400px;
+            width: 400px;
+            background: url(../media/01.jpg) no-repeat;
+            background-position: left top;
+            border: 20px solid #ccc;
+            background-color: #00f;
+            /* 默认:padding-box */
+            /* background-origin: content-box; */
+            background-origin: padding-box;
+            /* background-origin: border-box; */
+        }
+
+        .box6 {
+            padding: 50px;
+            height: 400px;
+            width: 400px;
+            background: url(../media/01.jpg) no-repeat;
+            background-position: left top;
+            border: 20px solid #ccc;
+            background-color: #00f;
+            /* 默认:padding-box */
+            /* background-origin: content-box; */
+            /* background-origin: padding-box; */
+            background-origin: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 背景图片的三种定位方式 -->
+    <div class="box1">123</div>
+    <div class="box2">123</div>
+    <div class="box3">123</div>
+    <!-- 背景图片的三种裁剪基准 -->
+    <div class="box4">456</div>
+    <div class="box5">456</div>
+    <div class="box6">456</div>
+</body>
+
+</html>

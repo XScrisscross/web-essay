@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        :root {
+            --size: 30px;
+            --loop-size: 5px;
+            --color: yellow;
+            --loop-color: #ccc;
+        }
+
+        .progress-circle {
+            position: relative;
+            width: calc(var(--size) * 2);
+            height: calc(var(--size) * 2);
+            text-align: center;
+            line-height: calc(var(--size) * 2);
+            font-size: calc(var(--size) / 60 * 14);
+        }
+
+        .progress-gray,
+        .progress-yellow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 0;
+            left: 0;
+        }
+
+        .progress-gray .before,
+        .progress-gray .after,
+        .progress-yellow .before,
+        .progress-yellow .after {
+            content: '';
+            position: absolute;
+            width: calc(var(--size) - var(--loop-size));
+            height: calc((var(--size) - var(--loop-size)) * 2);
+        }
+
+        .progress-gray .before,
+        .progress-gray .after {
+            border: var(--loop-size) solid var(--loop-color);
+        }
+
+        .progress-yellow .before,
+        .progress-yellow .after {
+            border: var(--loop-size) solid var(--color);
+        }
+
+        .progress-gray .after,
+        .progress-yellow .before,
+        .progress-yellow .after {
+            top: 0;
+            left: var(--size);
+            border-top-right-radius: var(--size);
+            border-bottom-right-radius: var(--size);
+            border-left: none;
+        }
+
+        .progress-gray .before {
+            border-top-left-radius: var(--size);
+            border-bottom-left-radius: var(--size);
+            border-right: none;
+        }
+
+        .progress-gray .after {
+            transform-origin: left;
+        }
+
+        .progress-yellow .before {
+            transform-origin: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-circle">
+        <div class="progress-yellow">
+            <div class="before"></div>
+            <div class="after"></div>
+        </div>
+        <div class="progress-gray">
+            <div class="before"></div>
+            <div class="after"></div>
+        </div>
+        <span id="percent"></span>
+    </div>
+    <script type="text/javascript">
+        function setPercent(percent) {
+            const deg = percent * 360;
+            if (deg <= 180) {
+                document.querySelector('.progress-gray .after').style.transform = `rotateZ(${deg}deg)`;
+            } else {
+                document.querySelector('.progress-gray .after').style.transform = `rotateZ(180deg)`;
+                document.querySelector('.progress-yellow .before').style.zIndex = '10';
+                document.querySelector('.progress-yellow .before').style.transform = `rotateZ(${deg - 180}deg)`;
+            }
+        }
+        function setProgressSize(size) {
+            document.documentElement.style.setProperty('--size', size);
+        }
+        function setLoopSize(size) {
+            document.documentElement.style.setProperty('--loop-size', size);
+        }
+        function setProgressColor(color) {
+            document.documentElement.style.setProperty('--color', color);
+        }
+        function setLoopColor(color) {
+            document.documentElement.style.setProperty('--loop-color', color);
+        }
+        let start = 0;
+        function setOne2Hundred() {
+            if (start < 1) {
+                start += 0.01;
+                percent.innerText = (start * 100).toFixed() + '%';
+                setPercent(start);
+                window.requestAnimationFrame(setOne2Hundred);
+            }
+        }
+        setProgressSize('100px');
+        setLoopSize('20px');
+        setProgressColor('#b288fb');
+        setLoopColor('#ccc');
+        setOne2Hundred();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="templete.js"></script>
+</head>
+
+<body>
+  <script>
+    /*  
+        正则:
+        exec():
+        1.exec()的返回值数一个数组
+        2.取值:()中的值可以通过[1]取,[0]取匹配值
+        3./<%=(\w+)%>/g;......:主整体固定加局部正则
+    
+    */
+    // v1.0正则替换
+    var str = `该用户姓名、身份证、手机号信息{isMatching}。命中黑名单{blacklistNum}次。
+        命中裁判文书{cpwsCount}次，被执行{zxggCount}次，近一年被机构查询{m12Apply}次，
+        其中包含{m12Orgs}机构，无被拒贷记录，历史逾期{overdueCount}次`;
+    var reg = /{(\w+)}/g;
+    var arr = [];
+    while (arr = reg.exec(str)) {
+      console.log(arr[1]);
+    }
+    var str = '张三：2500，李四：3000，王五：50000，赵六：1800';
+    var reg = /([\u4e00-\u9fa5]{2,})：\d+/g;
+    arr = [];
+    while (arr = reg.exec(str)) {
+      console.log(arr[1]);
+    }
+  </script>
+
+  <script type="text/template" id="template">
+        <li>
+            <a href="#">
+                <img src="<%=src%>" alt="">
+                <p><%=text%></p>
+            </a>
+        </li>
+    </script>
+
+  <script>
+    // v2.0模版引擎原理
+    var obj = {
+      "src": "../media/02.jpg",
+      "text": "京东市场"
+    }
+    var str = document.querySelector("#template").innerHTML;
+    console.log(str);
+    var reg = /<%=(\w+)%>/g;
+    var arr = [];
+    while (arr = reg.exec(str)) {
+      // replace:需要接受一个返回值
+      str = str.replace(arr[0], obj[arr[1]]);
+    }
+    console.log(str);
+  </script>
+
+  <div id="app">
+    <!--
+      v3.0模版引擎 -- 引用item
+      1. 在不使用ui框架时,原生页面的拼接最好使用模板引擎
+      2. 语法
+         {{value}}
+
+         {{if value}}
+         …
+         {{else if value}}
+         …
+         {{else}}
+         …
+         {{/if}}
+
+         {{each list as value index}}
+           <li>索引{{index+1}}:{{value}}</li>
+         {{/each}}
+
+         {{include 'main'}}
+
+      3.调用
+        1>引入
+        2>定义带id的模板
+        3>template("test", data); // template(id, 数据);
+        4>赋值 // document.getElementById("app").innerHTML = html;
+
+      4.注册公用辅助方法
+        定义
+        template.helper('dateFormat', function (data, format1, format2) {
+          // ..
+          return value;
+        });
+        使用：
+        {{data | dateFormat:'yyyy-MM-dd hh:mm:ss' | 'yyyy-MM-dd hh:mm:ss'}}
+    -->
+  </div>
+
+  <script id="main" type="text/html">
+    <ul>
+      {{each list}}
+      <li>{{$value}}</li>
+      {{/each}}
+    </ul>
+  </script>
+
+  <script id="test" type="text/html">
+      <div>
+        <ul>
+          {{each person}}
+          <li>{{$value.name}}</li>
+          {{/each}}
+        </ul>
+        {{include 'main' a}}
+      </div>
+    </script>
+  <script>
+    var data = {
+      person: [
+        { name: "jack", age: 18 },
+        { name: "tom", age: 19 },
+        { name: "jerry", age: 20 },
+        { name: "kid", age: 21 },
+        { name: "jade", age: 22 }
+      ],
+      a: {
+        list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+      }
+    };
+    var html = template("test", data);
+    document.getElementById("app").innerHTML = html;
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 1.阴影来实现 */
+        /* 问题:不会影响布局,不会影响鼠标事件 */
+        /* 解决一:需要额外模拟出边框所需要占据的空间 */
+        /* 解决二:inset关键字，来使投影绘制在元素的内圈,请注意，此时你需要增加额外的内边距来腾出足够的空隙 */
+        .box1 {
+            margin: 20px auto;
+            width: 200px;
+            height: 200px;
+            background: yellowgreen;
+            box-shadow: 0 0 0 10px #655,
+                0 0 0 15px deeppink,
+                0 0 0 20px rgb(0, 0, 0);
+        }
+
+        /* 2.使用outline实现 */
+        /* 好处:outline-offset可用于控制边框距离 */
+        /* 问题:只适用于二重边框,无法适应border-radius产生的圆角,无法贴合 */
+        .box2 {
+            background: yellowgreen;
+            border: 10px solid #655;
+            outline: 5px solid deeppink;
+            outline-offset: 10px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    ------------------
+    <div class="box2"></div>
+</body>
+
+</html>

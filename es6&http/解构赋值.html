@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.解构赋值允许深层次嵌套,空余,展开运算符等操作
+        let [foo, [[bar], baz]] = [1, [[2], 3]];
+        foo // 1
+        bar // 2
+        baz // 3
+
+        let [, , third] = ["foo", "bar", "baz"];
+        third // "baz"
+
+        let [x, , y] = [1, 2, 3];
+        x // 1
+        y // 3
+
+        let [head, ...tail] = [1, 2, 3, 4];
+        head // 1
+        tail // [2, 3, 4]
+
+        let [x, y, ...z] = ['a'];
+        x // "a"
+        y // undefined
+        z // []
+
+        // 2.Set数据结构也可以解构赋值
+        let [x, y, z] = new Set(['a', 'b', 'c']);
+        x // "a"
+
+        // 3.只要某种数据结构具有 Iterator 接口,都可以采用数组形式的解构赋值
+        function* fibs() {
+            let a = 0;
+            let b = 1;
+            while (true) {
+                yield a;
+                [a, b] = [b, a + b];
+            }
+        }
+        let [first, second, third, fourth, fifth, sixth] = fibs();
+        sixth // 5
+
+        // 4.字符串支持解构赋值
+        const [a, b, c, d, e] = 'hello';
+        a // "h"
+        b // "e"
+        c // "l"
+        d // "l"
+        e // "o"
+
+        // 5.解构赋值支持默认值
+        var { x = 3 } = {};
+        x // 3
+
+        var { x, y = 5 } = { x: 1 };
+        x // 1
+        y // 5
+
+        var { x: y = 3 } = {};
+        y // 3
+
+        var { x: y = 3 } = { x: 5 };
+        y // 5
+
+        var { message: msg = 'Something went wrong' } = {};
+        msg // "Something went wrong"
+
+        // 6.函数传参支持解构
+        function add([x, y]) {
+            return x + y;
+        }
+        add([1, 2]); // 3
+
+        [[1, 2], [3, 4]].map(([a, b]) => a + b);
+        // [ 3, 7 ]
+    </script>
+</body>
+
+</html>
