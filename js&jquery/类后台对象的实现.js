@@ -59,14 +59,28 @@ people.toString();
 people2.toString();
 
 // 用闭包来实现数据的存与取
-const excuDatas = (function () {
-  let Arr = []
+var excuDatas = (function () {
+  let arr = [] // 数组
+  let obj = {} // 对象
+  let str = '' // 字段,需初始化
   return {
-    getData: function () {
-      return Arr
+    getArr () {
+      return arr
     },
-    setSelectData: function (data) {
-      Arr = data
+    setArr (data) {
+      arr = data
+    },
+    setObj (data) {
+      obj.pro = data
+    },
+    getObj () {
+      return obj
+    },
+    setStr (data) {
+      this.str = data
+    },
+    getStr () {
+      return this.str
     }
   }
 })()
