@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://www.echartsjs.com/zh/option.html#title -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no"><meta name="description" content="ECharts, a powerful, interactive charting and visualization library for browser"><link rel="shortcut icon" href="https://www.echartsjs.com/zh/images/favicon.png"><link rel="stylesheet" type="text/css" href="./配置项手册_files/bootstrap.min.css"><!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries--><!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="./配置项手册_files/main.css"><script src="./配置项手册_files/hm.js.下载"></script><script>window.EC_WWW_LANG = 'zh';
+</script><script type="text/javascript" src="./配置项手册_files/pace.min.js.下载"></script><style>@font-face {font-family:"noto-thin";src:local("Microsoft Yahei");}@font-face {font-family:"noto-light";src:local("Microsoft Yahei");}</style><script id="font-hack" type="text/javascript">if (/windows/i.test(navigator.userAgent)) {
+    var el = document.createElement('style');
+    el.innerHTML = ''
+        + '@font-face {font-family:"noto-thin";src:local("Microsoft Yahei");}'
+        + '@font-face {font-family:"noto-light";src:local("Microsoft Yahei");}';
+    document.head.insertBefore(el, document.getElementById('font-hack'));
+}
+</script><title>ECharts Documentation</title><link rel="stylesheet" type="text/css" href="./配置项手册_files/ecOption.css"><link rel="stylesheet" type="text/css" href="./配置项手册_files/prettify.css"><link rel="stylesheet" type="text/css" href="./配置项手册_files/perfect-scrollbar.min.css"><link rel="stylesheet" type="text/css" href="./配置项手册_files/jquery.auto-complete.css"><link rel="stylesheet" type="text/css" href="./配置项手册_files/twentytwenty.css"><script src="./配置项手册_files/log.js.下载"></script><script src="./配置项手册_files/prettify.js.下载"></script><script src="./配置项手册_files/lang-css.js.下载"></script><script src="./配置项手册_files/esl.js.下载"></script><script type="text/javascript" src="./配置项手册_files/jquery.min.js.下载"></script><script data-require-id="docTool/main" src="./配置项手册_files/main.js.下载" async=""></script></head><!--[if lte IE 8]><body class="lower-ie"><div id="lowie-main"><img src="./images/forie.png" alt="ie tip"></div></body><![endif]-->
+<!--[if (gt IE 8)|!(IE)]><body class="undefined"></body><![endif]--><body class="  pace-done"><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div><div id="main"><nav class="navbar navbar-default navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="https://www.echartsjs.com/zh/index.html" class="navbar-brand"><img src="./配置项手册_files/logo.png" alt="echarts logo" class="navbar-logo"></a></div><div id="navbar-collapse" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-left"><li id="nav-index"><a href="https://www.echartsjs.com/zh/index.html">首页</a></li><li id="nav-doc" class="active open"><a href="https://www.echartsjs.com/zh/option.html#" data-toggle="dropdown" class="dropdown-toggle" aria-expanded="true">文档<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://www.echartsjs.com/zh/feature.html">特性</a></li><li><a href="https://www.echartsjs.com/zh/tutorial.html">教程</a></li><li><a href="https://www.echartsjs.com/zh/api.html">API</a></li><li><a href="https://www.echartsjs.com/zh/cheat-sheet.html">术语速查手册<span class="new">NEW</span></a></li><li><a href="https://www.echartsjs.com/zh/option.html">配置项手册</a></li><li><a href="https://www.echartsjs.com/zh/option-gl.html">GL 配置项手册</a></li><li><a href="https://www.echartsjs.com/zh/changelog.html">版本记录</a></li></ul></li><li id="nav-download" class="dropdown"><a href="https://www.echartsjs.com/zh/option.html#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://www.echartsjs.com/zh/download.html">下载</a></li><li><a href="https://www.echartsjs.com/zh/download-theme.html">主题下载</a></li><li><a href="https://www.echartsjs.com/zh/download-extension.html">扩展下载</a></li></ul></li><li id="nav-examples"><a href="https://www.echartsjs.com/zh/option.html#" data-toggle="dropdown" class="dropdown-toggle">实例<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://www.echartsjs.com/examples/zh/index.html">官方实例</a></li><li><a href="https://www.echartsjs.com/examples/zh/index.html#chart-type-globe">GL 实例</a></li></ul></li><li id="nav-community"><a href="https://www.echartsjs.com/zh/option.html#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://gallery.echartsjs.com/">Gallery</a></li><li><a href="https://efe.baidu.com/tags/ECharts/">博客</a></li></ul></li><li id="nav-tool"><a href="https://www.echartsjs.com/zh/option.html#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://www.echartsjs.com/zh/spreadsheet.html">表格工具</a></li><li><a href="https://echarts.baidu.com/theme-builder/">主题构建工具</a></li></ul></li><li id="nav-contribute"><a href="https://www.echartsjs.com/zh/option.html#" data-toggle="dropdown" class="dropdown-toggle">贡献<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://github.com/apache/incubator-echarts" target="_blank">源码（GitHub）</a></li><li><a href="https://github.com/apache/incubator-echarts/issues" target="_blank">Issues</a></li><li><a href="https://www.echartsjs.com/zh/coding-standard.html">代码规范</a></li></ul></li><li id="nav-about"><a href="https://www.echartsjs.com/zh/option.html#" data-toggle="dropdown" class="dropdown-toggle">关于<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://www.echartsjs.com/zh/committers.html">贡献者列表</a></li><li><a href="https://www.apache.org/licenses/">版权声明</a></li><li><a href="https://www.echartsjs.com/zh/maillist.html">邮件列表</a></li><li><a href="https://www.echartsjs.com/zh/dependencies.html">依赖项</a></li><li><a href="https://www.echartsjs.com/zh/faq.html">常见问题</a></li></ul></li></ul><ul class="nav navbar-nav navbar-right"><li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="./配置项手册_files/github.png" width="18"></a></li><li id="nav-homeen"><a href="javascript:;" onclick="changeLang(&#39;en&#39;)">EN</a></li></ul></div></div></nav><div class="doc-version-change"><a href="https://www.echartsjs.com/zh/option3.html">前往 v3.x 文档</a><a href="https://echarts.baidu.com/echarts2/">前往 v2.x 文档</a></div><div class="ecdoc-apidoc dtui-cpt">
+<div class="ecdoc-api-left-area">
+
+    <div class="ecdoc-quick-link"><a href="https://www.echartsjs.com/zh/tutorial.html">教程</a><a href="https://www.echartsjs.com/zh/api.html">API</a><span>配置项</span><a href="https://www.echartsjs.com/zh/option-gl.html">GL</a></div>
+
+    <div class="ecdoc-api-query-box">
+        <div data-cpt="
+            type: &#39;TextInput&#39;,
+            name: &#39;queryInput&#39;,
+            viewModel: {
+                mouseEnterSelect: true,
+                confirmPoint: {blur: false, pressEnter: true}
+            }" class="dtui-cpt dtui-txipt dtui-cpt-type-text dtui-txipt-type-text"><input type="text" placeholder="配置项模糊搜索（快捷键&#39;/&#39;）" autocomplete="off"><span class="dtui-cpt-alert-mark dtui-txipt-alert-mark" style="display:none"></span><span class="dtui-cpt-alert-text dtui-txipt-alert-text" style="display:none"></span></div>
+        <div data-cpt="
+            type: &#39;CheckButton&#39;,
+            name: &#39;queryMode&#39;,
+            viewModel: {
+                css: &#39;query-mode&#39;,
+                checked: lib.ob(&#39;fuzzyPath&#39;),
+                dataList: [
+                    {
+                        value: &#39;fuzzyPath&#39;,
+                        placeholder: lang.queryBoxPlaceholderFuzzyPath,
+                        text: lang.queryBoxTextFuzzyPath
+                    },
+                    {
+                        value: &#39;anyText&#39;,
+                        placeholder: lang.queryBoxPlaceholderAnyText,
+                        text: lang.queryBoxTextAnyText
+                    }
+                ]
+            }" class="dtui-cpt dtui-chkbtn query-mode"><span class="dtui-chkbtn-i dtui-chkbtn-i-active" data-value-index="0">配置项搜索</span><span class="dtui-chkbtn-i" data-value-index="1">全文搜索</span></div>
+        <div data-cpt="
+            type: &#39;Button&#39;,
+            name: &#39;collapseAll&#39;,
+            text: lang.collapseAll,
+            css: &#39;collapse-all&#39;" class="dtui-cpt dtui-btn collapse-all">折叠</div>
+        <span class="query-result-info"></span>
+    </div>
+
+    <div class="ecdoc-api-tree-area ps-container ps-active-y" data-ps-id="22faea4c-1cb5-f988-fe1f-f56d8f3fd136">
+        <div class="ecdoc-api-tree dtui-cpt dtui-treelist" data-cpt="
+            type: &#39;TreeList&#39;,
+            name: &#39;apiDocTree&#39;,
+            viewModel: {
+                selected: viewModel.apiTreeSelected,
+                highlighted: viewModel.apiTreeHighlighted,
+                hovered: viewModel.apiTreeHovered,
+                datasource: viewModel.apiTreeDatasource,
+                resizeEvent: viewModel.apiTreeResize
+            }"><ul class="dtui-treelist-list" data-id="id-0"><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-expanded" data-id="root"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="root">.setOption({</span><ul class="dtui-treelist-list" data-id="root" style=""><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-21"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text dtui-treelist-text-active" data-id="id-21"><span class="ecdoc-api-tree-text-prop">title</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-21"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-135"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-135"><span class="ecdoc-api-tree-text-prop">legend</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-135"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-312"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-312"><span class="ecdoc-api-tree-text-prop">grid</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-312"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-421"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-421"><span class="ecdoc-api-tree-text-prop">xAxis</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-421"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-730"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-730"><span class="ecdoc-api-tree-text-prop">yAxis</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-730"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-1039"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-1039"><span class="ecdoc-api-tree-text-prop">polar</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-1039"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-1135"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-1135"><span class="ecdoc-api-tree-text-prop">radiusAxis</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-1135"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-1439"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-1439"><span class="ecdoc-api-tree-text-prop">angleAxis</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-1439"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-1686"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-1686"><span class="ecdoc-api-tree-text-prop">radar</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-1686"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-1862"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-1862"><span class="ecdoc-api-tree-text-prop">dataZoom</span>: [...],</span><ul class="dtui-treelist-list" data-id="id-1862"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-1967"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-1967"><span class="ecdoc-api-tree-text-prop">visualMap</span>: [...],</span><ul class="dtui-treelist-list" data-id="id-1967"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-2078"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-2078"><span class="ecdoc-api-tree-text-prop">tooltip</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-2078"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-2177"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-2177"><span class="ecdoc-api-tree-text-prop">axisPointer</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-2177"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-2242"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-2242"><span class="ecdoc-api-tree-text-prop">toolbox</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-2242"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-2498"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-2498"><span class="ecdoc-api-tree-text-prop">brush</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-2498"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-2516"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-2516"><span class="ecdoc-api-tree-text-prop">geo</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-2516"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-2824"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-2824"><span class="ecdoc-api-tree-text-prop">parallel</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-2824"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-3056"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-3056"><span class="ecdoc-api-tree-text-prop">parallelAxis</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-3056"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-3282"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-3282"><span class="ecdoc-api-tree-text-prop">singleAxis</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-3282"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-3682"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-3682"><span class="ecdoc-api-tree-text-prop">timeline</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-3682"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-3883"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-3883"><span class="ecdoc-api-tree-text-prop">graphic</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-3883"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-4476"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-4476"><span class="ecdoc-api-tree-text-prop">calendar</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-4476"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-4684"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-4684"><span class="ecdoc-api-tree-text-prop">dataset</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-4684"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-4689"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-4689"><span class="ecdoc-api-tree-text-prop">aria</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-4689"></ul></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-4717"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-4717"><span class="ecdoc-api-tree-text-prop">series</span>: [...],</span><ul class="dtui-treelist-list" data-id="id-4717"></ul></li><li class="dtui-treelist-i " data-id="id-25655"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25655"><span class="ecdoc-api-tree-text-prop">color</span>: {...},</span></li><li class="dtui-treelist-i " data-id="id-25656"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25656"><span class="ecdoc-api-tree-text-prop">backgroundColor</span>: {...},</span></li><li class="dtui-treelist-i dtui-treelist-parent dtui-treelist-collapsed" data-id="id-25657"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25657"><span class="ecdoc-api-tree-text-prop">textStyle</span>: {...},</span><ul class="dtui-treelist-list" data-id="id-25657"></ul></li><li class="dtui-treelist-i " data-id="id-25672"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25672"><span class="ecdoc-api-tree-text-prop">animation</span>: {...},</span></li><li class="dtui-treelist-i " data-id="id-25673"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25673"><span class="ecdoc-api-tree-text-prop">animationThreshold</span>: {...},</span></li><li class="dtui-treelist-i " data-id="id-25674"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25674"><span class="ecdoc-api-tree-text-prop">animationDuration</span>: {...},</span></li><li class="dtui-treelist-i " data-id="id-25675"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25675"><span class="ecdoc-api-tree-text-prop">animationEasing</span>: {...},</span></li><li class="dtui-treelist-i " data-id="id-25676"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25676"><span class="ecdoc-api-tree-text-prop">animationDelay</span>: {...},</span></li><li class="dtui-treelist-i " data-id="id-25677"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25677"><span class="ecdoc-api-tree-text-prop">animationDurationUpdate</span>: {...},</span></li><li class="dtui-treelist-i " data-id="id-25678"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25678"><span class="ecdoc-api-tree-text-prop">animationEasingUpdate</span>: {...},</span></li><li class="dtui-treelist-i " data-id="id-25679"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25679"><span class="ecdoc-api-tree-text-prop">animationDelayUpdate</span>: {...},</span></li><li class="dtui-treelist-i " data-id="id-25680"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25680"><span class="ecdoc-api-tree-text-prop">blendMode</span>: {...},</span></li><li class="dtui-treelist-i " data-id="id-25681"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25681"><span class="ecdoc-api-tree-text-prop">hoverLayerThreshold</span>: {...},</span></li><li class="dtui-treelist-i " data-id="id-25682"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25682"><span class="ecdoc-api-tree-text-prop">useUTC</span>: {...},</span></li><li class="dtui-treelist-post"></li></ul></li></ul></div>
+    <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 624px; right: 3px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 415px;"></div></div></div>
+
+</div>
+
+<div class="ecdoc-api-right-area">
+    <div class="ecdoc-api-doc-group-area ps-container ps-active-y" data-ps-id="b048d749-411f-0748-0f46-fccb248e0a73">
+        <div class="ecdoc-api-doc-group-content">
+<div class="ecdoc-api-doc-group-title"><strong>title</strong></div>
+<div class="ecdoc-api-doc-group-title-desc">
+    <p>标题组件，包含主标题和副标题。</p>
+<p>在 ECharts 2.x 中单个 ECharts 实例最多只能拥有一个标题组件。但是在 ECharts 3 中可以存在任意多个标题组件，这在需要标题进行排版，或者单个实例中的多个图表都需要标题时会比较有用。</p>
+<p><strong>例如下面不同缓动函数效果的示例，每一个缓动效果图都带有一个标题组件：</strong></p>
+<iframe data-src="https://www.echartsjs.com/examples/en/view.html?c=line-easing&amp;edit=1&amp;reset=1" width="700" height="400" src="./配置项手册_files/view.html"></iframe>
+
+
+
+
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-22">
+    <!-- <div data-tree-item-id="id-22"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-22">
+       <span class="ecdoc-api-doc-line-label">title.<strong>id</strong></span>
+       <span class="ecdoc-api-doc-line-type">string</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       
+    </div>
+    <p>组件 ID。默认不指定。指定则可用于在 option 或者 API 中引用组件。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-22" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-23">
+    <!-- <div data-tree-item-id="id-23"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-23">
+       <span class="ecdoc-api-doc-line-label">title.<strong>show</strong></span>
+       <span class="ecdoc-api-doc-line-type">boolean</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: true ]
+    </div>
+    <p>是否显示标题组件。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-23" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-24">
+    <!-- <div data-tree-item-id="id-24"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-24">
+       <span class="ecdoc-api-doc-line-label">title.<strong>text</strong></span>
+       <span class="ecdoc-api-doc-line-type">string</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: '' ]
+    </div>
+    <p>主标题文本，支持使用 <code>\n</code> 换行。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-24" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-25">
+    <!-- <div data-tree-item-id="id-25"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-25">
+       <span class="ecdoc-api-doc-line-label">title.<strong>link</strong></span>
+       <span class="ecdoc-api-doc-line-type">string</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: '' ]
+    </div>
+    <p>主标题文本超链接。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-25" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-26">
+    <!-- <div data-tree-item-id="id-26"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-26">
+       <span class="ecdoc-api-doc-line-label">title.<strong>target</strong></span>
+       <span class="ecdoc-api-doc-line-type">string</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 'blank' ]
+    </div>
+    <p>指定窗口打开主标题超链接。</p>
+<p><strong>可选：</strong></p>
+<ul>
+<li><p><code>'self'</code> 当前窗口打开</p>
+</li>
+<li><p><code>'blank'</code> 新窗口打开</p>
+</li>
+</ul>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-26" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-27">
+    <!-- <div data-tree-item-id="id-27"
+        class="ecdoc-api-doc-line-expand iconfont"
+        >展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head  ecdoc-api-doc-expandable " data-tree-item-id="id-27">
+       <span class="ecdoc-api-doc-line-label">title.<strong>textStyle</strong></span>
+       <span class="ecdoc-api-doc-line-type">*</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       
+    </div>
+    
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-27"><span>展开详情 ...</span></div>
+    
+    <div style="display:none" class="ecdoc-api-doc-sub-group" data-tree-item-id="id-27">
+        
+    </div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-69">
+    <!-- <div data-tree-item-id="id-69"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-69">
+       <span class="ecdoc-api-doc-line-label">title.<strong>subtext</strong></span>
+       <span class="ecdoc-api-doc-line-type">string</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: '' ]
+    </div>
+    <p>副标题文本，支持使用 <code>\n</code> 换行。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-69" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-70">
+    <!-- <div data-tree-item-id="id-70"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-70">
+       <span class="ecdoc-api-doc-line-label">title.<strong>sublink</strong></span>
+       <span class="ecdoc-api-doc-line-type">string</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: '' ]
+    </div>
+    <p>副标题文本超链接。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-70" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-71">
+    <!-- <div data-tree-item-id="id-71"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-71">
+       <span class="ecdoc-api-doc-line-label">title.<strong>subtarget</strong></span>
+       <span class="ecdoc-api-doc-line-type">string</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 'blank' ]
+    </div>
+    <p>指定窗口打开副标题超链接，可选：</p>
+<ul>
+<li><p><code>'self'</code> 当前窗口打开</p>
+</li>
+<li><p><code>'blank'</code> 新窗口打开</p>
+</li>
+</ul>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-71" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-72">
+    <!-- <div data-tree-item-id="id-72"
+        class="ecdoc-api-doc-line-expand iconfont"
+        >展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head  ecdoc-api-doc-expandable " data-tree-item-id="id-72">
+       <span class="ecdoc-api-doc-line-label">title.<strong>subtextStyle</strong></span>
+       <span class="ecdoc-api-doc-line-type">*</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       
+    </div>
+    
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-72"><span>展开详情 ...</span></div>
+    
+    <div style="display:none" class="ecdoc-api-doc-sub-group" data-tree-item-id="id-72">
+        
+    </div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-116">
+    <!-- <div data-tree-item-id="id-116"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-116">
+       <span class="ecdoc-api-doc-line-label">title.<strong>textAlign</strong></span>
+       <span class="ecdoc-api-doc-line-type">string</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 'auto' ]
+    </div>
+    <p>整体（包括 text 和 subtext）的水平对齐。</p>
+<p>可选值：<code>'auto'</code>、<code>'left'</code>、<code>'right'</code>、<code>'center'</code>。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-116" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-117">
+    <!-- <div data-tree-item-id="id-117"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-117">
+       <span class="ecdoc-api-doc-line-label">title.<strong>textVerticalAlign</strong></span>
+       <span class="ecdoc-api-doc-line-type">string</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 'auto' ]
+    </div>
+    <p>整体（包括 text 和 subtext）的垂直对齐。</p>
+<p>可选值：<code>'auto'</code>、<code>'top'</code>、<code>'bottom'</code>、<code>'middle'</code>。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-117" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-118">
+    <!-- <div data-tree-item-id="id-118"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-118">
+       <span class="ecdoc-api-doc-line-label">title.<strong>triggerEvent</strong></span>
+       <span class="ecdoc-api-doc-line-type">boolean</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: false ]
+    </div>
+    <p>是否触发事件。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-118" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-119">
+    <!-- <div data-tree-item-id="id-119"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-119">
+       <span class="ecdoc-api-doc-line-label">title.<strong>padding</strong></span>
+       <span class="ecdoc-api-doc-line-type">number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 5 ]
+    </div>
+    <p>标题内边距，单位px，默认各方向内边距为5，接受数组分别设定上右下左边距。</p>
+<p>使用示例：</p>
+<pre><code class="lang-js prettyprint prettyprinted" style=""><span class="com">// 设置内边距为 5</span><span class="pln">
+padding</span><span class="pun">:</span><span class="pln"> </span><span class="lit">5</span><span class="pln">
+</span><span class="com">// 设置上下的内边距为 5，左右的内边距为 10</span><span class="pln">
+padding</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">10</span><span class="pun">]</span><span class="pln">
+</span><span class="com">// 分别设置四个方向的内边距</span><span class="pln">
+padding</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+    </span><span class="lit">5</span><span class="pun">,</span><span class="pln">  </span><span class="com">// 上</span><span class="pln">
+    </span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="com">// 右</span><span class="pln">
+    </span><span class="lit">5</span><span class="pun">,</span><span class="pln">  </span><span class="com">// 下</span><span class="pln">
+    </span><span class="lit">10</span><span class="pun">,</span><span class="pln"> </span><span class="com">// 左</span><span class="pln">
+</span><span class="pun">]</span></code></pre>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-119" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-120">
+    <!-- <div data-tree-item-id="id-120"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-120">
+       <span class="ecdoc-api-doc-line-label">title.<strong>itemGap</strong></span>
+       <span class="ecdoc-api-doc-line-type">number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 10 ]
+    </div>
+    <p>主副标题之间的间距。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-120" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-121">
+    <!-- <div data-tree-item-id="id-121"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-121">
+       <span class="ecdoc-api-doc-line-label">title.<strong>zlevel</strong></span>
+       <span class="ecdoc-api-doc-line-type">number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 0 ]
+    </div>
+    <p>所有图形的 zlevel 值。</p>
+<p><code>zlevel</code>用于 Canvas 分层，不同<code>zlevel</code>值的图形会放置在不同的 Canvas 中，Canvas 分层是一种常见的优化手段。我们可以把一些图形变化频繁（例如有动画）的组件设置成一个单独的<code>zlevel</code>。需要注意的是过多的 Canvas 会引起内存开销的增大，在手机端上需要谨慎使用以防崩溃。</p>
+<p><code>zlevel</code> 大的 Canvas 会放在 <code>zlevel</code> 小的 Canvas 的上面。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-121" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-122">
+    <!-- <div data-tree-item-id="id-122"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-122">
+       <span class="ecdoc-api-doc-line-label">title.<strong>z</strong></span>
+       <span class="ecdoc-api-doc-line-type">number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 2 ]
+    </div>
+    <p>组件的所有图形的<code>z</code>值。控制图形的前后顺序。<code>z</code>值小的图形会被<code>z</code>值大的图形覆盖。</p>
+<p><code>z</code>相比<code>zlevel</code>优先级更低，而且不会创建新的 Canvas。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-122" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-123">
+    <!-- <div data-tree-item-id="id-123"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-123">
+       <span class="ecdoc-api-doc-line-label">title.<strong>left</strong></span>
+       <span class="ecdoc-api-doc-line-type">string, number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 'auto' ]
+    </div>
+    <p>grid 组件离容器左侧的距离。</p>
+<p><code>left</code> 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>'20%'</code> 这样相对于容器高宽的百分比，也可以是 <code>'left'</code>, <code>'center'</code>, <code>'right'</code>。</p>
+<p>如果 <code>left</code> 的值为<code>'left'</code>, <code>'center'</code>, <code>'right'</code>，组件会根据相应的位置自动对齐。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-123" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-124">
+    <!-- <div data-tree-item-id="id-124"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-124">
+       <span class="ecdoc-api-doc-line-label">title.<strong>top</strong></span>
+       <span class="ecdoc-api-doc-line-type">string, number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 'auto' ]
+    </div>
+    <p>grid 组件离容器上侧的距离。</p>
+<p><code>top</code> 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>'20%'</code> 这样相对于容器高宽的百分比，也可以是 <code>'top'</code>, <code>'middle'</code>, <code>'bottom'</code>。</p>
+<p>如果 <code>top</code> 的值为<code>'top'</code>, <code>'middle'</code>, <code>'bottom'</code>，组件会根据相应的位置自动对齐。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-124" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-125">
+    <!-- <div data-tree-item-id="id-125"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-125">
+       <span class="ecdoc-api-doc-line-label">title.<strong>right</strong></span>
+       <span class="ecdoc-api-doc-line-type">string, number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 'auto' ]
+    </div>
+    <p>grid 组件离容器右侧的距离。</p>
+<p><code>right</code> 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>'20%'</code> 这样相对于容器高宽的百分比。</p>
+<p>默认自适应。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-125" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-126">
+    <!-- <div data-tree-item-id="id-126"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-126">
+       <span class="ecdoc-api-doc-line-label">title.<strong>bottom</strong></span>
+       <span class="ecdoc-api-doc-line-type">string, number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 'auto' ]
+    </div>
+    <p>grid 组件离容器下侧的距离。</p>
+<p>bottom 的值可以是像 <code>20</code> 这样的具体像素值，可以是像 <code>'20%'</code> 这样相对于容器高宽的百分比。</p>
+<p>默认自适应。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-126" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-127">
+    <!-- <div data-tree-item-id="id-127"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-127">
+       <span class="ecdoc-api-doc-line-label">title.<strong>backgroundColor</strong></span>
+       <span class="ecdoc-api-doc-line-type">Color</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 'transparent' ]
+    </div>
+    <p>标题背景色，默认透明。</p>
+<blockquote>
+<p>颜色可以使用 RGB 表示，比如 <code>'rgb(128, 128, 128)'</code>   ，如果想要加上 alpha 通道，可以使用 RGBA，比如 <code>'rgba(128, 128, 128, 0.5)'</code>，也可以使用十六进制格式，比如 <code>'#ccc'</code></p>
+</blockquote>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-127" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-128">
+    <!-- <div data-tree-item-id="id-128"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-128">
+       <span class="ecdoc-api-doc-line-label">title.<strong>borderColor</strong></span>
+       <span class="ecdoc-api-doc-line-type">Color</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: '#ccc' ]
+    </div>
+    <p>标题的边框颜色。支持的颜色格式同 backgroundColor。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-128" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-129">
+    <!-- <div data-tree-item-id="id-129"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-129">
+       <span class="ecdoc-api-doc-line-label">title.<strong>borderWidth</strong></span>
+       <span class="ecdoc-api-doc-line-type">number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 0 ]
+    </div>
+    <p>标题的边框线宽。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-129" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-130">
+    <!-- <div data-tree-item-id="id-130"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-130">
+       <span class="ecdoc-api-doc-line-label">title.<strong>borderRadius</strong></span>
+       <span class="ecdoc-api-doc-line-type">number, Array</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 0 ]
+    </div>
+    <p>圆角半径，单位px，支持传入数组分别指定 4 个圆角半径。
+如:</p>
+<pre><code class="prettyprint prettyprinted" style=""><span class="pln">borderRadius</span><span class="pun">:</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="com">// 统一设置四个角的圆角大小</span><span class="pln">
+borderRadius</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">0</span><span class="pun">]</span><span class="pln"> </span><span class="com">//（顺时针左上，右上，右下，左下）</span></code></pre>
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-130" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-131">
+    <!-- <div data-tree-item-id="id-131"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-131">
+       <span class="ecdoc-api-doc-line-label">title.<strong>shadowBlur</strong></span>
+       <span class="ecdoc-api-doc-line-type">number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       
+    </div>
+    <p>图形阴影的模糊大小。该属性配合 <code>shadowColor</code>,<code>shadowOffsetX</code>, <code>shadowOffsetY</code> 一起设置图形的阴影效果。</p>
+<p>示例：</p>
+<pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pun">{</span><span class="pln">
+    shadowColor</span><span class="pun">:</span><span class="pln"> </span><span class="str">'rgba(0, 0, 0, 0.5)'</span><span class="pun">,</span><span class="pln">
+    shadowBlur</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><strong>注意</strong>：此配置项生效的前提是，设置了 <code>show: true</code> 以及值不为 <code>tranparent</code> 的背景色 <code>backgroundColor</code>。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-131" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-132">
+    <!-- <div data-tree-item-id="id-132"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-132">
+       <span class="ecdoc-api-doc-line-label">title.<strong>shadowColor</strong></span>
+       <span class="ecdoc-api-doc-line-type">Color</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       
+    </div>
+    <p>阴影颜色。支持的格式同<code>color</code>。</p>
+<p><strong>注意</strong>：此配置项生效的前提是，设置了 <code>show: true</code>。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-132" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-133">
+    <!-- <div data-tree-item-id="id-133"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-133">
+       <span class="ecdoc-api-doc-line-label">title.<strong>shadowOffsetX</strong></span>
+       <span class="ecdoc-api-doc-line-type">number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 0 ]
+    </div>
+    <p>阴影水平方向上的偏移距离。</p>
+<p><strong>注意</strong>：此配置项生效的前提是，设置了 <code>show: true</code>。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-133" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="id-134">
+    <!-- <div data-tree-item-id="id-134"
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none">展开详情 ...</div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="id-134">
+       <span class="ecdoc-api-doc-line-label">title.<strong>shadowOffsetY</strong></span>
+       <span class="ecdoc-api-doc-line-type">number</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       [ default: 0 ]
+    </div>
+    <p>阴影垂直方向上的偏移距离。</p>
+<p><strong>注意</strong>：此配置项生效的前提是，设置了 <code>show: true</code>。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="id-134" style="display:none"><span>展开详情 ...</span></div>
+    
+</div>
+</div>
+    <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 624px; right: 3px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 67px;"></div></div></div>
+</div>
+
+<div class="ecdoc-api-hover-desc" style="display:none">
+</div>
+</div></div><script type="text/javascript" src="./配置项手册_files/bootstrap.min.js.下载"></script><script type="text/javascript" src="./配置项手册_files/common.js.下载"></script><script src="./配置项手册_files/jquery.event.move.js.下载"></script><script src="./配置项手册_files/jquery.twentytwenty.js.下载"></script><script type="text/javascript">window.globalArgsExtra = {
+    pageName: 'option',
+    initHash: 'title',
+    docTreeRootText: '.setOption('
+};</script><script src="./配置项手册_files/jquery.auto-complete.min.js.下载"></script><script type="text/javascript">document.getElementById('nav-doc').className = 'active';
+
+var vendorPath = '../vendors';
+
+define('globalArgs', extend({
+    version: '1571424763934',
+    basePath: './',
+    // Schema url is added by each doc page
+    schemaUrl: '',
+    iconfont: {
+        down: '&#' + parseInt('e600', 16),
+        up: '&#' + parseInt('e603', 16),
+        right: '&#' + parseInt('e602', 16),
+        left: '&#' + parseInt('e604', 16),
+        handLens: '&#' + parseInt('e601', 16)
+    }
+}, window.globalArgsExtra || {}));
+
+define('prettyPrint', function () {
+    return prettyPrint;
+});
+
+require.config({
+    baseUrl: './js',
+    paths: {
+        dt: vendorPath + '/dt/0.0.1',
+        tpl: vendorPath + '/dt/0.0.1/tplLoader',
+        etpl: vendorPath + '/etpl/3.0.0/etpl.min',
+        signals: vendorPath + '/signals/1.0.0/signals.min',
+        hasher: vendorPath + '/hasher/1.2.0/hasher.min',
+        perfectScrollbar: vendorPath + '/perfect-scrollbar/0.6.8/js/perfect-scrollbar'
+    },
+    urlArgs: '_v_=1571424763934'
+});
+
+require(['docTool/main'], function (main) {
+    main.init();
+});
+
+function extend(tar, src) {
+    for (var name in src) {
+        if (src.hasOwnProperty(name)) {
+            tar[name] = src[name];
+        }
+    }
+    return tar;
+}</script><!-- Baidu Tongji--><script type="text/javascript">var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?54b918eee37cb8a7045f0fd0f0b24395";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- Google Analytics--><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=UA-141228404-1"></script><script type="text/javascript">window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-141228404-1');</script><div class="autocomplete-suggestions "></div></body></html>

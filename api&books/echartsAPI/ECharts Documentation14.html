@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://www.echartsjs.com/zh/tutorial.html#%E6%97%AD%E6%97%A5%E5%9B%BE -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1" user-scalable="no"><meta name="description" content="ECharts, a powerful, interactive charting and visualization library for browser"><link rel="shortcut icon" href="https://www.echartsjs.com/zh/images/favicon.png"><link rel="stylesheet" type="text/css" href="./ECharts Documentation14_files/bootstrap.min.css"><!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries--><!--[if lt IE 9]><script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script><script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--><link rel="stylesheet" type="text/css" href="./ECharts Documentation14_files/main.css"><script src="./ECharts Documentation14_files/hm.js.下载"></script><script>window.EC_WWW_LANG = 'zh';
+</script><script type="text/javascript" src="./ECharts Documentation14_files/pace.min.js.下载"></script><style>@font-face {font-family:"noto-thin";src:local("Microsoft Yahei");}@font-face {font-family:"noto-light";src:local("Microsoft Yahei");}</style><script id="font-hack" type="text/javascript">if (/windows/i.test(navigator.userAgent)) {
+    var el = document.createElement('style');
+    el.innerHTML = ''
+        + '@font-face {font-family:"noto-thin";src:local("Microsoft Yahei");}'
+        + '@font-face {font-family:"noto-light";src:local("Microsoft Yahei");}';
+    document.head.insertBefore(el, document.getElementById('font-hack'));
+}
+</script><title>ECharts Documentation</title><link rel="stylesheet" type="text/css" href="./ECharts Documentation14_files/ecOption.css"><link rel="stylesheet" type="text/css" href="./ECharts Documentation14_files/prettify.css"><link rel="stylesheet" type="text/css" href="./ECharts Documentation14_files/perfect-scrollbar.min.css"><link rel="stylesheet" type="text/css" href="./ECharts Documentation14_files/jquery.auto-complete.css"><link rel="stylesheet" type="text/css" href="./ECharts Documentation14_files/twentytwenty.css"><script src="./ECharts Documentation14_files/log.js.下载"></script><script src="./ECharts Documentation14_files/prettify.js.下载"></script><script src="./ECharts Documentation14_files/lang-css.js.下载"></script><script src="./ECharts Documentation14_files/esl.js.下载"></script><script type="text/javascript" src="./ECharts Documentation14_files/jquery.min.js.下载"></script><script data-require-id="docTool/main" src="./ECharts Documentation14_files/main.js.下载" async=""></script></head><!--[if lte IE 8]><body class="lower-ie"><div id="lowie-main"><img src="./images/forie.png" alt="ie tip"></div></body><![endif]-->
+<!--[if (gt IE 8)|!(IE)]><body class="undefined"></body><![endif]--><body class="  pace-done"><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div><div id="main" class="tutorial"><nav class="navbar navbar-default navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="https://www.echartsjs.com/zh/index.html" class="navbar-brand"><img src="./ECharts Documentation14_files/logo.png" alt="echarts logo" class="navbar-logo"></a></div><div id="navbar-collapse" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-left"><li id="nav-index"><a href="https://www.echartsjs.com/zh/index.html">首页</a></li><li id="nav-doc" class="active"><a href="https://www.echartsjs.com/zh/tutorial.html#" data-toggle="dropdown" class="dropdown-toggle">文档<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://www.echartsjs.com/zh/feature.html">特性</a></li><li><a href="https://www.echartsjs.com/zh/tutorial.html">教程</a></li><li><a href="https://www.echartsjs.com/zh/api.html">API</a></li><li><a href="https://www.echartsjs.com/zh/cheat-sheet.html">术语速查手册<span class="new">NEW</span></a></li><li><a href="https://www.echartsjs.com/zh/option.html">配置项手册</a></li><li><a href="https://www.echartsjs.com/zh/option-gl.html">GL 配置项手册</a></li><li><a href="https://www.echartsjs.com/zh/changelog.html">版本记录</a></li></ul></li><li id="nav-download" class="dropdown"><a href="https://www.echartsjs.com/zh/tutorial.html#" data-toggle="dropdown" class="dropdown-toggle">下载<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://www.echartsjs.com/zh/download.html">下载</a></li><li><a href="https://www.echartsjs.com/zh/download-theme.html">主题下载</a></li><li><a href="https://www.echartsjs.com/zh/download-extension.html">扩展下载</a></li></ul></li><li id="nav-examples"><a href="https://www.echartsjs.com/zh/tutorial.html#" data-toggle="dropdown" class="dropdown-toggle">实例<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://www.echartsjs.com/examples/zh/index.html">官方实例</a></li><li><a href="https://www.echartsjs.com/examples/zh/index.html#chart-type-globe">GL 实例</a></li></ul></li><li id="nav-community"><a href="https://www.echartsjs.com/zh/tutorial.html#" data-toggle="dropdown" class="dropdown-toggle">社区<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://gallery.echartsjs.com/">Gallery</a></li><li><a href="https://efe.baidu.com/tags/ECharts/">博客</a></li></ul></li><li id="nav-tool"><a href="https://www.echartsjs.com/zh/tutorial.html#" data-toggle="dropdown" class="dropdown-toggle">工具<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://www.echartsjs.com/zh/spreadsheet.html">表格工具</a></li><li><a href="https://echarts.baidu.com/theme-builder/">主题构建工具</a></li></ul></li><li id="nav-contribute"><a href="https://www.echartsjs.com/zh/tutorial.html#" data-toggle="dropdown" class="dropdown-toggle">贡献<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://github.com/apache/incubator-echarts" target="_blank">源码（GitHub）</a></li><li><a href="https://github.com/apache/incubator-echarts/issues" target="_blank">Issues</a></li><li><a href="https://www.echartsjs.com/zh/coding-standard.html">代码规范</a></li></ul></li><li id="nav-about"><a href="https://www.echartsjs.com/zh/tutorial.html#" data-toggle="dropdown" class="dropdown-toggle">关于<b class="caret"></b></a><ul class="dropdown-menu"><li><a href="https://www.echartsjs.com/zh/committers.html">贡献者列表</a></li><li><a href="https://www.apache.org/licenses/">版权声明</a></li><li><a href="https://www.echartsjs.com/zh/maillist.html">邮件列表</a></li><li><a href="https://www.echartsjs.com/zh/dependencies.html">依赖项</a></li><li><a href="https://www.echartsjs.com/zh/faq.html">常见问题</a></li></ul></li></ul><ul class="nav navbar-nav navbar-right"><li id="nav-github"><a href="https://github.com/ecomfe/echarts" target="_blank"><img src="./ECharts Documentation14_files/github.png" width="18"></a></li><li id="nav-homeen"><a href="javascript:;" onclick="changeLang(&#39;en&#39;)">EN</a></li></ul></div></div></nav><div class="ecdoc-apidoc dtui-cpt">
+<div class="ecdoc-api-left-area">
+
+    <div class="ecdoc-quick-link"><span>教程</span><a href="https://www.echartsjs.com/zh/api.html">API</a><a href="https://www.echartsjs.com/zh/option.html">配置项</a><a href="https://www.echartsjs.com/zh/option-gl.html">GL</a></div>
+
+    <div class="ecdoc-api-query-box">
+        <div data-cpt="
+            type: &#39;TextInput&#39;,
+            name: &#39;queryInput&#39;,
+            viewModel: {
+                mouseEnterSelect: true,
+                confirmPoint: {blur: false, pressEnter: true}
+            }" class="dtui-cpt dtui-txipt dtui-cpt-type-text dtui-txipt-type-text"><input type="text" placeholder="教程名称搜索（快捷键&#39;/&#39;）" autocomplete="off"><span class="dtui-cpt-alert-mark dtui-txipt-alert-mark" style="display:none"></span><span class="dtui-cpt-alert-text dtui-txipt-alert-text" style="display:none"></span></div>
+        <div data-cpt="
+            type: &#39;CheckButton&#39;,
+            name: &#39;queryMode&#39;,
+            viewModel: {
+                css: &#39;query-mode&#39;,
+                checked: lib.ob(&#39;fuzzyPath&#39;),
+                dataList: [
+                    {
+                        value: &#39;fuzzyPath&#39;,
+                        placeholder: lang.queryBoxPlaceholderFuzzyPath,
+                        text: lang.queryBoxTextFuzzyPath
+                    },
+                    {
+                        value: &#39;anyText&#39;,
+                        placeholder: lang.queryBoxPlaceholderAnyText,
+                        text: lang.queryBoxTextAnyText
+                    }
+                ]
+            }" class="dtui-cpt dtui-chkbtn query-mode"><span class="dtui-chkbtn-i dtui-chkbtn-i-active" data-value-index="0">教程搜索</span><span class="dtui-chkbtn-i" data-value-index="1">全文搜索</span></div>
+        <div data-cpt="
+            type: &#39;Button&#39;,
+            name: &#39;collapseAll&#39;,
+            text: lang.collapseAll,
+            css: &#39;collapse-all&#39;" class="dtui-cpt dtui-btn collapse-all">折叠</div>
+        <span class="query-result-info"></span>
+    </div>
+
+    <div class="ecdoc-api-tree-area ps-container ps-active-y" data-ps-id="11e9c949-65f1-13d9-a6c1-62e28bd4da2e">
+        <div class="ecdoc-api-tree dtui-cpt dtui-treelist" data-cpt="
+            type: &#39;TreeList&#39;,
+            name: &#39;apiDocTree&#39;,
+            viewModel: {
+                selected: viewModel.apiTreeSelected,
+                highlighted: viewModel.apiTreeHighlighted,
+                hovered: viewModel.apiTreeHovered,
+                datasource: viewModel.apiTreeDatasource,
+                resizeEvent: viewModel.apiTreeResize
+            }"><ul class="dtui-treelist-list" data-id="id-0"><li class="dtui-treelist-i " data-id="id-21"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-21"><span class="ecdoc-api-tree-text-prop">5 分钟上手 ECharts</span></span></li><li class="dtui-treelist-i " data-id="id-22"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-22"><span class="ecdoc-api-tree-text-prop">自定义构建 ECharts</span></span></li><li class="dtui-treelist-i " data-id="id-23"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-23"><span class="ecdoc-api-tree-text-prop">在 webpack 中使用 ECharts</span></span></li><li class="dtui-treelist-i " data-id="id-24"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-24"><span class="ecdoc-api-tree-text-prop">个性化图表的样式</span></span></li><li class="dtui-treelist-i " data-id="id-25"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-25"><span class="ecdoc-api-tree-text-prop">ECharts 中的样式简介</span></span></li><li class="dtui-treelist-i " data-id="id-26"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-26"><span class="ecdoc-api-tree-text-prop">异步数据加载和更新</span></span></li><li class="dtui-treelist-i " data-id="id-27"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-27"><span class="ecdoc-api-tree-text-prop">使用 dataset 管理数据</span></span></li><li class="dtui-treelist-i " data-id="id-28"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-28"><span class="ecdoc-api-tree-text-prop">在图表中加入交互组件</span></span></li><li class="dtui-treelist-i " data-id="id-29"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-29"><span class="ecdoc-api-tree-text-prop">移动端自适应</span></span></li><li class="dtui-treelist-i " data-id="id-30"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-30"><span class="ecdoc-api-tree-text-prop">数据的视觉映射</span></span></li><li class="dtui-treelist-i " data-id="id-31"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-31"><span class="ecdoc-api-tree-text-prop">ECharts 中的事件和行为</span></span></li><li class="dtui-treelist-i " data-id="id-32"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-32"><span class="ecdoc-api-tree-text-prop">小例子：自己实现拖拽</span></span></li><li class="dtui-treelist-i " data-id="id-33"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-33"><span class="ecdoc-api-tree-text-prop">小例子：实现日历图</span></span></li><li class="dtui-treelist-i " data-id="id-34"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text dtui-treelist-text-active" data-id="id-34"><span class="ecdoc-api-tree-text-prop">旭日图</span></span></li><li class="dtui-treelist-i " data-id="id-35"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-35"><span class="ecdoc-api-tree-text-prop">自定义系列</span></span></li><li class="dtui-treelist-i " data-id="id-36"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text dtui-treelist-text-hover" data-id="id-36"><span class="ecdoc-api-tree-text-prop">富文本标签</span></span></li><li class="dtui-treelist-i " data-id="id-37"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-37"><span class="ecdoc-api-tree-text-prop">服务端渲染</span></span></li><li class="dtui-treelist-i " data-id="id-38"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-38"><span class="ecdoc-api-tree-text-prop">使用 Canvas 或者 SVG 渲染</span></span></li><li class="dtui-treelist-i " data-id="id-39"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-39"><span class="ecdoc-api-tree-text-prop">在图表中支持无障碍访问</span></span></li><li class="dtui-treelist-i " data-id="id-40"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-40"><span class="ecdoc-api-tree-text-prop">使用 ECharts GL 实现基础的三维可视化</span></span></li><li class="dtui-treelist-i " data-id="id-41"><i class="dtui-treelist-thumb"></i> <span class="dtui-treelist-text" data-id="id-41"><span class="ecdoc-api-tree-text-prop">在微信小程序中使用 ECharts</span></span></li></ul></div>
+    <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: -130.6px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 133.6px; height: 624px; right: 3px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 110px; height: 513px;"></div></div></div>
+
+</div>
+
+<div class="ecdoc-api-right-area">
+    <div class="ecdoc-api-doc-group-area ps-container ps-active-y" data-ps-id="509df839-6c85-9c46-2e11-e9d4e6a7f1c4">
+        <div class="ecdoc-api-doc-group-content">
+<div class="ecdoc-api-doc-group-title"><strong>旭日图</strong></div>
+<div class="ecdoc-api-doc-group-title-desc">
+    <p><a href="https://en.wikipedia.org/wiki/Pie_chart#Ring_chart_/_Sunburst_chart_/_Multilevel_pie_chart" target="_blank">旭日图（Sunburst）</a>由多层的环形图组成，在数据结构上，内圈是外圈的父节点。因此，它既能像<a href="https://www.echartsjs.com/zh/option.html#series-pie" target="_blank">饼图</a>一样表现局部和整体的占比，又能像<a href="https://www.echartsjs.com/zh/option.html#series-treemap" target="_blank">矩形树图</a>一样表现层级关系。</p>
+<iframe data-src="https://www.echartsjs.com/examples/en/view.html?c=sunburst-monochrome&amp;edit=1&amp;reset=1" width="700" height="500" src="./ECharts Documentation14_files/view.html"></iframe>
+
+
+<h2 id="-">引入相关文件</h2>
+<p>旭日图是 ECharts 4.0 新增的图表类型，从 <a href="https://www.jsdelivr.com/package/npm/echarts" target="_blank">CDN</a> 引入完整版的 <a href="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js" target="_blank">echarts.min.js</a></p>
+<h2 id="-">最简单的旭日图</h2>
+<p>创建旭日图需要在 <code>series</code> 配置项中声明类型为 <code>'sunburst'</code> 的系列，并且以树形结构声明其 <code>data</code>：</p>
+<pre><code class="lang-js prettyprint prettyprinted" style=""><span class="kwd">var</span><span class="pln"> option </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    series</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        type</span><span class="pun">:</span><span class="pln"> </span><span class="str">'sunburst'</span><span class="pun">,</span><span class="pln">
+        data</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[{</span><span class="pln">
+            name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'A'</span><span class="pun">,</span><span class="pln">
+            value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pun">,</span><span class="pln">
+            children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[{</span><span class="pln">
+                value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">3</span><span class="pun">,</span><span class="pln">
+                name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Aa'</span><span class="pln">
+            </span><span class="pun">},</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln">
+                name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Ab'</span><span class="pln">
+            </span><span class="pun">}]</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'B'</span><span class="pun">,</span><span class="pln">
+            children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[{</span><span class="pln">
+                name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Ba'</span><span class="pun">,</span><span class="pln">
+                value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">4</span><span class="pln">
+            </span><span class="pun">},</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Bb'</span><span class="pun">,</span><span class="pln">
+                value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pln">
+            </span><span class="pun">}]</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'C'</span><span class="pun">,</span><span class="pln">
+            value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">3</span><span class="pln">
+        </span><span class="pun">}]</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">};</span></code></pre>
+<p>得到以下结果：</p>
+<iframe data-src="https://www.echartsjs.com/examples/en/view.html?c=doc-example/sunburst-simple&amp;edit=1&amp;reset=1" width="700" height="400" src="./ECharts Documentation14_files/saved_resource.html"></iframe>
+
+
+<h2 id="-">颜色等样式调整</h2>
+<p>默认情况下会使用全局调色盘 <a href="https://www.echartsjs.com/zh/option.html#color" target="_blank">color</a> 分配最内层的颜色，其余层则与其父元素同色。在旭日图中，扇形块的颜色有以下三种设置方式：</p>
+<ul>
+<li>在 <a href="https://www.echartsjs.com/zh/option.html#series-sunburst.data.itemStyle" target="_blank">series.data.itemStyle</a> 中设置每个扇形块的样式；</li>
+<li>在 <a href="https://www.echartsjs.com/zh/option.html#series-sunburst.levels.itemStyle" target="_blank">series.levels.itemStyle</a> 中设置每一层的样式；</li>
+<li>在 <a href="https://www.echartsjs.com/zh/option.html#series-sunburst.itemStyle" target="_blank">series.itemStyle</a> 中设置整个旭日图的样式。</li>
+</ul>
+<p>上述三者的优先级是从高到低的，也就是说，配置了 <code>series.data.itemStyle</code> 的扇形块将会覆盖 <code>series.levels.itemStyle</code> 和 <code>series.itemStyle</code> 的设置。</p>
+<p>下面，我们将整体的颜色设为灰色 <code>'#aaa'</code>，将最内层的颜色设为蓝色 <code>'blue'</code>，将 <code>Aa</code>、<code>B</code> 这两块设为红色 <code>'red'</code>。</p>
+<pre><code class="lang-js prettyprint prettyprinted" style=""><span class="kwd">var</span><span class="pln"> option </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    series</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        type</span><span class="pun">:</span><span class="pln"> </span><span class="str">'sunburst'</span><span class="pun">,</span><span class="pln">
+        data</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[{</span><span class="pln">
+            name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'A'</span><span class="pun">,</span><span class="pln">
+            value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">10</span><span class="pun">,</span><span class="pln">
+            children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[{</span><span class="pln">
+                value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">3</span><span class="pun">,</span><span class="pln">
+                name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Aa'</span><span class="pun">,</span><span class="pln">
+                itemStyle</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                    color</span><span class="pun">:</span><span class="pln"> </span><span class="str">'red'</span><span class="pln">
+                </span><span class="pun">}</span><span class="pln">
+            </span><span class="pun">},</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">5</span><span class="pun">,</span><span class="pln">
+                name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Ab'</span><span class="pln">
+            </span><span class="pun">}]</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'B'</span><span class="pun">,</span><span class="pln">
+            children</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[{</span><span class="pln">
+                name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Ba'</span><span class="pun">,</span><span class="pln">
+                value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">4</span><span class="pln">
+            </span><span class="pun">},</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Bb'</span><span class="pun">,</span><span class="pln">
+                value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pln">
+            </span><span class="pun">}],</span><span class="pln">
+            itemStyle</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                color</span><span class="pun">:</span><span class="pln"> </span><span class="str">'red'</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'C'</span><span class="pun">,</span><span class="pln">
+            value</span><span class="pun">:</span><span class="pln"> </span><span class="lit">3</span><span class="pln">
+        </span><span class="pun">}],</span><span class="pln">
+        itemStyle</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            color</span><span class="pun">:</span><span class="pln"> </span><span class="str">'#aaa'</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        levels</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[{</span><span class="pln">
+            </span><span class="com">// 留给数据下钻的节点属性</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            itemStyle</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                color</span><span class="pun">:</span><span class="pln"> </span><span class="str">'blue'</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">}]</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">};</span></code></pre>
+<p>效果为：</p>
+<iframe data-src="https://www.echartsjs.com/examples/en/view.html?c=doc-example/sunburst-color&amp;edit=1&amp;reset=1" width="700" height="300" src="./ECharts Documentation14_files/saved_resource(1).html"></iframe>
+
+
+
+<h2 id="-">按层配置样式</h2>
+<p>旭日图是一种有层次的结构，为了方便同一层样式的配置，我们提供了 <a href="https://www.echartsjs.com/zh/option.html#series-sunburst.levels" target="_blank">levels</a> 配置项。它是一个数组，其中的第 0 项表示数据下钻后返回上级的图形，其后的每一项分别表示从圆心向外层的层级。</p>
+<p>例如，假设我们没有数据下钻功能，并且希望将最内层的扇形块的颜色设为红色，文字设为蓝色，可以这样设置：</p>
+<pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">series</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    </span><span class="com">// ...</span><span class="pln">
+    levels</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            </span><span class="com">// 留给数据下钻点的空白配置</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            </span><span class="com">// 最靠内测的第一层</span><span class="pln">
+            itemStyle</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                color</span><span class="pun">:</span><span class="pln"> </span><span class="str">'red'</span><span class="pln">
+            </span><span class="pun">},</span><span class="pln">
+            label</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+                color</span><span class="pun">:</span><span class="pln"> </span><span class="str">'blue'</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+        </span><span class="pun">},</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln">
+            </span><span class="com">// 第二层 ...</span><span class="pln">
+        </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">]</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p>在实际使用的过程中，你会发现按层配置样式是一个很常用的功能，能够很大程度上提高配置的效率。</p>
+<h2 id="-">数据下钻</h2>
+<p>旭日图默认支持数据下钻，也就是说，当点击了扇形块之后，将以该扇形块的数据作为根节点，便于进一步了解该数据的细节。</p>
+<iframe data-src="https://www.echartsjs.com/examples/en/view.html?c=sunburst-simple&amp;edit=1&amp;reset=1" width="700" height="500" src="./ECharts Documentation14_files/saved_resource(2).html"></iframe>
+
+
+<p>当数据下钻后，中间会出现一个用于返回上一层的图形，该图形的样式可以通过 <a href="https://www.echartsjs.com/zh/option.html#series-sunburst.levels" target="_blank">levels[0]</a> 配置。</p>
+<p>如果不需要数据下钻功能，可以通过将 <a href="https://www.echartsjs.com/zh/option.html#series-sunburst.nodeClick" target="_blank">nodeClick</a> 设置为 <code>false</code> 关闭；或者将其设为 <code>'link'</code>，并将 <a href="https://www.echartsjs.com/zh/option.html#series-sunburst.data.link" target="_blank">data.link</a> 设为点击扇形块对应打开的链接。</p>
+<h2 id="-">高亮相关扇形块</h2>
+<p>旭日图支持鼠标移动到某扇形块时，高亮相关数据块的操作，可以通过设置 <a href="https://www.echartsjs.com/zh/option.html#series-sunburst.highlightPolicy" target="_blank">highlightPolicy</a>，包括以下几种高亮方式：</p>
+<ul>
+<li><code>'descendant'</code>（默认值）：高亮鼠标移动所在扇形块与其后代元素；</li>
+<li><code>'ancestor'</code>：高亮鼠标所在扇形块与其祖先元素；</li>
+<li><code>'self'</code>：仅高亮鼠标所在扇形块；</li>
+<li><code>'none'</code>：不会淡化（downplay）其他元素。</li>
+</ul>
+<p>上面提到的“高亮”，对于鼠标所在的扇形块，会使用 <code>emphasis</code> 样式；对于其他相关扇形块，则会使用 <code>highlight</code> 样式。通过这种方式，可以很方便地实现突出显示相关数据的需求。</p>
+<p>具体来说，对于配置项：</p>
+<pre><code class="lang-js prettyprint prettyprinted" style=""><span class="pln">itemStyle</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    color</span><span class="pun">:</span><span class="pln"> </span><span class="str">'yellow'</span><span class="pun">,</span><span class="pln">
+    borderWidth</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span><span class="pln">
+    emphasis</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        color</span><span class="pun">:</span><span class="pln"> </span><span class="str">'red'</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+    highlight</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        color</span><span class="pun">:</span><span class="pln"> </span><span class="str">'orange'</span><span class="pln">
+    </span><span class="pun">},</span><span class="pln">
+    downplay</span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        color</span><span class="pun">:</span><span class="pln"> </span><span class="str">'#ccc'</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+<p><code>highlightPolicy</code> 为 <code>'descendant'</code> 或 <code>'ancestor'</code> 的效果分别为：</p>
+<iframe data-src="https://www.echartsjs.com/examples/en/view.html?c=doc-example/sunburst-highlight-descendant&amp;edit=1&amp;reset=1" width="700" height="350" src="./ECharts Documentation14_files/saved_resource(3).html"></iframe>
+
+
+<iframe data-src="https://www.echartsjs.com/examples/en/view.html?c=doc-example/sunburst-highlight-ancestor&amp;edit=1&amp;reset=1" width="700" height="350" src="./ECharts Documentation14_files/saved_resource(4).html"></iframe>
+
+
+<h2 id="-">总结</h2>
+<p>上面的教程主要讲述的是如何入门使用旭日图，感兴趣的用户可以在 <a href="https://www.echartsjs.com/zh/option.html#series-sunburst" target="_blank">配置项手册</a> 查看更完整的文档。在灵活应用这些配置项之后，就能做出丰富多彩的旭日图了！</p>
+<iframe data-src="https://www.echartsjs.com/examples/en/view.html?c=sunburst-book&amp;edit=1&amp;reset=1" width="700" height="600" src="./ECharts Documentation14_files/saved_resource(5).html"></iframe>
+
+
+<iframe data-src="https://www.echartsjs.com/examples/en/view.html?c=sunburst-drink&amp;edit=1&amp;reset=1" width="700" height="600" src="./ECharts Documentation14_files/saved_resource(6).html"></iframe>
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+    <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; height: 624px; right: 3px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 51px;"></div></div></div>
+</div>
+
+<div class="ecdoc-api-hover-desc" style="opacity: 1; display: block;">
+<div class="ecdoc-api-doc-group-line " data-tree-item-id="">
+    <!-- <div data-tree-item-id=""
+        class="ecdoc-api-doc-line-expand iconfont"
+        style="display:none"></div> -->
+    <div class="ecdoc-api-doc-line-head " data-tree-item-id="">
+       <span class="ecdoc-api-doc-line-label"><strong>富文本标签</strong></span>
+       <span class="ecdoc-api-doc-line-type">*</span>
+    </div>
+    <div class="ecdoc-api-doc-line-default">
+       
+    </div>
+    <p>在许多地方（如图、轴的标签等）都可以使用富文本标签。例如：</p>
+
+
+
+
+
+
+
+
+
+<p><br></p>
+<p>其他一些例子：
+<a href="https://www.echartsjs.com/examples/en/editor.html?c=map-labels&amp;edit=1&amp;reset=1" target="_blank">Map Labels</a>,
+<a href="https://www.echartsjs.com/examples/en/editor.html?c=pie-nest&amp;edit=1&amp;reset=1" target="_blank">Pie Labels</a>,
+<a href="https://www.echartsjs.com/examples/en/editor.html?c=gauge-car&amp;edit=1&amp;reset=1" target="_blank">Gauge</a>.</p>
+<p><br></p>
+<p>原先 echarts 中的文本标签，只能对整块统一进行样式设置，并且仅仅支持颜色和字体的设置，从而导致不易于制作表达能力更强的文字描述信息。</p>
+<p>echarts v3.7 以后，支持了富文本标签，能够：</p>
+<ul>
+<li>定制文本块整体的样式（如背景、边框、阴影等）、位置、旋转等。</li>
+<li>对文本块中个别片段定义样式（如颜色、字体、高宽、背景、阴影等）、对齐方式等。</li>
+<li>在文本中使用图片做小图标或者背景。</li>
+<li>特定组合以上的规则，可以做出简单表格、分割线等效果。</li>
+</ul>
+<p>开始下面的介绍之前，先说明一下下面会使用的两个名词的含义：</p>
+<ul>
+<li>文本块（Text Block）：文本标签块整体。</li>
+<li>文本片段（Text Fregment）：文本标签块中的部分文本。</li>
+</ul>
+<p>如下图示例：</p>
+
+
+
+
+<p><br></p>
+<hr>
+<p><br></p>
+<p><strong>文本样式相关的配置项</strong></p>
+<p>echarts 提供了丰富的文本标签配置项，包括：</p>
+<ul>
+<li>字体基本样式设置：<code>fontStyle</code>、<code>fontWeight</code>、<code>fontSize</code>、<code>fontFamily</code>。</li>
+<li>文字颜色：<code>color</code>。</li>
+<li>文字描边：<code>textBorderColor</code>、<code>textBorderWidth</code>。</li>
+<li>文字阴影：<code>textShadowColor</code>、<code>textShadowBlur</code>、<code>textShadowOffsetX</code>、<code>textShadowOffsetY</code>。</li>
+<li>文本块或文本片段大小：<code>lineHeight</code>、<code>width</code>、<code>height</code>、<code>padding</code>。</li>
+<li>文本块或文本片段的对齐：<code>align</code>、<code>verticalAlign</code>。</li>
+<li>文本块或文本片段的边框、背景（颜色或图片）：<code>backgroundColor</code>、<code>borderColor</code>、<code>borderWidth</code>、<code>borderRadius</code>。</li>
+<li>文本块或文本片段的阴影：<code>shadowColor</code>、<code>shadowBlur</code>、<code>shadowOffsetX</code>、<code>shadowOffsetY</code>。</li>
+<li>文本块的位置和旋转：<code>position</code>、<code>distance</code>、<code>rotate</code>。</li>
+</ul>
+<p>可以在各处的 <code>rich</code> 属性中定义文本片段样式。例如 <a href="https://www.echartsjs.com/zh/option.html#series-bar.label.rich" target="_blank">series-bar.label.rich</a></p>
+<p>例如：</p>
+<pre><code class="lang-js">label: {
+    // 在文本中，可以对部分文本采用 rich 中定义样式。
+    // 这里需要在文本中使用标记符号：
+    // `{styleName|text content text content}` 标记样式名。
+    // 注意，换行仍是使用 '\n'。
+    formatter: [
+        '{a|这段文本采用样式a}',
+        '{b|这段文本采用样式b}这段用默认样式{x|这段用样式x}'
+    ].join('\n'),
+
+    // 这里是文本块的样式设置：
+    color: '#333',
+    fontSize: 5,
+    fontFamily: 'Arial',
+    borderWidth: 3,
+    backgroundColor: '#984455',
+    padding: [3, 10, 10, 5],
+    lineHeight: 20,
+
+    // rich 里是文本片段的样式设置：
+    rich: {
+        a: {
+            color: 'red',
+            lineHeight: 10
+        },
+        b: {
+            backgroundColor: {
+                image: 'xxx/xxx.jpg'
+            },
+            height: 40
+        },
+        x: {
+            fontSize: 18,
+            fontFamily: 'Microsoft YaHei',
+            borderColor: '#449933',
+            borderRadius: 4
+        },
+        ...
+    }
+}
+</code></pre>
+<blockquote>
+<p>注意：如果不定义 <code>rich</code>，不能指定文字块的 <code>width</code> 和 <code>height</code>。</p>
+</blockquote>
+<p><br></p>
+<hr>
+<p><br></p>
+<p><strong>文本、文本框、文本片段的基本样式和装饰</strong></p>
+<p>每个文本可以设置基本的字体样式：<code>fontStyle</code>、<code>fontWeight</code>、<code>fontSize</code>、<code>fontFamily</code>。</p>
+<p>可以设置文字的颜色 <code>color</code> 和边框的颜色 <code>textBorderColor</code>、<code>textBorderWidth</code>。</p>
+<p>文本框可以设置边框和背景的样式：<code>borderColor</code>、<code>borderWidth</code>、<code>backgroundColor</code>、<code>padding</code>。</p>
+<p>文本片段也可以设置边框和背景的样式：<code>borderColor</code>、<code>borderWidth</code>、<code>backgroundColor</code>、<code>padding</code>。</p>
+<p>例如：</p>
+
+
+
+
+<p><br></p>
+<hr>
+<p><br></p>
+<p><strong>标签的位置</strong></p>
+<p>对于折线图、柱状图、散点图等，均可以使用 <code>label</code> 来设置标签。标签的相对于图形元素的位置，一般使用 <a href="https://www.echartsjs.com/zh/option.html#series-scatter.label.position" target="_blank">label.position</a>、<a href="https://www.echartsjs.com/zh/option.html#series-scatter.label.distance" target="_blank">label.distance</a> 来配置。</p>
+<p>例如：</p>
+
+
+
+<blockquote>
+<p>注意：<code>position</code> 在不同的图中可取值有所不同。<code>distance</code> 并不是在每个图中都支持。详情请参见 <a href="https://www.echartsjs.com/zh/option.html" target="_blank">option 文档</a>。</p>
+</blockquote>
+<p><br></p>
+<hr>
+<p><br></p>
+<p><strong>标签的旋转</strong></p>
+<p>某些图中，为了能有足够长的空间来显示标签，需要对标签进行旋转。例如：</p>
+
+
+
+<p>这种场景下，可以结合 <a href="https://www.echartsjs.com/zh/option.html#series-bar.label.align" target="_blank">align</a> 和 <a href="https://www.echartsjs.com/zh/option.html#series-bar.label.verticalAlign" target="_blank">verticalAlign</a> 来调整标签位置。</p>
+<p>注意，逻辑是，先使用 <code>align</code> 和 <code>verticalAlign</code> 定位，再旋转。</p>
+<p><br></p>
+<hr>
+<p><br></p>
+<p><strong>文本片段的排版和对齐</strong></p>
+<p>关于排版方式，每个文本片段，可以想象成 CSS 中的 <code>inline-block</code>，在文档流中按行放置。</p>
+<p>每个文本片段的内容盒尺寸（<code>content box size</code>），默认是根据文字大小决定的。但是，也可以设置 <code>width</code>、<code>height</code> 来强制指定，虽然一般不会这么做（参见下文）。文本片段的边框盒尺寸（<code>border box size</code>），由上述本身尺寸，加上文本片段的 <code>padding</code> 来得到。</p>
+<p>只有 <code>'\n'</code> 是换行符，能导致换行。</p>
+<p>一行内，会有多个文本片段。每行的实际高度，由 <code>lineHeight</code> 最大的文本片段决定。文本片段的 <code>lineHeight</code> 可直接在 <code>rich</code> 中指定，也可以在 <code>rich</code> 的父层级中统一指定而采用到 <code>rich</code> 的所有项中，如果都不指定，则取文本片段的边框盒尺寸（<code>border box size</code>）。</p>
+<p>在一行的 <code>lineHeight</code> 被决定后，一行内，文本片段的竖直位置，由文本片段的 <code>verticalAlign</code> 来指定（这里和 CSS 中的规则稍有不同）：</p>
+<ul>
+<li><code>'bottom'</code>：文本片段的盒的底边贴住行底。</li>
+<li><code>'top'</code>：文本片段的盒的顶边贴住行顶。</li>
+<li><code>'middle'</code>：居行中。</li>
+</ul>
+<p>文本块的宽度，可以直接由文本块的 <code>width</code> 指定，否则，由最长的行决定。宽度决定后，在一行中进行文本片段的放置。文本片段的 <code>align</code> 决定了文本片段在行中的水平位置：</p>
+<ul>
+<li>首先，从左向右连续紧靠放置 <code>align</code> 为 <code>'left'</code> 的文本片段盒。</li>
+<li>然后，从右向左连续紧靠放置 <code>align</code> 为 <code>'right'</code> 的文本片段盒。</li>
+<li>最后，剩余的没处理的文本片段盒，紧贴着，在中间剩余的区域中居中放置。</li>
+</ul>
+<p>关于文字在文本片段盒中的位置：</p>
+<ul>
+<li>如果 <code>align</code> 为 <code>'center'</code>，则文字在文本片段盒中是居中的。</li>
+<li>如果 <code>align</code> 为 <code>'left'</code>，则文字在文本片段盒中是居左的。</li>
+<li>如果 <code>align</code> 为 <code>'right'</code>，则文字在文本片段盒中是居右的。</li>
+</ul>
+<p>例如：</p>
+
+
+
+
+<p><br></p>
+<hr>
+<p><br></p>
+<p><strong>特殊效果：图标、分割线、标题块、简单表格</strong></p>
+<p>看下面的例子：</p>
+
+
+
+<p>文本片段的 <code>backgroundColor</code> 可以指定为图片后，就可以在文本中使用图标了：</p>
+<pre><code class="lang-js">rich: {
+    Sunny: {
+        // 这样设定 backgroundColor 就可以是图片了。
+        backgroundColor: {
+            image: './data/asset/img/weather/sunny_128.png'
+        },
+        // 可以只指定图片的高度，从而图片的宽度根据图片的长宽比自动得到。
+        height: 30
+    }
+}
+</code></pre>
+<p>分割线实际是用 border 实现的：</p>
+<pre><code class="lang-js">rich: {
+    hr: {
+        borderColor: '#777',
+        // 这里把 width 设置为 '100%'，表示分割线的长度充满文本块。
+        // 注意，这里是文本块内容盒（content box）的 100%，而不包含 padding。
+        // 虽然这和 CSS 相关的定义有所不同，但是在这类场景中更加方便。
+        width: '100%',
+        borderWidth: 0.5,
+        height: 0
+    }
+}
+</code></pre>
+<p>标题块是使用 <code>backgroundColor</code> 实现的：</p>
+<pre><code class="lang-js">// 标题文字居左
+formatter: '{titleBg|Left Title}',
+rich: {
+    titleBg: {
+        backgroundColor: '#000',
+        height: 30,
+        borderRadius: [5, 5, 0, 0],
+        padding: [0, 10, 0, 10],
+        width: '100%',
+        color: '#eee'
+    }
+}
+
+// 标题文字居中。
+// 这个实现有些 tricky，但是，能够不引入更复杂的排版规则而实现这个效果。
+formatter: '{tc|Center Title}{titleBg|}',
+rich: {
+    titleBg: {
+        align: 'right',
+        backgroundColor: '#000',
+        height: 30,
+        borderRadius: [5, 5, 0, 0],
+        padding: [0, 10, 0, 10],
+        width: '100%',
+        color: '#eee'
+    }
+}
+</code></pre>
+<p>简单表格的设定，其实就是给不同行上纵向对应的文本片段设定同样的宽度就可以了。参见本文最开始的 <a href="https://www.echartsjs.com/examples/en/view.html?c=pie-rich-text&amp;edit=1&amp;reset=1" target="_blank">例子</a>。</p>
+
+    <div class="ecdoc-api-doc-prop-expand" data-tree-item-id="" style="display:none"><span></span></div>
+    
+</div>
+</div>
+</div></div><script type="text/javascript" src="./ECharts Documentation14_files/bootstrap.min.js.下载"></script><script type="text/javascript" src="./ECharts Documentation14_files/common.js.下载"></script><script src="./ECharts Documentation14_files/jquery.event.move.js.下载"></script><script src="./ECharts Documentation14_files/jquery.twentytwenty.js.下载"></script><script type="text/javascript">$('#main').addClass('tutorial');
+
+window.globalArgsExtra = {
+    pageName: 'tutorial',
+    initHash: '5 分钟上手 ECharts',
+    hideTreeRoot: true,
+    pureTitle: true,
+    noTypeEnum: true,
+    lang: {
+        zh: {
+            queryBoxTextFuzzyPath: '教程搜索',
+            queryBoxPlaceholderFuzzyPath: '教程名称搜索（快捷键\'/\'）'
+        },
+        en: {
+            queryBoxTextFuzzyPath: 'tutorial search',
+            queryBoxPlaceholderFuzzyPath: 'tutorial search (shortcut: \'/\')'
+        }
+    }
+};</script><script src="./ECharts Documentation14_files/jquery.auto-complete.min.js.下载"></script><script type="text/javascript">document.getElementById('nav-doc').className = 'active';
+
+var vendorPath = '../vendors';
+
+define('globalArgs', extend({
+    version: '1571424763934',
+    basePath: './',
+    // Schema url is added by each doc page
+    schemaUrl: '',
+    iconfont: {
+        down: '&#' + parseInt('e600', 16),
+        up: '&#' + parseInt('e603', 16),
+        right: '&#' + parseInt('e602', 16),
+        left: '&#' + parseInt('e604', 16),
+        handLens: '&#' + parseInt('e601', 16)
+    }
+}, window.globalArgsExtra || {}));
+
+define('prettyPrint', function () {
+    return prettyPrint;
+});
+
+require.config({
+    baseUrl: './js',
+    paths: {
+        dt: vendorPath + '/dt/0.0.1',
+        tpl: vendorPath + '/dt/0.0.1/tplLoader',
+        etpl: vendorPath + '/etpl/3.0.0/etpl.min',
+        signals: vendorPath + '/signals/1.0.0/signals.min',
+        hasher: vendorPath + '/hasher/1.2.0/hasher.min',
+        perfectScrollbar: vendorPath + '/perfect-scrollbar/0.6.8/js/perfect-scrollbar'
+    },
+    urlArgs: '_v_=1571424763934'
+});
+
+require(['docTool/main'], function (main) {
+    main.init();
+});
+
+function extend(tar, src) {
+    for (var name in src) {
+        if (src.hasOwnProperty(name)) {
+            tar[name] = src[name];
+        }
+    }
+    return tar;
+}</script><!-- Baidu Tongji--><script type="text/javascript">var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?54b918eee37cb8a7045f0fd0f0b24395";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- Google Analytics--><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=UA-141228404-1"></script><script type="text/javascript">window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-141228404-1');</script><div class="autocomplete-suggestions " style="display: none;"></div></body></html>
