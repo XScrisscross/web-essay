@@ -1,6 +1,6 @@
 
 /**
- * 缓动动画封装
+ * 缓动动画封装:c3已实现
  * @param {Object}
  * @returns {Promise}
  */
