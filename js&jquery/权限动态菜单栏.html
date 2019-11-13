@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="./template-web.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script id="demo" type="text/html">
+    <div>
+      <ul>
+        {{each list v1 k1}}
+        <li>
+            <h4 class="{{v1.id}}">{{v1.name}}</h4>
+            <ul>
+              {{each v1.children v2 k2}}
+              <li>
+                <h4 class="{{v2.id}}">{{v2.name}}</h4>
+                <ul>
+                  {{each v2.children v3 k3}}
+                  <li class="{{v3.id}}">{{v3.name}}</li>
+                  {{/each}}
+                </ul>
+              </li>
+              {{/each}}
+            </ul>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </script>
+
+  <script>
+    var person = [
+      {
+        id: 'A',
+        name: 'A',
+        children: [
+          {
+            id: 'AA',
+            name: 'AA',
+            children: [
+              {
+                id: 'AAA',
+                name: 'AAA',
+              },
+              {
+                id: 'AAB',
+                name: 'AAB',
+              },
+              {
+                id: 'AAC',
+                name: 'AAC',
+              },
+            ]
+          },
+          {
+            id: 'AB',
+            name: 'AB',
+            children: [
+              {
+                id: 'ABA',
+                name: 'ABA',
+              },
+              {
+                id: 'ABB',
+                name: 'ABB',
+              },
+              {
+                id: 'ABC',
+                name: 'ABC',
+              },
+            ]
+          }
+        ]
+      },
+      {
+        id: 'B',
+        name: 'B',
+        children: [
+          {
+            id: 'BA',
+            name: 'BA',
+            children: [
+              {
+                id: 'BAA',
+                name: 'BAA',
+              },
+              {
+                id: 'BAB',
+                name: 'BAB',
+              },
+              {
+                id: 'BAC',
+                name: 'BAC',
+              },
+            ]
+          },
+          {
+            id: 'BB',
+            name: 'BB'
+          }
+        ]
+      }
+    ];
+
+    var html = template("demo", { list: person });
+    document.getElementById("app").innerHTML = html;
+  </script>
+</body>
+
+</html>
