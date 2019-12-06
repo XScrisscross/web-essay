@@ -153,3 +153,9 @@ git remote -v
 git remote add <地址> 
 git remote remove <地址>
 git push <别名> <地址>
+
+#22.git在切换分支时失败?远程及本地都有分支,三仓(本地库---远程本地库---中央库)
+git branch时会看到有三个库的分支,如果无法本地直接切换,就切到远程本地库,再从远程本地库创建该分支,
+git remote -u origin/feature feature再将远程本地库与当前本地建立联系
+
+#23.git log 可查看各种提交信息
