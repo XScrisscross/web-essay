@@ -1,0 +1,10 @@
+属性	        值	                举例结果
+href	       完整的 URL	          http://localhost:8080/project/front/user/serviceIndex?type=1
+protocol	   协议	                http:
+hostname	   主机名	              localhost
+port	       端口号	              8080
+host	       主机名+端口号	       localhost:8080
+pathname	   当前 URL 的相对路径   /project/front/user/serviceIndex
+search	     当前 URL 的参数	     ?type=1
+hash	       #开始的锚	
+具体的获取方法，如：window.location.hostname，得：localhost
