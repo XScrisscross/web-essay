@@ -33,6 +33,21 @@
             word-break: break-all;
             word-wrap: break-word;
         }
+        
+        /* 多行文字水平垂直居中 */
+        .box {
+          position: relative;
+          width: 500px;
+          height: 300px;
+          border: 1px solid #FFF;
+          background-color: #999;
+          display: table;
+        }
+
+        .wrap {
+          display: table-cell;
+          vertical-align: middle;
+        }
     </style>
 </head>
 
@@ -40,6 +55,14 @@
     <!--  !important line-height会使文字换行失效    -->
     <div class="one">hahahhahahahahahhahah</div>
     <div class="two">heheheheheheheheheheh</div>
+    
+    <!--  多行文字水平垂直居中  -->
+    <div class="box">
+      <p class="content">
+        我是文字随便几行我是文字随便几行我是文字随便几行我是文字随便几行我是文字随便几行我是文字随便几行
+        固定宽度的文字自动换行并垂直剧中">固定宽度的文字自动换行并垂直剧中</a>
+      </p>
+    </div>
 </body>
 
 </html>
