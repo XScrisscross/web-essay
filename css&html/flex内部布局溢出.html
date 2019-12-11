@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    .box {
+      overflow: auto;
+    }
+
+
+    .box .view {
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .box .view ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+    }
+
+    .box .view ul li {
+      width: 300px;
+      height: 200px;
+      margin: 10px;
+      background-color: #00ffff;
+    }
+
+    .box1 {
+      overflow: auto;
+    }
+
+
+    .box1 .view1 {
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      /* ********** */
+      width: 2600px;
+      /* ********** */
+    }
+
+    .box1 .view1 ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+    }
+
+    .box1 .view1 ul li {
+      width: 300px;
+      height: 200px;
+      margin: 10px;
+      background-color: #00ffff;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 问题 -->
+  <div class="box">
+    <div class="view">
+      <div>title</div>
+      <div>content</div>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 
+    原因:最外层框子会继承父属性,而其宽度不会超过屏幕分辨率,比实际需要的宽度要少很多  会导致内在框子显示不全,需要动态给框子宽度
+    解决
+   -->
+  <div class="box1">
+    <div class="view1">
+      <div>title</div>
+      <div>content</div>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
