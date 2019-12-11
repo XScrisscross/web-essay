@@ -130,42 +130,6 @@
         let res = strTrim.replace(/\s/gi, "");
         console.log(res);
 
-        // 2.常见算法题目
-        // 2.1猴子吃桃
-        day = 0;
-        function eat(count) {
-            day++;
-            if (day === 10) { //第十天 吃了九天 1~9 count:剩余桃子
-                return count;
-            }
-            count = (count + 1) * 2;
-            return eat(count);
-        }
-        console.log(eat(1));
-
-        function eatPeach(day, count) {
-            day--;
-            if (day > 0) { //第十天 吃了九天 1~9 count:剩余桃子
-                return eatPeach(day, (count + 1) * 2);
-            }
-            return count;
-        }
-        console.log(eatPeach(10, 1));
-
-        // 2.2百钱百鸡
-        var i;
-        var j;
-        var k;
-        var f = 100;
-        for (i = 1; i < 100; i++) {
-            for (j = 1; j < 100; j++) {
-                k = 100 - j - i;
-                if ((5 * i + 3 * j + k / 3) == f) {
-                    console.log(i, j, k);
-                }
-            }
-        }
-
         // 2.3简单递归
         function factorial(num) {
             if (num === 1) {
@@ -204,30 +168,6 @@
         num1 = num1 + num2;
         num2 = num1 - num2;
         num1 = num1 - num2;
-
-        // 2.6倒九九
-        for (m = 9; m >= 1; m--) {
-            for (n = 1; n <= m; n++) {
-                document.write(n + "x" + m + "=" + m * n + " ");
-            }
-            document.write("<br>");
-        }
-
-        // 2.7镂空金字塔
-        document.write("<pre>");
-        for (i = 1; i <= 5; i++) {
-            for (m = 5; m >= i; m--) {
-                document.write(" ");
-            }
-            for (k = 1; k <= (2 * i - 1); k++) {
-                if (k == 1 || k == (2 * i - 1) || i == 5) {
-                    document.write("*");
-                } else {
-                    document.write(" ");
-                }
-            }
-            document.write("<br>");
-        }
 
         // 3.常见的数组排序
         // 3.1选排
