@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img{
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+var myImg = (function(){
+    var img = document.createElement("img");
+    document.body.appendChild(img);
+    return {
+        setImg:function(src){
+            img.src = src
+        }
+    }
+})()
+var proxyImg = (function(){
+    //img对象  提前加载一张图片如果给这个图片加了一个src属性后就相当于在浏览器中缓存了一张图片
+    var image = new Image();
+    image.onload = function(){
+        // alert("加载完毕");
+        myImg.setImg(image.src);
+    }
+    return {
+        setSrc:function(src){
+            //loding
+            myImg.setImg("1.png");
+            //需要加载的图片
+            image.src = src;
+        }
+    }
+})()
+
+var src = "http://img.article.pchome.net/00/58/32/28/pic_lib/wm/Msn_lundun08.jpg";
+
+proxyImg.setSrc(src);
+
+</script>
+
+懒加载：
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0;}
+        img{
+            width: 200px;
+            height: 200px;
+            display: block;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="" data-url="img/1.jpg">
+        <img src="" data-url="img/2.jpg">
+        <img src="" data-url="img/3.jpg">
+        <img src="" data-url="img/4.jpg">
+        <img src="" data-url="img/5.jpg">
+        <img src="" data-url="img/6.jpg">
+        <img src="" data-url="img/7.jpg">
+        <img src="" data-url="img/8.jpg">
+        <img src="" data-url="img/9.jpg">
+        <img src="" data-url="img/10.jpg">
+        <img src="" data-url="img/1.jpg">
+        <img src="" data-url="img/2.jpg">
+        <img src="" data-url="img/3.jpg">
+        <img src="" data-url="img/4.jpg">
+        <img src="" data-url="img/5.jpg">
+        <img src="" data-url="img/6.jpg">
+        <img src="" data-url="img/7.jpg">
+        <img src="" data-url="img/8.jpg">
+        <img src="" data-url="img/9.jpg">
+        <img src="" data-url="img/10.jpg">
+        <img src="" data-url="img/1.jpg">
+        <img src="" data-url="img/2.jpg">
+        <img src="" data-url="img/3.jpg">
+        <img src="" data-url="img/4.jpg">
+        <img src="" data-url="img/5.jpg">
+        <img src="" data-url="img/6.jpg">
+        <img src="" data-url="img/7.jpg">
+        <img src="" data-url="img/8.jpg">
+        <img src="" data-url="img/9.jpg">
+        <img src="" data-url="img/10.jpg">
+        <img src="" data-url="img/1.jpg">
+        <img src="" data-url="img/2.jpg">
+        <img src="" data-url="img/3.jpg">
+        <img src="" data-url="img/4.jpg">
+        <img src="" data-url="img/5.jpg">
+        <img src="" data-url="img/6.jpg">
+        <img src="" data-url="img/7.jpg">
+        <img src="" data-url="img/8.jpg">
+        <img src="" data-url="img/9.jpg">
+        <img src="" data-url="img/10.jpg">
+        <img src="" data-url="img/9.jpg">
+        <img src="" data-url="img/10.jpg">
+        <img src="" data-url="img/1.jpg">
+        <img src="" data-url="img/2.jpg">
+        <img src="" data-url="img/3.jpg">
+        <img src="" data-url="img/4.jpg">
+        <img src="" data-url="img/5.jpg">
+        <img src="" data-url="img/6.jpg">
+        <img src="" data-url="img/7.jpg">
+        <img src="" data-url="img/8.jpg">
+        <img src="" data-url="img/9.jpg">
+        <img src="" data-url="img/10.jpg">
+    </div>
+</body>
+</html>
+<script>
+document.onscroll = function(){
+    toimg();
+}
+toimg();
+function toimg(){
+    var ih = document.documentElement.clientHeight;
+    var t = document.documentElement.scrollTop|| document.body.scrollTop;
+    var img = document.getElementsByTagName("img");
+        for(var i = 0;i<img.length;i++){
+            if((!img[i].bStop)&&img[i].offsetTop<(ih+t)){
+                var src = img[i].getAttribute("data-url");
+                img[i].src = src;
+                img[i].bStop = true;
+                console.log(112)
+            }
+        }
+}
+</script>
