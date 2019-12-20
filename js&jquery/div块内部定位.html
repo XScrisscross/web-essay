@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./jquery-3.2.1.min.js"></script>
+  <style>
+    .a {
+      overflow: auto;
+      height: 100px;
+      width: 100px;
+    }
+
+    .c {
+      height: 300px;
+      width: 100px;
+      background-color: #0ff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="a">
+    <div class="c"></div>
+  </div>
+
+  <script>
+    var mainContainer = $('.a');//父级容器
+      // scrollToContainer = mainContainer.find('.redbg');//指定的class
+    mainContainer.animate({
+      scrollTop: 200
+    }, 1000);//2秒滑动到指定位置
+
+    
+
+  </script>
+</body>
+
+</html>
