@@ -1,0 +1,60 @@
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    #container {
+      width: 500px;
+      min-height: 300px;
+      border: 1px solid #aaa;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>在服务器端下载的网页中呈现客户端的图片</h3>
+  <div id="container">
+
+  </div>
+  <script>
+    ///阻止拖放的图片在新窗口中直接显示
+    ///拖放的目标对象此时是document对象
+    document.ondragover = function (e) {
+      e.preventDefault(); //使得ondrop可能触发
+    }
+    document.ondrop = function (e) {
+      e.preventDefault();//阻止浏览器在新窗口中打开本地图片
+    }
+
+    ///为#container做释放事件的监听
+    container.ondragover = function (e) {
+      e.preventDefault();//使得ondrop可能触发
+    }
+    container.ondrop = function (e) {
+      //读取浏览器在源对象拖动时在“拖拉机”中保存的数据
+      console.log(e.dataTransfer);
+      console.log(e.dataTransfer.files); //FileList
+
+      //用户拖动进来的第0张图片
+      var f0 = e.dataTransfer.files[0];
+
+      //创建一个文件内容读取器——FileReader
+      var fr = new FileReader();
+      //读取文件中的内容 —— DataURL：一种特殊的URL地址，本身包含着所有的数据
+      fr.readAsDataURL(f0);
+      fr.onload = function () {
+        console.log('文件中的数据读取完成')
+        console.log(fr.result);
+        var img = new Image();
+        img.src = fr.result; //dataURL
+        img.style.width = "500px";
+        img.style.height = "300px";
+        container.appendChild(img);
+      }
+    }
+  </script>
+</body>
+
+</html>
