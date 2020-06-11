@@ -163,3 +163,12 @@ axios
 某些组件弹框  隐藏时无法取到
 vue中创建动态视图,创建动态数据即可,视图用数据对应
 创建一个前置的加载  -> index中创建,router中消除,初始加载页面时白屏
+
+-动态路由 /a/:a/b/:b  fullPath: 带参绝对路径  hash:   matched:匹配记录   meta:元信息   name:   params:    path: 绝对路径  query:    redirectedFrom: 参数响应,组件复用,不重新加载,通配符  to  from  next(false/{path})  $route  /a-* 匹配 嵌套路由 编程式导航:js改路由指向,go,push,replace(无history) 命名路由/命名视图  声明式/编程式:对象或字符串传参{name}  命名视图:同级或嵌套式,混用 别名(指向同,起名)与重定向(重新指向) 组件传参解耦:布尔值/对象/函数 history模式 过度 思路:路由的钩子和组件生命周期的钩子都可以去获取数据 路由钩子顺序:触发 -> beforeRouterLeave -> beforeEach(全局前置) -> beforeRouterUpdate(传参变化) -> beforeRouterEnter -> beforeResolve(全局后置,异步路由及组件完成后执行) -> afterEach(全局后置)
+
+-分模块的权限：外层套壳子watch路由变化做权限
+
+-less客户端js渲染 sass服务端渲染
+嵌套(标识符) 静默注释  属性嵌套  运算 变量  甚至函数/逻辑/传参 分文件引入@import  
+最重要的混入(.name{} / @mixin name{})和继承
+混入看做代码赋值(用于高度可重用的样式) 继承于类名叠加(用于通用样式下的细微扩展组合) 
