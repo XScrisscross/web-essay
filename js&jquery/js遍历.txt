@@ -1,0 +1,7 @@
+for 最基本
+foreach 全遍历
+map 对每一个值操作返回新数组
+some 某一成立
+every 全成立
+reduce 归并 有前后值参数  阶乘??
+for in of 遍历加解构 of-解数组里面的对象,而不是对象里面的对象
