@@ -158,3 +158,8 @@ fetch
 fetch是原生的js,没有使用xhr,也不是ajax的进一步封装,基于promise,代替ajax
 
 axios
+
+关于vue mouted钩子函数 echarts实例化无法用document取到对应dom  $refs取 配 nextIic()
+某些组件弹框  隐藏时无法取到
+vue中创建动态视图,创建动态数据即可,视图用数据对应
+创建一个前置的加载  -> index中创建,router中消除,初始加载页面时白屏
