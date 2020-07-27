@@ -158,3 +158,5 @@ console.log(data);
 // poster.removeReceiver();
 // poster.trigger();
 // console.log(poster);
+
+// 观察订阅模式 实现页面通信 -- 可以通信  但是无法更改dom状态(在dom不存在的状态下)

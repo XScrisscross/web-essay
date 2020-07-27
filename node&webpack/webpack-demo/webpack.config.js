@@ -1,3 +1,4 @@
+// npx作用  再无package.json的情况下使用  npx的作用是先检查本地有没有安装某个package，如果没有去远程registry找，找到的话直接使用，不用下载到本地node-modules包里面，这样就能优化本地项目的大小，也可以避免安装package到全局。
 let path = require('path')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
