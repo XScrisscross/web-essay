@@ -1,1 +1,0 @@
-- taskkill /im nginx.exe /f  杀掉ngnix进程

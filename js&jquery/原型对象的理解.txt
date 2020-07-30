@@ -1,0 +1,4 @@
+分为三方  
+ 原型对象  Function.prototype:此为函数胡总原型对象,function fn (){} -> fn.prototype此为某一函数的原型对象
+ 构造函数  function.prototype指向原型对象,在原型对象上添加的属性会被继承
+ 实例化对象  new function会创建实例化对象,对象里面包含原型对象的方法

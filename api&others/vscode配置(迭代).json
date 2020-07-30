@@ -64,11 +64,6 @@
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.printWidth": 300,
-  // SYNC SETTING
-  "sync.gist": "",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": false
-  },
   // VUE-PRETTIER SETTING
   "editor.fontFamily": "Menlo, Consolas, 'Courier New', monospace",
   "eslint.options": {
@@ -113,4 +108,14 @@
   },
   "workbench.startupEditor": "newUntitledFile",
   "workbench.activityBar.visible": true,
+  // SYNC SETTING
+  "sync.gist": "4c755d6647732a82a7e8bc4dcb1c0e38",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": false
+  },
+  "explorer.confirmDragAndDrop": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "explorer.confirmDelete": false,
 }

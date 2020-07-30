@@ -321,9 +321,9 @@
         console.log(fn.prototype);
         // 5.3 每个函数都包含两个非继承而来的方法:apply()和call(),它们真正强大的地方是能够扩充函数赖以运行的作用域??在某种作用域执行函数??秀啊,牛逼
         /*
-            apply():apply(其中运行的作用域this/windos/其他,arguments对象/Array实例)  方法作用的应用,与数组有关
-            call():apply(其中运行的作用域this/windos/其他,所有逐个列举出来的参数)  实现继承
-            bind():bind(其中运行的作用域this/windos/其他,所有逐个列举出来的参数) bind绑定返回一个新函数,不可直接调用   定时器改变指向(单纯改变this)
+            apply():apply(其中运行的作用域this/windos/其他,数组)  方法作用的应用,与数组有关
+            call():apply(其中运行的作用域this/windos/其他,单一参数列表)  实现继承
+            bind():bind(其中运行的作用域this/windos/其他,单一参数列表) bind绑定返回一个新函数,不可直接调用   定时器改变指向(单纯改变this)
             改变this指向??,运行的作用域发生改变以致this指代也会发生改变
             究竟有什么作用,三个方法注意传入的参数有数组 -> 操作数组 -> 任何方法   可以在任何作用域(对象方法,window等,事件绑定)  操作一个或多个数据
         */
